@@ -41,14 +41,20 @@ const Page: React.FC<pageProps> = ({ email, password }) => {
           required
         />
 
-        <Button className="w-full">Login</Button>
+        <Button className="w-full text-whiter">Login</Button>
 
         <div className="relative">
           <p className="absolute left-1/2 top-1/2 mt-1 -translate-x-1/2 -translate-y-1/2 transform px-2 text-xs">
             OR
           </p>
         </div>
-        <Button className="w-full" variant="outline">
+        <Button
+          className="w-full"
+          variant="outline"
+          onClick={() => {
+            return router.push("/login");
+          }}
+        >
           have an account? Login
         </Button>
       </div>

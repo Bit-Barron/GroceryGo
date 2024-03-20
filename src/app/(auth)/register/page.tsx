@@ -47,7 +47,7 @@ const Page: React.FC<pageProps> = ({}) => {
           required
         />
         <Button
-          className="w-full"
+          className="w-full text-white"
           type="submit"
           onClick={(e) => authStore.register(e)}
         >
