@@ -1,20 +1,19 @@
 import React from "react";
-import { AdminProductsList } from "./AdminProductsList";
 import { AiOutlineAppstoreAdd, AiOutlineOrderedList } from "react-icons/ai";
-import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { AdminProductsUpsert } from "./AdminProductsUpsert";
 import { useSnapshot } from "valtio";
-import { AdminCategories } from "../../../store/admin/categories/AdminCategories";
+import { AdminProductsStore } from "../../../store/admin/categories/AdminProducts";
+import { AdminProductsList } from "./AdminProductsList";
 
 export const AdminProducts: React.FC = ({}) => {
-  const router = useRouter();
-  const adminCategories = useSnapshot(AdminCategories);
+  const adminCategories = useSnapshot(AdminProductsStore);
 
   return (
     <>
       <div className="flex space-x-5 bg-container2 p-5">
         <Button
+          className="text-white"
           Icon={AiOutlineAppstoreAdd}
           onClick={() => {
             adminCategories.setSubpage("upsert");
@@ -23,6 +22,7 @@ export const AdminProducts: React.FC = ({}) => {
           Add products
         </Button>
         <Button
+          className="text-white"
           Icon={AiOutlineOrderedList}
           onClick={() => adminCategories.setSubpage("list")}
         >

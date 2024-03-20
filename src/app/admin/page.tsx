@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 "use client";
 
 import React from "react";
@@ -34,14 +33,3 @@ const Page: React.FC<pageProps> = ({}) => {
 };
 
 export default Page;
-=======
-import React from "react";
-
-interface pageProps {}
-
-const page: React.FC<pageProps> = ({}) => {
-  return <section></section>;
-};
-
-export default page;
->>>>>>> 8a12afb0d6014272a91674ce92ec3b59d2015be9

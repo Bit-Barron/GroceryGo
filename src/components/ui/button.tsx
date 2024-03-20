@@ -51,7 +51,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         {...props}
       >
-        {Icon && <Icon className={buttonVariants({ size: 'icon' })} />}
+        {Icon && <Icon className={buttonVariants({ size: 'icon' }) + "text-xl"} />}
         {children}
       </Comp>
     );
