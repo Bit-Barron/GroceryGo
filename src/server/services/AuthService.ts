@@ -6,8 +6,6 @@ import { eq } from "drizzle-orm";
 import jwt from "jsonwebtoken";
 import { cookies } from "next/headers";
 
-const CookieStore = cookies();
-
 export const register = async ({
   password,
   confirmPassword,
@@ -36,6 +34,8 @@ export const register = async ({
 };
 
 export const login = async ({ email, password }: AuthProps) => {
+  const CookieStore = cookies();
+
   const user = await db
     .select()
     .from(UserModel)

@@ -1,8 +1,7 @@
-import { FormEvent, useEffect } from "react";
-import { proxy, useSnapshot } from "valtio";
-import axios, { AxiosError } from "axios";
+import { FormEvent } from "react";
+import { proxy } from "valtio";
+import axios from "axios";
 import { toast } from "sonner";
-import { redirect, useRouter } from "next/navigation";
 
 interface userProps {
   id: string;
@@ -32,13 +31,12 @@ export const AuthStore = proxy({
         }
       );
 
-
       // check for an error
       if (registerUser) {
         return toast.success("Succesfully created an account");
       }
-
     } catch (err) {
+      console.log(err);
       return toast.error("User already exists");
     }
   },

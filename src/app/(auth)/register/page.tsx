@@ -18,7 +18,7 @@ const Page: React.FC<pageProps> = ({}) => {
   const authStore = useSnapshot(AuthStore);
 
   return (
-    <form onSubmit={(e) => authStore.Register(e)}>
+    <form onSubmit={(e) => authStore.register(e)}>
       <Toaster />
       <h1 className="font-bold text-2xl text-center mt-7">Register</h1>
       <div className="mt-10 space-y-5">
@@ -49,7 +49,7 @@ const Page: React.FC<pageProps> = ({}) => {
         <Button
           className="w-full text-white"
           type="submit"
-          onClick={(e) => authStore.Register(e)}
+          onClick={(e) => authStore.register(e)}
         >
           Register
         </Button>
