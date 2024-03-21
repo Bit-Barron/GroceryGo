@@ -24,9 +24,11 @@ export const register = async ({
 
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  const user = createInsertSchema(UserModel, {});
+  const user = createInsertSchema(UserModel, {
+    password: hashedPassword as any,
+  });
 
-  return hashedPassword;
+  return user;
 };
 
 export const logout = async () => {
