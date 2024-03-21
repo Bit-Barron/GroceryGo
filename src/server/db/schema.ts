@@ -9,3 +9,12 @@ export const UserModel = pgTable("users", {
 });
 
 export type UserModel = typeof UserModel.$inferInsert;
+
+export const ProductModel = pgTable("products", {
+  id: serial("id").primaryKey(),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+  descriptions: text("descriptions").notNull(),
+  status: text("status").notNull(),
+  title: text("title").notNull(),
+  smallDescription: text("small_description").notNull(),
+});
