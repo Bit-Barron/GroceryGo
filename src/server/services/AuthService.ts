@@ -4,6 +4,9 @@ import { db } from "../db";
 import { AuthProps } from "@/types/interface";
 import { eq } from "drizzle-orm";
 import jwt from "jsonwebtoken";
+import { cookies } from "next/headers";
+
+const CookieStore = cookies();
 
 export const register = async ({
   password,
@@ -51,7 +54,16 @@ export const login = async ({ email, password }: AuthProps) => {
     { expiresIn: "1h" }
   );
 
-  return token;
+  const verifyToken = jwt.verify(
+    token,
+    `${process.env.NEXT_PUBLIC_JWT_SECRET}`
+  );
+
+  if (!verifyToken) throw new Error("Invalid token");
+
+  const jwtCookie = CookieStore.set("token", token);
+
+  return jwtCookie;
 };
 
 export const logout = async ({ token }: AuthProps) => {

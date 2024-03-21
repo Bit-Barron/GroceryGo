@@ -10,6 +10,7 @@ import { AdminMobileSideBar } from "./admin/AdminMobileSideBar";
 import { AdminDekstopSideBar } from "./admin/AdminDesktopSideBar";
 import { AdminSearchBar } from "./admin/AdminSearchBar";
 import { AdminTabType } from "@/types/store";
+import axios from "axios";
 
 interface AdminContainerProps {
   children: React.ReactNode;
@@ -20,7 +21,20 @@ export const AdminContainer: React.FC<AdminContainerProps> = ({ children }) => {
   const router = useRouter();
   const adminStore = useSnapshot(AdminStore);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    const validateUser = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_REST_ENDPOINT}/api/validate`
+        );
+
+        console.log(response);
+      } catch (error) {
+        return router.push("/login");
+      }
+    };
+    validateUser();
+  }, [router, adminStore.adminTabs]);
 
   const menuProducts = (
     <>
@@ -52,7 +66,6 @@ export const AdminContainer: React.FC<AdminContainerProps> = ({ children }) => {
       </div>
     </>
   );
-
 
   return (
     <>

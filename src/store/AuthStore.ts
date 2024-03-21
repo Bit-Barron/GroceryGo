@@ -2,6 +2,7 @@ import { FormEvent, useEffect } from "react";
 import { proxy, useSnapshot } from "valtio";
 import axios, { AxiosError } from "axios";
 import { toast } from "sonner";
+import { redirect, useRouter } from "next/navigation";
 
 interface userProps {
   id: string;
@@ -31,9 +32,12 @@ export const AuthStore = proxy({
         }
       );
 
-      console.log(registerUser);
 
-      return toast.success("Registration successful");
+      // check for an error
+      if (registerUser) {
+        return toast.success("Succesfully created an account");
+      }
+
     } catch (err) {
       return toast.error("User already exists");
     }
@@ -52,11 +56,10 @@ export const AuthStore = proxy({
         }
       );
 
-      console.log(loginUser);
-
       return toast.success("Login successful");
     } catch (err) {
       console.log(err);
+      return toast.error("Invalid credentials");
     }
   },
 });
