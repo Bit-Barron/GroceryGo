@@ -1,7 +1,5 @@
 import { proxy } from "valtio";
 
-interface AdminCategoryProps {}
-
 export type AdminProductsStore = typeof AdminCategoryStore;
 
 export const AdminCategoryStore = proxy({
