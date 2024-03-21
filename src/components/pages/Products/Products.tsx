@@ -1,12 +1,12 @@
 import React from "react";
 import { AiOutlineAppstoreAdd, AiOutlineOrderedList } from "react-icons/ai";
 import { Button } from "@/components/ui/button";
-import { AdminProductsUpsert } from "./AdminProductsUpsert";
+import { ProductsUpsert } from "./ProductsUpsert";
 import { useSnapshot } from "valtio";
 import { AdminProductsStore } from "../../../store/admin/AdminProducts";
-import { AdminProductsList } from "./AdminProductsList";
+import { ProductsList } from "./ProductsList";
 
-export const AdminProducts: React.FC = ({}) => {
+export const Products: React.FC = ({}) => {
   const adminCategories = useSnapshot(AdminProductsStore);
 
   return (
@@ -30,9 +30,9 @@ export const AdminProducts: React.FC = ({}) => {
         </Button>
       </div>
       <div className="p-5">
-        <div>{adminCategories.subpage === "list" && <AdminProductsList />}</div>
+        <div>{adminCategories.subpage === "list" && <ProductsList />}</div>
         <div>
-          {adminCategories.subpage === "upsert" && <AdminProductsUpsert />}
+          {adminCategories.subpage === "upsert" && <ProductsUpsert />}
         </div>
       </div>
     </>

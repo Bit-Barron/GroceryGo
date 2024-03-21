@@ -4,13 +4,13 @@ import React from "react";
 import { AdminContainer } from "@/components/container/AdminContainer";
 import { useSnapshot } from "valtio";
 import { AdminStore } from "@/store/admin/AdminStore";
-import { AdminDashboard } from "@/components/pages/Dashboard/AdminDashboard";
-import { AdminProducts } from "@/components/pages/Products/AdminProducts";
-import { AdminCategories } from "@/components/pages/Categories/AdminCategories";
+import { AdminDashboard } from "@/components/pages/Dashboard/Dashboard";
+import { AdminProducts } from "@/components/pages/Products/Products";
+import { AdminCategories } from "@/components/pages/Categories/Categories";
 import { AdminSettings } from "@/components/pages/Settings/AdminSettings";
-import { AdminQRCode } from "@/components/pages/QR-Code/AdminQR-Code";
-import { AdminOrderList } from "@/components/pages/Order/AdminOrderList";
-import { AdminOrderHistoryList } from "@/components/pages/Order-History/AdminOrder-HistoryList";
+import { AdminQRCode } from "@/components/pages/QR-Code/QrCode";
+import { AdminOrderList } from "@/components/pages/Order/OrderList";
+import { AdminOrderHistoryList } from "@/components/pages/Order-History/HistoryList";
 
 interface pageProps {}
 

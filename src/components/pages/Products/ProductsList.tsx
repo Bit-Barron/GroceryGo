@@ -3,7 +3,7 @@ import React from "react";
 
 interface AdminProductsListProps {}
 
-export const AdminProductsList: React.FC<AdminProductsListProps> = ({}) => {
+export const ProductsList: React.FC<AdminProductsListProps> = ({}) => {
   return (
     <form className="space-y-8 divide-y divide-gray-700 rounded-md bg-container p-5 text-black">
       <div className="space-y-8 divide-y divide-gray-700 sm:space-y-5">

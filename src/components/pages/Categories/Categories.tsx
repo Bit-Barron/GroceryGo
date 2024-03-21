@@ -3,10 +3,10 @@ import { AiOutlineAppstoreAdd, AiOutlineOrderedList } from "react-icons/ai";
 import { Button } from "@/components/ui/button";
 import { useSnapshot } from "valtio";
 import { AdminCategoryStore } from "@/store/admin/AdminCategory";
-import { AdminCategoriesList } from "./AdminCategoriesList";
-import { AdminCategoriesUpsert } from "./AdminCategoriesUpsert";
+import { CategoriesList } from "./CategoriesList";
+import { CategoriesUpsert } from "./CategoriesUpsert";
 
-export const AdminCategories: React.FC = ({}) => {
+export const Categories: React.FC = ({}) => {
   const adminCategories = useSnapshot(AdminCategoryStore);
 
   return (
@@ -31,10 +31,10 @@ export const AdminCategories: React.FC = ({}) => {
       </div>
       <div className="p-5">
         <div>
-          {adminCategories.subpage === "list" && <AdminCategoriesList />}
+          {adminCategories.subpage === "list" && <CategoriesList />}
         </div>
         <div>
-          {adminCategories.subpage === "upsert" && <AdminCategoriesUpsert />}
+          {adminCategories.subpage === "upsert" && <CategoriesUpsert />}
         </div>
       </div>
     </>

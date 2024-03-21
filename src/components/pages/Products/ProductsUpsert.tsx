@@ -22,7 +22,7 @@ import { BiCategoryAlt } from "react-icons/bi";
 
 interface AdminProductsUpsertProps {}
 
-export const AdminProductsUpsert: React.FC<AdminProductsUpsertProps> = ({}) => {
+export const ProductsUpsert: React.FC<AdminProductsUpsertProps> = ({}) => {
   const adminProducts = useSnapshot(AdminProductsStore);
 
   const buttonActions = (

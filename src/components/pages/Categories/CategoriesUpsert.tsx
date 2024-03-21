@@ -8,10 +8,10 @@ import { CgRename } from "react-icons/cg";
 import { useSnapshot } from "valtio";
 import { AdminCategoryStore } from "@/store/admin/AdminCategory";
 
-interface AdminProductsUpsertProps {}
+interface CategoriesUpsert {}
 
-export const AdminCategoriesUpsert: React.FC<
-  AdminProductsUpsertProps
+export const CategoriesUpsert: React.FC<
+CategoriesUpsert
 > = ({}) => {
   const adminCategories = useSnapshot(AdminCategoryStore);
 

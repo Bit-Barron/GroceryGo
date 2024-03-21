@@ -7,7 +7,6 @@ import { useRouter } from "next/navigation";
 import { Toaster } from "sonner";
 import { FaRegUser } from "react-icons/fa";
 import { RiLockPasswordLine } from "react-icons/ri";
-import { FaRegEye } from "react-icons/fa";
 import { AuthStore } from "@/store/AuthStore";
 import { useSnapshot } from "valtio";
 
