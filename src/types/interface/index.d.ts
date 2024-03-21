@@ -7,8 +7,13 @@ export interface Products {
 }
 
 export interface Categories {
-    id: number;
-    title: string;
-    
+  id: number;
+  title: string;
 }
-
+export interface AuthProps {
+  email: string;
+  confirmPassword: string;
+  password: string;
+  confirmPassword?: string;
+  token?: string;
+}

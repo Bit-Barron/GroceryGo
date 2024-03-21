@@ -12,14 +12,10 @@ interface userProps {
 export type AuthStore = typeof AuthStore;
 
 export const AuthStore = proxy({
-  email: "admin@admin.de",
+  email: "",
   password: "",
   confirmPassword: "",
   authInputType: "password",
-  displayPassword: false,
-  toggleDisplayPassword: () => {
-    AuthStore.displayPassword = !AuthStore.displayPassword;
-  },
 
   register: async (e: FormEvent) => {
     e.preventDefault();
@@ -47,6 +43,7 @@ export const AuthStore = proxy({
     e.preventDefault();
 
     try {
+      console.log(AuthStore.email, AuthStore.password);
       const loginUser: userProps = await axios.post(
         `${process.env.NEXT_PUBLIC_REST_ENDPOINT}/api/login`,
         {
@@ -59,7 +56,7 @@ export const AuthStore = proxy({
 
       return toast.success("Login successful");
     } catch (err) {
-      return toast.error("Invalid email or password. Please try again");
+      console.log(err);
     }
   },
 });

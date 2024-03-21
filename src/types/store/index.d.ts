@@ -11,8 +11,3 @@ export type AdminTab = {
   current: boolean;
 };
 
-export interface AuthProps {
-  email: string;
-  confirmPassword: string;
-  password: string;
-}
