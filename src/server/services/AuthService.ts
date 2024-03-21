@@ -24,6 +24,7 @@ export const register = async ({
   password,
   confirmPassword,
 }: AuthServiceProps) => {
+  console.log(password, confirmPassword);
   if (password !== confirmPassword) {
     throw new Error("Password and confirm password do not match");
   }

@@ -14,8 +14,8 @@ export type AuthStore = typeof AuthStore;
 
 export const AuthStore = proxy({
   email: "admin@admin.de",
-  password: "admin",
-  confirmPassword: "admin",
+  password: "123",
+  confirmPassword: "123",
   authInputType: "password",
   displayPassword: false,
   toggleDisplayPassword: () => {
@@ -24,19 +24,19 @@ export const AuthStore = proxy({
 
   register: async (e: FormEvent) => {
     e.preventDefault();
-    if (AuthStore.password !== AuthStore.confirmPassword) {
-      return toast.error("Passwords do not match");
-    }
 
     try {
       const registerUser: userProps = await axios.post(
-        `${process.env.NEXT_PUBLIC_REST_ENDPOINT}/auth/register`,
+        `${process.env.NEXT_PUBLIC_REST_ENDPOINT}/api/register`,
         {
           email: AuthStore.email,
           password: AuthStore.password,
+          confirmPassword: AuthStore.confirmPassword,
           withCredentials: true,
         }
       );
+
+      console.log(registerUser);
 
       if (!registerUser) {
         return toast.error("Something went wrong. Please try again.");
@@ -45,6 +45,7 @@ export const AuthStore = proxy({
       if (registerUser.id) {
         toast.success("Registration successful");
       }
+      return registerUser;
     } catch (err) {
       const error = err as AxiosError;
       console.log(error);
@@ -57,7 +58,7 @@ export const AuthStore = proxy({
 
     try {
       const loginUser: userProps = await axios.post(
-        `${process.env.NEXT_PUBLIC_REST_ENDPOINT}/auth/login`,
+        `${process.env.NEXT_PUBLIC_REST_ENDPOINT}/api/login`,
         {
           email: AuthStore.email,
           password: AuthStore.password,
