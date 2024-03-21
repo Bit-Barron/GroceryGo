@@ -13,6 +13,14 @@ export const AdminCategoryStore = proxy({
   setCreatedAt: (createdAt: string) => {
     AdminCategoryStore.createdAt = createdAt;
   },
+  title: "",
+  setTitle: (title: string) => {
+    AdminCategoryStore.title = title;
+  },
+  description: "",
+  setDescription: (description: string) => {
+    AdminCategoryStore.description = description;
+  },
   image: "",
   setImage: (image: string) => {
     AdminCategoryStore.image = image;

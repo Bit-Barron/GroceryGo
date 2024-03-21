@@ -7,10 +7,10 @@ import { AdminStore } from "@/store/admin/AdminStore";
 import { AdminDashboard } from "@/components/pages/Dashboard/AdminDashboard";
 import { AdminProducts } from "@/components/pages/Products/AdminProducts";
 import { AdminCategories } from "@/components/pages/Categories/AdminCategories";
-import { AdminOrder } from "@/components/pages/Order/AdminOrder";
 import { AdminSettings } from "@/components/pages/Settings/AdminSettings";
-import { AdminQRCode } from "@/components/QR-Code/AdminQR-Code";
-import { AdminOrderHistory } from "@/components/pages/Order-History/AdminOrder-History";
+import { AdminQRCode } from "@/components/pages/QR-Code/AdminQR-Code";
+import { AdminOrderList } from "@/components/pages/Order/AdminOrderList";
+import { AdminOrderHistoryList } from "@/components/pages/Order-History/AdminOrder-HistoryList";
 
 interface pageProps {}
 
@@ -25,8 +25,8 @@ const Page: React.FC<pageProps> = ({}) => {
       {currentTab?.name === "Products" && <AdminProducts />}
       {currentTab?.name === "Categories" && <AdminCategories />}
       {currentTab?.name === "Create QR-Code" && <AdminQRCode />}
-      {currentTab?.name === "Order" && <AdminOrder />}
-      {currentTab?.name === "Order History" && <AdminOrderHistory />}
+      {currentTab?.name === "Order" && <AdminOrderList />}
+      {currentTab?.name === "Order History" && <AdminOrderHistoryList />}
       {currentTab?.name === "Settings" && <AdminSettings />}
     </AdminContainer>
   );
