@@ -7,11 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-
-    "migrations:generate": "drizzle-kit generate:pg --config=drizzle.config.ts",
+    "migrate": "drizzle-kit generate:pg --config=drizzle.config.ts",
     "migrations:drop": "drizzle-kit drop:pg --config=drizzle.config.ts",
     "db:push": "drizzle-kit push:pg --config=drizzle.config.ts",
-    "studio": "drizzle-kit studio",
+    "studio": "drizzle-kit pg:studio",
     "introspect": "drizzle-kit introspect:pg --config=drizzle.config.ts"
   },
   "dependencies": {
@@ -31,8 +30,10 @@
     "elysia": "^1.0.7",
     "elysia-decorators": "^0.0.5",
     "immer": "^10.0.4",
+    "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.359.0",
     "next": "14.1.3",
+    "pg": "^8.11.3",
     "postgres": "^3.4.3",
     "react": "^18",
     "react-dom": "^18",
@@ -44,6 +45,7 @@
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
+    "@types/jsonwebtoken": "^9.0.6",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

@@ -8,6 +8,20 @@
       "when": 1711037595820,
       "tag": "0000_empty_human_robot",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1711048516012,
+      "tag": "0001_old_cobalt_man",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1711055810363,
+      "tag": "0002_easy_demogoblin",
+      "breakpoints": true
     }
   ]
 }

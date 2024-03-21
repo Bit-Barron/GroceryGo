@@ -10,3 +10,9 @@ export type AdminTab = {
   Icon: IconType;
   current: boolean;
 };
+
+export interface AuthProps {
+  email: string;
+  confirmPassword: string;
+  password: string;
+}

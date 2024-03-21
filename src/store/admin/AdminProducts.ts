@@ -13,6 +13,11 @@ export const AdminProductsStore = proxy({
     AdminProductsStore.createdAt = createdAt;
   },
 
+  image: "",
+  setImage: (image: string) => {
+    AdminProductsStore.image = image;
+  },
+
   description: "",
   setDescription: (description: string) => {
     AdminProductsStore.description = description;

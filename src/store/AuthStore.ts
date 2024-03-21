@@ -1,7 +1,6 @@
 import { FormEvent, useEffect } from "react";
 import { proxy, useSnapshot } from "valtio";
 import axios, { AxiosError } from "axios";
-import { useRouter } from "next/router";
 import { toast } from "sonner";
 
 interface userProps {
@@ -14,8 +13,8 @@ export type AuthStore = typeof AuthStore;
 
 export const AuthStore = proxy({
   email: "admin@admin.de",
-  password: "123",
-  confirmPassword: "123",
+  password: "",
+  confirmPassword: "",
   authInputType: "password",
   displayPassword: false,
   toggleDisplayPassword: () => {
@@ -38,22 +37,13 @@ export const AuthStore = proxy({
 
       console.log(registerUser);
 
-      if (!registerUser) {
-        return toast.error("Something went wrong. Please try again.");
-      }
-
-      if (registerUser.id) {
-        toast.success("Registration successful");
-      }
-      return registerUser;
+      return toast.success("Registration successful");
     } catch (err) {
-      const error = err as AxiosError;
-      console.log(error);
+      return toast.error("User already exists");
     }
   },
 
-  Login: async (e: FormEvent) => {
-    const router = useRouter();
+  login: async (e: FormEvent) => {
     e.preventDefault();
 
     try {
@@ -65,29 +55,11 @@ export const AuthStore = proxy({
         }
       );
 
-      if (!loginUser) {
-        return toast.error("Invalid email or password");
-      }
+      console.log(loginUser);
 
-      if (loginUser.id) {
-        toast.success("Login successful");
-        return router.push("/admin");
-      }
-      return router.push("/");
+      return toast.success("Login successful");
     } catch (err) {
-      const error = err as AxiosError;
-      toast.error("Invalid email or password");
-      console.log(error);
+      return toast.error("Invalid email or password. Please try again");
     }
   },
 });
-
-export const DisplayPassword = () => {
-  const authStore = useSnapshot(AuthStore);
-
-  useEffect(() => {
-    AuthStore.authInputType = authStore.displayPassword ? "text" : "password";
-  }, [authStore.displayPassword]);
-
-  // change icon here
-};
