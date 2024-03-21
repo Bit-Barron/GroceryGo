@@ -4,13 +4,13 @@ import React from "react";
 import { AdminContainer } from "@/components/container/AdminContainer";
 import { useSnapshot } from "valtio";
 import { AdminStore } from "@/store/admin/AdminStore";
-import { AdminDashboard } from "@/components/pages/Dashboard/Dashboard";
-import { AdminProducts } from "@/components/pages/Products/Products";
-import { AdminCategories } from "@/components/pages/Categories/Categories";
 import { AdminSettings } from "@/components/pages/Settings/AdminSettings";
-import { AdminQRCode } from "@/components/pages/QR-Code/QrCode";
-import { AdminOrderList } from "@/components/pages/Order/OrderList";
-import { AdminOrderHistoryList } from "@/components/pages/Order-History/HistoryList";
+import { OrderList } from "@/components/pages/Order/OrderList";
+import { Dashboard } from "@/components/pages/Dashboard/Dashboard";
+import { Products } from "@/components/pages/Products/Products";
+import { Categories } from "@/components/pages/Categories/Categories";
+import { QrCode } from "@/components/pages/QrCode/QrCode";
+import { HistoryList } from "@/components/pages/OrderHistory/HistoryList";
 
 interface pageProps {}
 
@@ -21,12 +21,12 @@ const Page: React.FC<pageProps> = ({}) => {
 
   return (
     <AdminContainer>
-      {currentTab?.name === "Dashboard" && <AdminDashboard />}
-      {currentTab?.name === "Products" && <AdminProducts />}
-      {currentTab?.name === "Categories" && <AdminCategories />}
-      {currentTab?.name === "Create QR-Code" && <AdminQRCode />}
-      {currentTab?.name === "Order" && <AdminOrderList />}
-      {currentTab?.name === "Order History" && <AdminOrderHistoryList />}
+      {currentTab?.name === "Dashboard" && <Dashboard />}
+      {currentTab?.name === "Products" && <Products />}
+      {currentTab?.name === "Categories" && <Categories />}
+      {currentTab?.name === "Create QR-Code" && <QrCode />}
+      {currentTab?.name === "Order" && <OrderList />}
+      {currentTab?.name === "Order History" && <HistoryList />}
       {currentTab?.name === "Settings" && <AdminSettings />}
     </AdminContainer>
   );

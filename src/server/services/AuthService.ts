@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 import { createInsertSchema } from "drizzle-typebox";
-import { AuthModel } from "../db/schema";
+import { UserModel } from "../db/schema";
 
 interface AuthServiceProps {
   email: string;
@@ -24,8 +24,7 @@ export const register = async ({
 
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  // Save the user to the database
-  const user = createInsertSchema(AuthModel, {});
+  const user = createInsertSchema(UserModel, {});
 
   return hashedPassword;
 };
