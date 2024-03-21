@@ -6,7 +6,7 @@ import { AiOutlineSave } from "react-icons/ai";
 import { Input } from "@/components/ui/input";
 import { CgRename } from "react-icons/cg";
 import { useSnapshot } from "valtio";
-import { AdminProductsStore } from "../../../store/admin/categories/AdminProducts";
+import { AdminProductsStore } from "../../../store/admin/AdminProducts";
 import { TbFileDescription } from "react-icons/tb";
 import { FaShoppingBasket } from "react-icons/fa";
 import { IoPricetags } from "react-icons/io5";

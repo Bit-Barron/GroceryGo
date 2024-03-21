@@ -3,7 +3,7 @@ import { AiOutlineAppstoreAdd, AiOutlineOrderedList } from "react-icons/ai";
 import { Button } from "@/components/ui/button";
 import { AdminProductsUpsert } from "./AdminProductsUpsert";
 import { useSnapshot } from "valtio";
-import { AdminProductsStore } from "../../../store/admin/categories/AdminProducts";
+import { AdminProductsStore } from "../../../store/admin/AdminProducts";
 import { AdminProductsList } from "./AdminProductsList";
 
 export const AdminProducts: React.FC = ({}) => {
