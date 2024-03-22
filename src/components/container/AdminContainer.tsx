@@ -11,6 +11,7 @@ import { AdminDekstopSideBar } from "./admin/AdminDesktopSideBar";
 import { AdminSearchBar } from "./admin/AdminSearchBar";
 import { AdminTabType } from "@/types/store";
 import axios from "axios";
+import cookie from "cookie";
 
 interface AdminContainerProps {
   children: React.ReactNode;
@@ -22,19 +23,24 @@ export const AdminContainer: React.FC<AdminContainerProps> = ({ children }) => {
   const adminStore = useSnapshot(AdminStore);
 
   useEffect(() => {
-    const validateUser = async () => {
+    const fetchAdminTabs = async () => {
       try {
-        const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_REST_ENDPOINT}/api/validate`
+        const getToken = cookie.parse(document.cookie);
+        const token = getToken["token"];
+        const response = await axios.post(
+          `${process.env.NEXT_PUBLIC_REST_ENDPOINT}/api/validate-token`,
+          {
+            token,
+          }
         );
-
         console.log(response);
+        return response;
       } catch (error) {
         return router.push("/login");
       }
     };
-    validateUser();
-  }, [router, adminStore.adminTabs]);
+    fetchAdminTabs();
+  }, [router]);
 
   const menuProducts = (
     <>

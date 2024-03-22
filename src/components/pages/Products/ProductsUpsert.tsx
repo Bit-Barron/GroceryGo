@@ -49,6 +49,7 @@ export const ProductsUpsert: React.FC<AdminProductsUpsertProps> = ({}) => {
 
           <div className="space-y-6 sm:space-y-5">
             <Input
+              className="!h-11 bg-white"
               type="text"
               onChange={(e) => adminProducts.setTitle(e.target.value)}
               value={adminProducts.title}
@@ -59,6 +60,7 @@ export const ProductsUpsert: React.FC<AdminProductsUpsertProps> = ({}) => {
             />
 
             <Input
+              className="!h-11 bg-white"
               onChange={(e) => adminProducts.setDescription(e.target.value)}
               value={adminProducts.description}
               type="text"
@@ -69,6 +71,7 @@ export const ProductsUpsert: React.FC<AdminProductsUpsertProps> = ({}) => {
             />
 
             <Input
+              className="!h-11 bg-white"
               onChange={(e) =>
                 adminProducts.setSmallDescription(e.target.value)
               }
@@ -80,9 +83,14 @@ export const ProductsUpsert: React.FC<AdminProductsUpsertProps> = ({}) => {
               id={"smallDescription"}
             />
 
-            <Input type="number" Icon={IoPricetags} placeholder={"Price *"} />
+            <Input
+              type="number"
+              Icon={IoPricetags}
+              placeholder={"Price *"}
+              className="!h-11 bg-white"
+            />
 
-            <Input type="file" Icon={CgRename} placeholder={"upload file *"} />
+            <Input type="file" Icon={CgRename} placeholder={"*"} className="bg-white" />
           </div>
         </div>
 
@@ -93,7 +101,7 @@ export const ProductsUpsert: React.FC<AdminProductsUpsertProps> = ({}) => {
               Specify Categories the product belongs to.
             </p>
             <DropdownMenu>
-              <DropdownMenuTrigger className="border mt-5  p-1 rounded-lg w-96">
+              <DropdownMenuTrigger className="border mt-5 bg-white p-1 rounded-lg w-96">
                 <h1 className="flex justify-start items-start gap-3">
                   <BiCategoryAlt className="mt-1" />
                   Select Category *

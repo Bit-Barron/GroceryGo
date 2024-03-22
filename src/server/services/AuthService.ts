@@ -66,6 +66,13 @@ export const login = async ({ email, password }: AuthProps) => {
   return jwtCookie;
 };
 
-export const logout = async ({ token }: AuthProps) => {
-  return token;
+export const validateToken = async ({ token }: any) => {
+  const verifyToken = jwt.verify(
+    token,
+    `${process.env.NEXT_PUBLIC_JWT_SECRET}`
+  );
+
+  if (!verifyToken) throw new Error("Invalid token");
+
+  return verifyToken;
 };
