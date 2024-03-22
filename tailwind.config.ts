@@ -19,7 +19,7 @@ const config = {
     },
     extend: {
       colors: {
-        container: "#F2F4F8",
+        container: "#F1F5F9",
         adminContainer: "#2D2626",
         primary: "#E94E24",
         border: "hsl(var(--border))",

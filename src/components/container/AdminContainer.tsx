@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { RxExit } from "react-icons/rx";
 import { useRouter } from "next/navigation";
 import { AdminStore } from "@/store/admin/AdminStore";
@@ -10,12 +9,15 @@ import axios from "axios";
 import Sidebar from "./admin/Sidebar";
 import cookie from "cookie";
 import { AdminTabType } from "@/types/store";
+import { Dashboard } from "../pages/Dashboard/Dashboard";
+import { Products } from "../pages/Products/Products";
+import { Categories } from "../pages/Categories/Categories";
+import { QrCode } from "../pages/QrCode/QrCode";
+import { OrderList } from "../pages/Order/OrderList";
 
-interface AdminContainerProps {
-  children: React.ReactNode;
-}
+interface AdminContainerProps {}
 
-export const AdminContainer: React.FC<AdminContainerProps> = ({ children }) => {
+export const AdminContainer: React.FC<AdminContainerProps> = ({}) => {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
   const router = useRouter();
   const adminStore = useSnapshot(AdminStore);
@@ -41,8 +43,6 @@ export const AdminContainer: React.FC<AdminContainerProps> = ({ children }) => {
   }, [router]);
 
   const currentTab = adminStore.adminTabs.find((tab) => tab.current);
-
-  console.log(currentTab);
 
   const menuProducts = (
     <>
@@ -72,8 +72,13 @@ export const AdminContainer: React.FC<AdminContainerProps> = ({ children }) => {
 
   return (
     <>
-      <div className="min-h-full w-full">
+      <div className="bg-container">
         <Sidebar menu={menuProducts} />
+        {currentTab?.name === "Dashboard" && <Dashboard />}
+        {currentTab?.name === "Products" && <Products />}
+        {currentTab?.name === "Categories" && <Categories />}
+        {currentTab?.name === "Create QR-Code" && <QrCode />}
+        {currentTab?.name === "Order" && <OrderList />}
       </div>
     </>
   );
