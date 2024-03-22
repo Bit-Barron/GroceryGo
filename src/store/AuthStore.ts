@@ -12,13 +12,15 @@ interface userProps {
 export type AuthStore = typeof AuthStore;
 
 export const AuthStore = proxy({
-  email: "",
-  password: "",
-  confirmPassword: "",
+  email: "admin@admin.de",
+  password: "admin1",
+  confirmPassword: "admin1",
   authInputType: "password",
 
   register: async (e: FormEvent) => {
     e.preventDefault();
+
+    if (AuthStore.password.length < 6) return toast.error("Password too short");
 
     try {
       const registerUser: userProps = await axios.post(
@@ -54,7 +56,6 @@ export const AuthStore = proxy({
 
       return toast.success("Login successful");
     } catch (err) {
-      console.log(err);
       return toast.error("Invalid credentials");
     }
   },
