@@ -15,7 +15,6 @@ import {
 } from "@tanstack/react-table";
 
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -35,112 +34,60 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-const data: Payment[] = [
+interface DataTableDemoProps {
+  title: string;
+  description: string;
+  price: number;
+  createdAt: string;
+  stock: string;
+}
+
+const data: DataTableDemoProps[] = [
   {
-    id: "m5gr84i9",
-    amount: 316,
-    status: "instock",
-    email: "ken99@yahoo.com",
-    bonbong: "bonbong",
+    createdAt: "2021-09-01",
+    description: "A new product",
+    price: 100,
+    stock: "instock",
+    title: "Product 1",
   },
   {
-    id: "3u1reuv4",
-    amount: 242,
-    status: "instock",
-    email: "Abe45@gmail.com",
-    bonbong: "bonbong",
-  },
-  {
-    id: "derv1ws0",
-    bonbong: "bonbong",
-    amount: 837,
-    status: "instock",
-    email: "Monserrat44@gmail.com",
-  },
-  {
-    id: "5kma53ae",
-    bonbong: "bonbong",
-    amount: 874,
-    status: "instock",
-    email: "Silas22@gmail.com",
-  },
-  {
-    bonbong: "bonbong",
-    id: "bhqecj4p",
-    amount: 721,
-    status: "instock",
-    email: "carmella@hotmail.com",
+    createdAt: "2021-09-01",
+    description: "A new product",
+    price: 100,
+    stock: "instock",
+    title: "Product 1",
   },
 ];
 
-export type Payment = {
-  id: string;
-  bonbong: string;
-  amount: number;
-  status: "instock" | "outofstock";
-  email: string;
-};
-
-export const columns: ColumnDef<Payment>[] = [
+export const columns: ColumnDef<DataTableDemoProps>[] = [
   {
-    id: "select",
-    header: ({ table }) => (
-      <Checkbox
-        checked={
-          table.getIsAllPageRowsSelected() ||
-          (table.getIsSomePageRowsSelected() && "indeterminate")
-        }
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label="Select all"
-      />
-    ),
+    accessorKey: "stock",
+    header: "stock",
     cell: ({ row }) => (
-      <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label="Select row"
-      />
+      <div className="capitalize">{row.getValue("stock")}</div>
     ),
-    enableSorting: false,
-    enableHiding: false,
   },
   {
-    accessorKey: "status",
-    header: "Status",
+    accessorKey: "description",
+    header: "description",
     cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("status")}</div>
+      <div className="capitalize">{row.getValue("description")}</div>
     ),
   },
 
   {
-    accessorKey: "email",
-    header: "Email",
+    accessorKey: "title",
+    header: "title",
     cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("email")}</div>
+      <div className="capitalize">{row.getValue("title")}</div>
     ),
   },
 
   {
-    accessorKey: "bonbong",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          bonbong
-        </Button>
-      );
-    },
-    cell: ({ row }) => (
-      <div className="lowercase ml-6">{row.getValue("bonbong")}</div>
-    ),
-  },
-  {
-    accessorKey: "amount",
-    header: () => <div className="text-right">Amount</div>,
+    accessorKey: "price",
+    header: () => <div className="text-right">Price</div>,
     cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("amount"));
+      const amount = parseFloat(row.getValue("price"));
 
       // Format the amount as a dollar amount
       const formatted = new Intl.NumberFormat("en-US", {
@@ -155,8 +102,6 @@ export const columns: ColumnDef<Payment>[] = [
     id: "actions",
     enableHiding: false,
     cell: ({ row }) => {
-      const payment = row.original;
-
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -166,11 +111,7 @@ export const columns: ColumnDef<Payment>[] = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(payment.id)}
-            >
-              Copy payment ID
-            </DropdownMenuItem>
+            <DropdownMenuItem>Copy payment ID</DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem>View customer</DropdownMenuItem>
             <DropdownMenuItem>View payment details</DropdownMenuItem>
@@ -213,39 +154,13 @@ export function DataTableDemo() {
     <div className="w-full">
       <div className="flex items-center py-4">
         <Input
-          placeholder="Filter emails..."
+          placeholder="Filter Products..."
           value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
             table.getColumn("email")?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
         />
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="ml-auto">
-              Columns chevron-down
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            {table
-              .getAllColumns()
-              .filter((column) => column.getCanHide())
-              .map((column) => {
-                return (
-                  <DropdownMenuCheckboxItem
-                    key={column.id}
-                    className="capitalize"
-                    checked={column.getIsVisible()}
-                    onCheckedChange={(value) =>
-                      column.toggleVisibility(!!value)
-                    }
-                  >
-                    {column.id}
-                  </DropdownMenuCheckboxItem>
-                );
-              })}
-          </DropdownMenuContent>
-        </DropdownMenu>
       </div>
       <div className="rounded-md border">
         <Table>
@@ -296,30 +211,6 @@ export function DataTableDemo() {
             )}
           </TableBody>
         </Table>
-      </div>
-      <div className="flex items-center justify-end space-x-2 py-4">
-        <div className="flex-1 text-sm text-muted-foreground">
-          {table.getFilteredSelectedRowModel().rows.length} of{" "}
-          {table.getFilteredRowModel().rows.length} row(s) selected.
-        </div>
-        <div className="space-x-2">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => table.previousPage()}
-            disabled={!table.getCanPreviousPage()}
-          >
-            Previous
-          </Button>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => table.nextPage()}
-            disabled={!table.getCanNextPage()}
-          >
-            Next
-          </Button>
-        </div>
       </div>
     </div>
   );

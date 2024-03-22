@@ -9,11 +9,11 @@ import axios from "axios";
 import Sidebar from "./admin/Sidebar";
 import cookie from "cookie";
 import { AdminTabType } from "@/types/store";
-import { Dashboard } from "../pages/Dashboard/Dashboard";
-import { Products } from "../pages/Products/Products";
-import { Categories } from "../pages/Categories/Categories";
-import { QrCode } from "../pages/QrCode/QrCode";
-import { OrderList } from "../pages/Order/OrderList";
+import { Dashboard } from "../pages/admin/Dashboard";
+import { Products } from "../pages/admin/Products";
+import { Categories } from "../pages/admin/Categories";
+import { QrCode } from "../pages/admin/QrCode";
+import { OrderList } from "../pages/admin/OrderList";
 
 interface AdminContainerProps {}
 
@@ -46,7 +46,7 @@ export const AdminContainer: React.FC<AdminContainerProps> = ({}) => {
 
   const menuProducts = (
     <>
-      <div className="flex flex-col flex-1 mt-10">
+      <div className="">
         {adminStore.adminTabs.map(({ current, Icon, name }, idx) => (
           <div key={idx}>
             <button
@@ -72,13 +72,16 @@ export const AdminContainer: React.FC<AdminContainerProps> = ({}) => {
 
   return (
     <>
-      <div className="bg-container">
+      <div className="min-h-full ">
         <Sidebar menu={menuProducts} />
-        {currentTab?.name === "Dashboard" && <Dashboard />}
-        {currentTab?.name === "Products" && <Products />}
-        {currentTab?.name === "Categories" && <Categories />}
-        {currentTab?.name === "Create QR-Code" && <QrCode />}
-        {currentTab?.name === "Order" && <OrderList />}
+
+        <div className="flex flex-1 flex-col lg:pl-20">
+          {currentTab?.name === "Dashboard" && <Dashboard />}
+          {currentTab?.name === "Products" && <Products />}
+          {currentTab?.name === "Categories" && <Categories />}
+          {currentTab?.name === "Create QR-Code" && <QrCode />}
+          {currentTab?.name === "Order" && <OrderList />}
+        </div>
       </div>
     </>
   );
