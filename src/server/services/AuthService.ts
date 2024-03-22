@@ -5,12 +5,23 @@ import { AuthProps } from "@/types/interface";
 import { eq } from "drizzle-orm";
 import jwt from "jsonwebtoken";
 import { cookies } from "next/headers";
+import { UserSchema } from "../zod/schema";
+import { toast } from "sonner";
 
 export const register = async ({
   password,
   confirmPassword,
   email,
 }: AuthProps) => {
+  const validateData = UserSchema.parse({
+    password,
+    email,
+  });
+
+  if (!validateData) {
+    // show the error message to the user
+  }
+
   const existingUser = await db
     .select({ email: UserModel.email })
     .from(UserModel)

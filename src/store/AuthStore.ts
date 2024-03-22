@@ -35,8 +35,10 @@ export const AuthStore = proxy({
       if (registerUser) {
         return toast.success("Succesfully created an account");
       }
-    } catch (err) {
-      console.log(err);
+    } catch (err: any) {
+      if (err.response.status === 500) {
+        return toast.error(err.response.data.message);
+      }
       return toast.error("User already exists");
     }
   },

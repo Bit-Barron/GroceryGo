@@ -10,12 +10,9 @@ import { RiLockPasswordLine } from "react-icons/ri";
 import { AuthStore } from "@/store/AuthStore";
 import { useSnapshot } from "valtio";
 
-interface pageProps {
-  email: String;
-  password: String;
-}
+interface pageProps {}
 
-const Page: React.FC<pageProps> = ({ email, password }) => {
+const Page: React.FC<pageProps> = ({}) => {
   const authStore = useSnapshot(AuthStore);
   const router = useRouter();
 
@@ -48,7 +45,11 @@ const Page: React.FC<pageProps> = ({ email, password }) => {
             OR
           </p>
         </div>
-        <Button className="w-full" variant="outline" onClick={() => router.push("/register")}>
+        <Button
+          className="w-full"
+          variant="outline"
+          onClick={() => router.push("/register")}
+        >
           have an account? Login
         </Button>
       </div>
