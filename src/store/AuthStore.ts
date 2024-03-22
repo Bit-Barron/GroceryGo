@@ -35,9 +35,13 @@ export const AuthStore = proxy({
 
       // check for an error
       if (registerUser) {
+        window.location.href = "/login";
         return toast.success("Succesfully created an account");
       }
     } catch (err: any) {
+      if (err.response.status === 500) {
+        return toast.error("user already exists");
+      }
       return toast.error("An error occured");
     }
   },
@@ -54,6 +58,7 @@ export const AuthStore = proxy({
         }
       );
 
+      window.location.href = "/admin";
       return toast.success("Login successful");
     } catch (err) {
       return toast.error("Invalid credentials");

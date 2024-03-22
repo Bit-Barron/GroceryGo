@@ -62,7 +62,7 @@ const Page: React.FC<pageProps> = ({}) => {
           variant="outline"
           onClick={() => router.push("/login")}
         >
-          Dont have an account? Register
+          have an account? Login
         </Button>
       </div>
     </form>
