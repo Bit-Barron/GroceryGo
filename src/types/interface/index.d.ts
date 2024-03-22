@@ -1,8 +1,9 @@
-export interface Products {
-  id: number;
+export interface ProductsProps {
+  id?: number;
   description: string;
   status: boolean;
   title: string;
+  image?: string;
   smallDescription: string;
 }
 

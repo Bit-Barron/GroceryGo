@@ -8,7 +8,6 @@ import { CgRename } from "react-icons/cg";
 import { useSnapshot } from "valtio";
 import { AdminProductsStore } from "../../../store/admin/AdminProducts";
 import { TbFileDescription } from "react-icons/tb";
-import { FaShoppingBasket } from "react-icons/fa";
 import { IoPricetags } from "react-icons/io5";
 import {
   DropdownMenu,
@@ -90,7 +89,12 @@ export const ProductsUpsert: React.FC<AdminProductsUpsertProps> = ({}) => {
               className="!h-11 bg-white"
             />
 
-            <Input type="file" Icon={CgRename} placeholder={"*"} className="bg-white" />
+            <Input
+              type="file"
+              Icon={CgRename}
+              placeholder={"*"}
+              className="bg-white"
+            />
           </div>
         </div>
 

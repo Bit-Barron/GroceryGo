@@ -17,6 +17,7 @@ interface pageProps {
 
 const Page: React.FC<pageProps> = ({ email, password }) => {
   const authStore = useSnapshot(AuthStore);
+  const router = useRouter();
 
   return (
     <form onSubmit={(e) => authStore.login(e)}>
@@ -47,7 +48,7 @@ const Page: React.FC<pageProps> = ({ email, password }) => {
             OR
           </p>
         </div>
-        <Button className="w-full" variant="outline">
+        <Button className="w-full" variant="outline" onClick={() => router.push("/register")}>
           have an account? Login
         </Button>
       </div>
