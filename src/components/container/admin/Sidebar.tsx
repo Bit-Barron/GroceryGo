@@ -9,7 +9,7 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ menu }) => {
   return (
     <div className="flex">
-      <div className="fixed flex h-screen flex-col justify-between border-r-[1px] bg-white p-4">
+      <div className="fixed flex h-screen w-20 flex-col justify-between border-r-[1px] bg-white p-4">
         <div className="flex flex-col items-center">
           <Link href="/">
             <div className="inline-block rounded-lg bg-blue-500 p-3 text-white">
