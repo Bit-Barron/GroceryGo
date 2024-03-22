@@ -6,8 +6,7 @@ export type AdminTabType =
   | "Categories";
 
 export type AdminTab = {
-  name: string;
   Icon: IconType;
   current: boolean;
+  name: string;
 };
-

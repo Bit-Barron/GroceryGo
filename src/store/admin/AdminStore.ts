@@ -1,6 +1,6 @@
 import { proxy } from "valtio";
 import { AiOutlineHistory, AiOutlineShoppingCart } from "react-icons/ai";
-import { IoMdCreate  } from "react-icons/io";
+import { IoMdCreate } from "react-icons/io";
 import { BiFoodMenu } from "react-icons/bi";
 import { BiCategoryAlt } from "react-icons/bi";
 import { MdDashboardCustomize } from "react-icons/md";
@@ -20,7 +20,6 @@ const adminStoreProxy = proxy<AdminStore>({
     { name: "Order", Icon: AiOutlineShoppingCart, current: false },
     { name: "Order History", Icon: AiOutlineHistory, current: false },
     { name: "Create QR-Code", Icon: IoMdCreate, current: false },
-    { name: "Settings", Icon: CiSettings, current: false },
   ],
   setAdminTab: (name: AdminTabType) => {
     adminStoreProxy.adminTabs = adminStoreProxy.adminTabs.map((t) => ({
