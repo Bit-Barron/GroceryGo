@@ -36,10 +36,7 @@ export const AuthStore = proxy({
         return toast.success("Succesfully created an account");
       }
     } catch (err: any) {
-      if (err.response.status === 500) {
-        return toast.error(err.response.data.message);
-      }
-      return toast.error("User already exists");
+      return toast.error("An error occured");
     }
   },
 
@@ -47,7 +44,6 @@ export const AuthStore = proxy({
     e.preventDefault();
 
     try {
-      console.log(AuthStore.email, AuthStore.password);
       const loginUser: userProps = await axios.post(
         `${process.env.NEXT_PUBLIC_REST_ENDPOINT}/api/login`,
         {
