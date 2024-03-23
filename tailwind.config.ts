@@ -21,7 +21,7 @@ const config = {
       colors: {
         container: "#F1F5F9",
         adminContainer: "#2D2626",
-        primary: "#E94E24",
+        primary: "#3B82F6",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
