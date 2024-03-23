@@ -8,8 +8,8 @@ export const AdminProductsStore = proxy({
     AdminProductsStore.subpage = subpage;
   },
 
-  price: "0",
-  setPrice: (price: string) => {
+  price: 0,
+  setPrice: (price: number) => {
     AdminProductsStore.price = price;
   },
 
@@ -18,19 +18,11 @@ export const AdminProductsStore = proxy({
     AdminProductsStore.createdAt = createdAt;
   },
 
-  image: "",
-  setImage: (image: string) => {
-    AdminProductsStore.image = image;
-  },
-
   description: "",
   setDescription: (description: string) => {
     AdminProductsStore.description = description;
   },
-  status: true,
-  setStatus: (status: boolean) => {
-    AdminProductsStore.status = status;
-  },
+
   title: "",
   setTitle: (title: string) => {
     AdminProductsStore.title = title;

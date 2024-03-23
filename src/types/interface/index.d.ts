@@ -2,7 +2,7 @@ export interface ProductsProps {
   description: string;
   title: string;
   smallDescription: string;
-  price: string;
+  price: number;
   createdAt: string;
 }
 

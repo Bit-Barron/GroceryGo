@@ -4,7 +4,6 @@ import { IoMdCreate } from "react-icons/io";
 import { BiFoodMenu } from "react-icons/bi";
 import { BiCategoryAlt } from "react-icons/bi";
 import { MdDashboardCustomize } from "react-icons/md";
-import { CiSettings } from "react-icons/ci";
 import { AdminTab, AdminTabType } from "../../types/store";
 
 export type AdminStore = {

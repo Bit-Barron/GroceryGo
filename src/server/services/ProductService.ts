@@ -2,10 +2,19 @@ import { ProductsProps } from "../../types/interface/index";
 import { db } from "../db";
 import { ProductModel } from "../db/schema";
 
-export async function createProduct({ body }: ProductsProps | any) {
+export async function createProduct({
+  description,
+  price,
+  smallDescription,
+  title,
+}: ProductsProps) {
   try {
     const user = db.insert(ProductModel).values({
-      ...body,
+      title,
+      description,
+      smallDescription,
+      price: price.toString(),
+      createdAt: new Date(),
     });
 
     console.log(user);

@@ -1,21 +1,22 @@
-import { pgTable, serial, text, timestamp } from "drizzle-orm/pg-core";
+import { pgTable, serial, text, timestamp, integer } from "drizzle-orm/pg-core";
+import { uuid } from "drizzle-orm/pg-core";
 
 export const UserModel = pgTable("users", {
-  id: serial("id").primaryKey(),
+  id: uuid("id").primaryKey().unique(),
   email: text("email").notNull(),
   password: text("password").notNull(),
   createdAt: timestamp("created_at").notNull().defaultNow(),
 });
 
 export const ProductModel = pgTable("products", {
+  id: serial("id").primaryKey(),
   createdAt: timestamp("created_at").notNull().defaultNow(),
-  descriptions: text("descriptions").notNull(),
+  description: text("description").notNull(),
   title: text("title").notNull(),
   smallDescription: text("small_description").notNull(),
-  price: text("price").notNull(),
+  price: text("price"),
+  userId: integer("user_id").references(() => UserModel.id),
 });
-
-type ProductModel = typeof ProductModel.$inferInsert;
 
 export const CategoriesModel = pgTable("categories", {
   createdAt: timestamp("created_at").notNull().defaultNow(),

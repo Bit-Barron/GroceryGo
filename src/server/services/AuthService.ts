@@ -26,8 +26,8 @@ export const register = async ({
   const user = db.insert(UserModel).values({
     email,
     password: hashedPassword,
-    name: email,
     createdAt: new Date(),
+    id: "",
   });
 
   return user;
@@ -75,4 +75,10 @@ export const validateToken = async ({ token }: any) => {
   if (!verifyToken) throw new Error("Invalid token");
 
   return verifyToken;
+};
+
+export const logout = async () => {
+  const CookieStore = cookies();
+  const jwtCookie = CookieStore.set("token", "");
+  return jwtCookie;
 };
