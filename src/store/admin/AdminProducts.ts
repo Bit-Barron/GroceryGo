@@ -8,6 +8,11 @@ export const AdminProductsStore = proxy({
     AdminProductsStore.subpage = subpage;
   },
 
+  price: "0",
+  setPrice: (price: string) => {
+    AdminProductsStore.price = price;
+  },
+
   createdAt: "",
   setCreatedAt: (createdAt: string) => {
     AdminProductsStore.createdAt = createdAt;

@@ -1,10 +1,11 @@
 export interface ProductsProps {
-  id?: number;
   description: string;
   status: boolean;
   title: string;
   image?: string;
   smallDescription: string;
+  price: string;
+  createdAt: string;
 }
 
 export interface Categories {

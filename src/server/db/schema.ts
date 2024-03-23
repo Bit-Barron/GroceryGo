@@ -15,6 +15,7 @@ export const ProductModel = pgTable("products", {
   title: text("title").notNull(),
   image: text("image").notNull(),
   smallDescription: text("small_description").notNull(),
+  price: text("price").notNull(),
 });
 
 export const CategoriesModel = pgTable("categories", {
