@@ -8,8 +8,9 @@ export async function createProduct({ body }: ProductsProps | any) {
       ...body,
     });
 
-    console.log("user: ", user);
-    return body;
+    console.log(user);
+
+    return user;
   } catch (err) {
     console.error(err);
   }

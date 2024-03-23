@@ -22,6 +22,20 @@
       "when": 1711055810363,
       "tag": "0002_easy_demogoblin",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1711223719778,
+      "tag": "0003_mushy_dazzler",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1711223830848,
+      "tag": "0004_huge_dragon_lord",
+      "breakpoints": true
     }
   ]
 }

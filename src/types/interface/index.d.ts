@@ -1,8 +1,6 @@
 export interface ProductsProps {
   description: string;
-  status: boolean;
   title: string;
-  image?: string;
   smallDescription: string;
   price: string;
   createdAt: string;

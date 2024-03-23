@@ -33,7 +33,6 @@ export const AdminContainer: React.FC<AdminContainerProps> = ({}) => {
             token,
           }
         );
-        console.log(response);
         return response;
       } catch (error) {
         return router.push("/login");

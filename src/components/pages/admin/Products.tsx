@@ -29,6 +29,7 @@ export const Products: React.FC<ProductsProps> = ({}) => {
       );
 
       console.log(response);
+
       return response;
     } catch (err) {
       console.error(err);

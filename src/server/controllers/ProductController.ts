@@ -5,6 +5,5 @@ import { createProduct } from "../services/ProductService";
 export let ProductController = new Elysia();
 
 ProductController.post("/createProduct", ({ body }) => {
-  console.log("asdasdasdasd", body);
   return createProduct(body as ProductsProps);
 });
