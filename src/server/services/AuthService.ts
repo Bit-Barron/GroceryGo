@@ -62,6 +62,10 @@ export const login = async ({ email, password }: AuthProps) => {
 
   const jwtCookie = CookieStore.set("token", token);
 
+  const userId = user[0].id;
+
+  const userIdCookie = CookieStore.set("userId", userId);
+
   return jwtCookie;
 };
 

@@ -2,8 +2,9 @@ export interface ProductsProps {
   description: string;
   title: string;
   smallDescription: string;
-  price: number;
+  price: string;
   createdAt: string;
+  userId: number;
 }
 
 export interface Categories {
@@ -15,5 +16,4 @@ export interface AuthProps {
   confirmPassword: string;
   password: string;
   confirmPassword?: string;
-  token?: string;
 }

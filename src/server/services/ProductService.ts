@@ -7,17 +7,18 @@ export async function createProduct({
   price,
   smallDescription,
   title,
+  userId,
 }: ProductsProps) {
   try {
+    console.log(price);
     const user = db.insert(ProductModel).values({
       title,
       description,
       smallDescription,
       price: price.toString(),
+      userId,
       createdAt: new Date(),
     });
-
-    console.log(user);
 
     return user;
   } catch (err) {

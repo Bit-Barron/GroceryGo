@@ -2,36 +2,26 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import axios from "axios";
 import { AdminProductsStore } from "@/store/admin/AdminProducts";
-import React, { FormEvent, useEffect } from "react";
+import React, { FormEvent } from "react";
 import { useSnapshot } from "valtio";
 import { AiOutlineSave } from "react-icons/ai";
 import { GiCancel } from "react-icons/gi";
 import { MdSubtitles } from "react-icons/md";
 import { MdDescription } from "react-icons/md";
 import { IoIosPricetags } from "react-icons/io";
+import cookie from "cookie";
 
 interface ProductsProps {}
 
 export const Products: React.FC<ProductsProps> = ({}) => {
   const productStore = useSnapshot(AdminProductsStore);
 
-  useEffect(() => {
-    const getUserId = async () => {
-      try {
-        const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_REST_ENDPOINT}/api/user`
-        );
-
-        console.log(response);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    getUserId();
-  }, []);
-
   const createProduct = async (e: FormEvent) => {
     e.preventDefault();
+
+    const getToken = cookie.parse(document.cookie);
+    const userId = getToken["userId"];
+
     try {
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_REST_ENDPOINT}/api/createProduct`,
@@ -40,6 +30,7 @@ export const Products: React.FC<ProductsProps> = ({}) => {
           description: productStore.description,
           smallDescription: productStore.smallDescription,
           price: productStore.price,
+          userId: userId,
         }
       );
 
