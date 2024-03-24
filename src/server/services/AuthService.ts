@@ -64,7 +64,7 @@ export const login = async ({ email, password }: AuthProps) => {
 
   const userId = user[0].id;
 
-  const userIdCookie = CookieStore.set("userId", userId);
+  CookieStore.set("userId", userId);
 
   return jwtCookie;
 };
@@ -82,6 +82,11 @@ export const validateToken = async ({ token }: any) => {
 
 export const logout = async () => {
   const CookieStore = cookies();
-  const jwtCookie = CookieStore.set("token", "");
-  return jwtCookie;
+  const jwtCookie = CookieStore.delete("token");
+
+  const userId = CookieStore.delete("userId");
+  return {
+    jwtCookie,
+    userId,
+  };
 };
