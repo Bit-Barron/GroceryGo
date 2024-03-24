@@ -27,7 +27,6 @@ export const register = async ({
     email,
     password: hashedPassword,
     createdAt: new Date(),
-    id: "",
   });
 
   return user;
