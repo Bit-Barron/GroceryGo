@@ -17,7 +17,6 @@ const Sidebar: React.FC<SidebarProps> = ({ menu }) => {
             </div>
           </Link>
           <span className="w-full border-b-[1px] border-slate-300 p-2"></span>
-          {/* Sidebar Items */}
           {menu}
         </div>
       </div>

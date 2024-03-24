@@ -1,5 +1,5 @@
 import Elysia from "elysia";
-import { register, validateToken } from "../services/AuthService";
+import { logout, register, validateToken } from "../services/AuthService";
 import { login } from "../services/AuthService";
 import { AuthProps } from "@/types/interface";
 
@@ -15,4 +15,8 @@ AuthController.post("/login", ({ body }) => {
 
 AuthController.post("/validate-token", ({ body }) => {
   return validateToken(body);
+});
+
+AuthController.post("/logout", ({}) => {
+  return logout();
 });

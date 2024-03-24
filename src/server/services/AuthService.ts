@@ -85,6 +85,7 @@ export const logout = async () => {
   const jwtCookie = CookieStore.delete("token");
 
   const userId = CookieStore.delete("userId");
+
   return {
     jwtCookie,
     userId,
