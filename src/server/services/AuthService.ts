@@ -50,7 +50,7 @@ export const login = async ({ email, password }: AuthProps) => {
       userId: user[0].id,
     },
     `${process.env.NEXT_PUBLIC_JWT_SECRET}`,
-    { expiresIn: "1h" }
+    { expiresIn: "24h" }
   );
 
   const verifyToken = jwt.verify(
@@ -64,12 +64,12 @@ export const login = async ({ email, password }: AuthProps) => {
 
   const userId = user[0].id;
 
-  CookieStore.set("userId", userId);
+  CookieStore.set("userId", userId as any);
 
   return jwtCookie;
 };
 
-export const validateToken = async ({ token }: any) => {
+export const validateToken = async ({ token }: String | any) => {
   const verifyToken = jwt.verify(
     token,
     `${process.env.NEXT_PUBLIC_JWT_SECRET}`
@@ -85,6 +85,8 @@ export const logout = async () => {
   const jwtCookie = CookieStore.delete("token");
 
   const userId = CookieStore.delete("userId");
+
+  window.location.href = "/login";
 
   return {
     jwtCookie,
