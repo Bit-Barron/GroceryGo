@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { OrderHistory } from "../pages/OderHistory/order";
+import { OrderHistory } from "../pages/orderhistory/order";
 import { RxExit } from "react-icons/rx";
 import { useRouter } from "next/navigation";
 import { AdminStore } from "@/store/admin/AdminStore";
