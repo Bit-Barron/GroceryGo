@@ -3,15 +3,12 @@
 import * as React from "react";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 import {
-  ColumnFiltersState,
-  SortingState,
-  VisibilityState,
+  ColumnDef,
   flexRender,
   getCoreRowModel,
-  getFilteredRowModel,
   getPaginationRowModel,
-  getSortedRowModel,
   useReactTable,
+  getFilteredRowModel,
 } from "@tanstack/react-table";
 import { Button } from "@/components/ui/button";
 import {
@@ -29,42 +26,29 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { columns } from "./columns";
-import { data } from "@/lib/mockData";
+import { Payment } from "@/lib/mockData";
+import { FaSearch } from "react-icons/fa";
 
-export function DataTable() {
-  const [sorting, setSorting] = React.useState<SortingState>([]);
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    []
-  );
-  const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({});
-  const [rowSelection, setRowSelection] = React.useState({});
+interface DataTableProps {
+  data?: Payment[];
+  columns: ColumnDef<Payment>[];
+}
 
+export function DataTable<TData, TValue>({ columns, data }: DataTableProps) {
   const table = useReactTable({
-    data,
+    data: data ?? [],
     columns,
-    onSortingChange: setSorting,
-    onColumnFiltersChange: setColumnFilters,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
-    getSortedRowModel: getSortedRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
-    onColumnVisibilityChange: setColumnVisibility,
-    onRowSelectionChange: setRowSelection,
-    state: {
-      sorting,
-      columnFilters,
-      columnVisibility,
-      rowSelection,
-    },
   });
 
   return (
     <div className="w-full">
       <div className="flex items-center py-4">
         <Input
-          placeholder="Filter emails..."
+          Icon={FaSearch}
+          placeholder="Filter Products..."
           value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
             table.getColumn("email")?.setFilterValue(event.target.value)
@@ -149,10 +133,6 @@ export function DataTable() {
         </Table>
       </div>
       <div className="flex items-center justify-end space-x-2 py-4">
-        <div className="flex-1 text-sm text-muted-foreground">
-          {table.getFilteredSelectedRowModel().rows.length} of{" "}
-          {table.getFilteredRowModel().rows.length} row(s) selected.
-        </div>
         <div className="space-x-2">
           <Button
             variant="outline"

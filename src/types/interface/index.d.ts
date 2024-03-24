@@ -5,6 +5,7 @@ export interface ProductsProps {
   price: string;
   createdAt: string;
   userId: number;
+  discount: string;
 }
 
 export interface Categories {

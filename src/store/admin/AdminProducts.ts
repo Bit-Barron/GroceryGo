@@ -13,6 +13,11 @@ export const AdminProductsStore = proxy({
     AdminProductsStore.price = price;
   },
 
+  discount: "",
+  setDiscount: (discount: string) => {
+    AdminProductsStore.discount = discount;
+  },
+
   createdAt: "",
   setCreatedAt: (createdAt: string) => {
     AdminProductsStore.createdAt = createdAt;

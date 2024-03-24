@@ -8,7 +8,7 @@ import {
 } from "drizzle-orm/pg-core";
 
 export const UserModel = pgTable("users", {
-  id: uuid("id").primaryKey().unique().default("8"),
+  id: serial("id").primaryKey().unique(),
   email: text("email").notNull(),
   password: text("password").notNull(),
   createdAt: timestamp("created_at").notNull().defaultNow(),
@@ -22,6 +22,7 @@ export const ProductModel = pgTable("products", {
   smallDescription: text("small_description").notNull(),
   price: text("price").notNull(),
   userId: integer("user_id").references(() => UserModel.id),
+  discount: text("discount"),
 });
 
 export const CategoriesModel = pgTable("categories", {

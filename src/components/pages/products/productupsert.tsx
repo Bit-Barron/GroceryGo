@@ -4,7 +4,8 @@ import { AdminProductsStore } from "@/store/admin/AdminProducts";
 import React, { FormEvent } from "react";
 import { useSnapshot } from "valtio";
 import cookie from "cookie";
-import { DataTable } from "@/components/elements/products/Table";
+import { DataTable } from "@/components/elements/products/table";
+import { columns } from "@/components/elements/products/columns";
 
 interface ProductsProps {}
 
@@ -38,15 +39,22 @@ export const Products: React.FC<ProductsProps> = ({}) => {
     }
   };
 
+  const data = [
+    {
+      title: productStore.title,
+      price: productStore.price,
+    },
+  ];
+
   return (
     <form onSubmit={(e) => createProduct(e)}>
       <Toaster />
-      <div className="p-5 rounded-lg mt-10  ml-10 mr-10">
-        <h1 className="font-bold text-black text-xl">Products</h1>
-      </div>
 
-      <div className="p-5 rounded-lg ml-10 mr-10 space-y-10">
-        <DataTable />
+      <div className="mx-auto container">
+        <div className="mt-10 mb-10">
+          <h1 className="font-bold text-black text-xl">Products</h1>
+        </div>
+        <DataTable columns={columns} />
       </div>
     </form>
   );
