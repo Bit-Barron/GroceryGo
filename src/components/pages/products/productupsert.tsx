@@ -39,23 +39,10 @@ export const Products: React.FC<ProductsProps> = ({}) => {
     }
   };
 
-  const data = [
-    {
-      title: productStore.title,
-      price: productStore.price,
-    },
-  ];
-
   return (
     <form onSubmit={(e) => createProduct(e)}>
       <Toaster />
-
-      <div className="mx-auto container">
-        <div className="mt-10 mb-10">
-          <h1 className="font-bold text-black text-xl">Products</h1>
-        </div>
-        <DataTable columns={columns} />
-      </div>
+      <div>ProductsUpsert</div>
     </form>
   );
 };

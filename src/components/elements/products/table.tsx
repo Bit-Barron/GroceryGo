@@ -28,15 +28,13 @@ import {
 } from "@/components/ui/table";
 import { Payment } from "@/lib/mockData";
 import { FaSearch } from "react-icons/fa";
-import { Dialog, DialogTrigger } from "@/components/ui/dialog";
-import { MyDialog } from "../Dialog";
 
 interface DataTableProps {
   data?: Payment[];
   columns: ColumnDef<Payment>[];
 }
 
-export function DataTable<TData, TValue>({ columns, data }: DataTableProps) {
+export function DataTable({ columns, data }: DataTableProps) {
   const table = useReactTable({
     data: data ?? [],
     columns,
@@ -127,12 +125,7 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps) {
                   colSpan={columns.length}
                   className="h-24 text-center"
                 >
-                  <Dialog>
-                    <DialogTrigger asChild>
-                      <Button variant="outline">Add Product</Button>
-                    </DialogTrigger>
-                    <MyDialog />
-                  </Dialog>
+                  No data
                 </TableCell>
               </TableRow>
             )}
