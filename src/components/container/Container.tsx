@@ -1,19 +1,19 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { OrderHistory } from "../pages/OderHistory/OrderHistory";
 import { RxExit } from "react-icons/rx";
 import { useRouter } from "next/navigation";
 import { AdminStore } from "@/store/admin/AdminStore";
 import { useSnapshot } from "valtio";
 import axios from "axios";
-import Sidebar from "./admin/Sidebar";
+import Sidebar from "./Sidebar";
 import cookie from "cookie";
 import { AdminTabType } from "@/types/store";
-import { Dashboard } from "../pages/admin/Dashboard";
-import { Products } from "../pages/admin/Products";
-import { Categories } from "../pages/admin/Categories";
-import { QrCode } from "../pages/admin/QrCode";
-import { OrderList } from "../pages/admin/OrderList";
+import { Products } from "../pages/products/ProductsUpsert";
+import { Categories } from "../pages/categories/Categories";
+import { Dashboard } from "../pages/Dashboard/Dashboard";
+import { QrCode } from "../pages/QrCode/QrCode";
 
 interface AdminContainerProps {}
 
@@ -79,7 +79,7 @@ export const AdminContainer: React.FC<AdminContainerProps> = ({}) => {
           {currentTab?.name === "Products" && <Products />}
           {currentTab?.name === "Categories" && <Categories />}
           {currentTab?.name === "Create QR-Code" && <QrCode />}
-          {currentTab?.name === "Order" && <OrderList />}
+          {currentTab?.name === "Order" && <OrderHistory />}
         </div>
       </div>
     </>

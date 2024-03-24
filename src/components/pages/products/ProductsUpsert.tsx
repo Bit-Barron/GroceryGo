@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Toaster, toast } from "sonner";
 import { Input } from "@/components/ui/input";
 import axios from "axios";
 import { AdminProductsStore } from "@/store/admin/AdminProducts";
@@ -34,11 +35,12 @@ export const Products: React.FC<ProductsProps> = ({}) => {
         }
       );
 
-      console.log(response);
-
-      return response;
+      if (response) {
+        toast.success("Product created");
+        return response;
+      }
     } catch (err) {
-      console.error(err);
+      toast.error("An error occured");
     }
   };
 
@@ -55,6 +57,7 @@ export const Products: React.FC<ProductsProps> = ({}) => {
 
   return (
     <form onSubmit={(e) => createProduct(e)}>
+      <Toaster />
       <div className="p-5 rounded-lg mt-10 bg-slate-100 ml-10 mr-10">
         <h1 className="font-bold text-black text-xl">Products</h1>
       </div>
@@ -65,6 +68,7 @@ export const Products: React.FC<ProductsProps> = ({}) => {
           placeholder="Product Title"
           value={productStore.title}
           Icon={MdSubtitles}
+          required
         />
 
         <Input
@@ -72,6 +76,7 @@ export const Products: React.FC<ProductsProps> = ({}) => {
           placeholder="Product Description"
           value={productStore.description}
           Icon={MdDescription}
+          required
         />
 
         <Input
@@ -79,6 +84,7 @@ export const Products: React.FC<ProductsProps> = ({}) => {
           placeholder="Product Small Description"
           value={productStore.smallDescription}
           Icon={MdDescription}
+          required
         />
 
         <Input
@@ -86,6 +92,7 @@ export const Products: React.FC<ProductsProps> = ({}) => {
           placeholder="Product Price"
           type="number"
           Icon={IoIosPricetags}
+          required
         />
         <div className="pt-5">{buttonActions}</div>
       </div>

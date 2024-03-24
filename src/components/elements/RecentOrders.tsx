@@ -1,5 +1,5 @@
 import { GiShoppingBag } from "react-icons/gi";
-import { mockData } from "../../../../lib/mockData";
+import { mockData } from "../../lib/mockData";
 
 const RecentOrders = () => {
   return (
