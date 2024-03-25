@@ -69,7 +69,7 @@ export const AdminContainer: React.FC<AdminContainerProps> = ({}) => {
 
   return (
     <>
-      <div className="min-h-full h-screen bg-container">
+      <div className="min-h-full h-screen bg-[#F8F7F9]">
         <Sidebar menu={menuProducts} />
         <div className="flex flex-1 flex-col lg:pl-20">
           {currentTab?.name === "Dashboard" && <Dashboard />}

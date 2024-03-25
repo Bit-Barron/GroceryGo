@@ -35,3 +35,16 @@ export async function deleteProduict({ id }: any) {
     console.error(err);
   }
 }
+
+export async function getProductsById({ id }: any) {
+  try {
+    const user = db
+      .select()
+      .from(ProductModel)
+      .where({ id } as any);
+
+    return user;
+  } catch (err) {
+    console.error(err);
+  }
+}
