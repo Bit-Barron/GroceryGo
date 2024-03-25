@@ -8,3 +8,5 @@ ProductController.post("/createProduct", ({ body }) => {
   console.log(body);
   return createProduct(body as ProductsProps);
 });
+
+
