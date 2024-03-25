@@ -4,12 +4,13 @@ import { AdminProductsStore } from "@/store/admin/AdminProducts";
 import React, { FormEvent } from "react";
 import { useSnapshot } from "valtio";
 import cookie from "cookie";
-import { DataTable } from "@/components/elements/products/table";
-import { columns } from "@/components/elements/products/columns";
+import { Button } from "@/components/ui/button";
+import { AiOutlineSave } from "react-icons/ai";
+import { GiCancel } from "react-icons/gi";
 
 interface ProductsProps {}
 
-export const Products: React.FC<ProductsProps> = ({}) => {
+export const ProductsUpsert: React.FC<ProductsProps> = ({}) => {
   const productStore = useSnapshot(AdminProductsStore);
 
   const createProduct = async (e: FormEvent) => {
@@ -39,10 +40,33 @@ export const Products: React.FC<ProductsProps> = ({}) => {
     }
   };
 
+  const buttonActions = (
+    <div className="flex justify-end space-x-5">
+      <Button type="button" Icon={GiCancel}>
+        Cancel
+      </Button>
+      <Button type="submit" Icon={AiOutlineSave}>
+        Save
+      </Button>
+    </div>
+  );
+
   return (
-    <form onSubmit={(e) => createProduct(e)}>
-      <Toaster />
-      <div>ProductsUpsert</div>
+    <form className="space-y-8 divide-y divide-gray-700 rounded-md bg-white p-5 text-white">
+      <div className="space-y-8 divide-y divide-gray-700 sm:space-y-5">
+        <div className="space-y-6 sm:space-y-5">
+          <div>
+            <h3 className="text-lg font-medium leading-6 text-black">
+              Product
+            </h3>
+            <p className="mt-1 max-w-2xl text-sm text-black">
+              This Information will be displayed publicly
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {buttonActions}
     </form>
   );
 };

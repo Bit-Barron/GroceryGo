@@ -21,10 +21,10 @@ export const columns: ColumnDef<Payment>[] = [
     ),
   },
   {
-    accessorKey: "title",
-    header: "Title",
+    accessorKey: "discount",
+    header: "Discount",
     cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("title")}</div>
+      <div className="capitalize">{row.getValue("discount")}</div>
     ),
   },
   {

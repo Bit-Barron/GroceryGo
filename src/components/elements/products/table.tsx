@@ -44,14 +44,14 @@ export function DataTable({ columns, data }: DataTableProps) {
   });
 
   return (
-    <div className="w-full">
+    <div className="w-full bg-white">
       <div className="flex items-center py-4">
         <Input
           Icon={FaSearch}
           placeholder="Filter Products..."
-          value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
+          value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
-            table.getColumn("email")?.setFilterValue(event.target.value)
+            table.getColumn("title")?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
         />

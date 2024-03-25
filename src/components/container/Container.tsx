@@ -7,13 +7,13 @@ import { useRouter } from "next/navigation";
 import { AdminStore } from "@/store/admin/AdminStore";
 import { useSnapshot } from "valtio";
 import axios from "axios";
-import Sidebar from "./Sidebar";
+import Sidebar from "./sidebar";
 import cookie from "cookie";
 import { AdminTabType } from "@/types/store";
-import { Products } from "../pages/products/productupsert";
 import { Categories } from "../pages/categories/categorie";
 import { Dashboard } from "../pages/dashboard/dashboard";
 import { QrCode } from "../pages/qrcode/qrcode";
+import { Products } from "../pages/products/product";
 
 interface AdminContainerProps {}
 
@@ -69,7 +69,7 @@ export const AdminContainer: React.FC<AdminContainerProps> = ({}) => {
 
   return (
     <>
-      <div className="min-h-full h-screen bg-[#F8F7F9]">
+      <div className="min-h-full h-screen bg-container">
         <Sidebar menu={menuProducts} />
         <div className="flex flex-1 flex-col lg:pl-20">
           {currentTab?.name === "Dashboard" && <Dashboard />}

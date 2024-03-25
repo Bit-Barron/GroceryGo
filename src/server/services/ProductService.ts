@@ -25,3 +25,13 @@ export async function createProduct({
     console.error(err);
   }
 }
+
+export async function deleteProduict({ id }: any) {
+  try {
+    const user = db.delete(ProductModel).where({ id } as any);
+
+    return user;
+  } catch (err) {
+    console.error(err);
+  }
+}
