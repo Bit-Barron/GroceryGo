@@ -13,6 +13,11 @@ export const AdminProductsStore = proxy({
     AdminProductsStore.price = price;
   },
 
+  image: File,
+  setImage: (image: File | null) => {
+    AdminProductsStore.image = image as any;
+  },
+
   discount: "",
   setDiscount: (discount: string) => {
     AdminProductsStore.discount = discount;

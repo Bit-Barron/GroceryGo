@@ -8,6 +8,7 @@ export async function createProduct({
   smallDescription,
   title,
   userId,
+  discount,
 }: ProductsProps) {
   try {
     console.log(price);
@@ -17,6 +18,7 @@ export async function createProduct({
       smallDescription,
       price: price.toString(),
       userId,
+      discount,
       createdAt: new Date(),
     });
 

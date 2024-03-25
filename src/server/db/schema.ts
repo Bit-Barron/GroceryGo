@@ -22,7 +22,7 @@ export const ProductModel = pgTable("products", {
   smallDescription: text("small_description").notNull(),
   price: text("price").notNull(),
   userId: integer("user_id").references(() => UserModel.id),
-  discount: text("discount"),
+  discount: text("discount").notNull(),
 });
 
 export const CategoriesModel = pgTable("categories", {
