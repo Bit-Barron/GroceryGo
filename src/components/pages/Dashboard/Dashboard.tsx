@@ -1,7 +1,7 @@
 import React from "react";
-import BarChart from "@/components/elements/BarChart";
-import { TopCards } from "@/components/elements/TopCards";
-import RecentOrders from "@/components/elements/RecentOrders";
+import BarChart from "@/components/elements/barchart";
+import { TopCards } from "@/components/elements/topcards";
+import RecentOrders from "@/components/elements/recentorders";
 
 interface DashboardProps {}
 
