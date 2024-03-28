@@ -64,4 +64,14 @@ export const AuthStore = proxy({
       return toast.error("Invalid credentials");
     }
   },
+
+  logout: async () => {
+    try {
+      await axios.get(`${process.env.NEXT_PUBLIC_REST_ENDPOINT}/api/logout`);
+      window.location.href = "/login";
+      return toast.success("Logout successful");
+    } catch (err) {
+      return toast.error("An error occured");
+    }
+  },
 });

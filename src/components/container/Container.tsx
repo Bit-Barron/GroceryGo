@@ -14,12 +14,14 @@ import { Categories } from "../pages/categories/categorie";
 import { Dashboard } from "../pages/dashboard/Dashboard";
 import { QrCode } from "../pages/qrcode/QrCode";
 import { Products } from "../pages/products/product";
+import { AuthStore } from "@/store/AuthStore";
 
 interface AdminContainerProps {}
 
 export const AdminContainer: React.FC<AdminContainerProps> = ({}) => {
   const router = useRouter();
   const adminStore = useSnapshot(AdminStore);
+  const authStore = useSnapshot(AuthStore);
 
   useEffect(() => {
     const fetchAdminTabs = async () => {
@@ -40,14 +42,6 @@ export const AdminContainer: React.FC<AdminContainerProps> = ({}) => {
     fetchAdminTabs();
   }, [router]);
 
-  const logout = async () => {
-    const response = await axios.post(
-      `${process.env.NEXT_PUBLIC_REST_ENDPOINT}/api/logout`
-    );
-
-    if (response.status === 200) return router.push("/login");
-  };
-
   const currentTab = adminStore.adminTabs.find((tab) => tab.current);
 
   const menuProducts = (
@@ -62,7 +56,7 @@ export const AdminContainer: React.FC<AdminContainerProps> = ({}) => {
         </div>
       ))}
       <div className="text-center p-3 hover:shadow-gray-800 hover:shadow-xl border-t justify-between hover:bg-gray-800 border-gray-700 flex duration-200">
-        <RxExit className="mt-2 text-xl" onClick={() => logout()} />
+        <RxExit className="mt-2 text-xl" onClick={() => authStore.logout()} />
       </div>
     </>
   );
