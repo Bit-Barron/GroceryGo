@@ -7,12 +7,12 @@ import { useRouter } from "next/navigation";
 import { AdminStore } from "@/store/admin/AdminStore";
 import { useSnapshot } from "valtio";
 import axios from "axios";
-import Sidebar from "./sidebar";
+import Sidebar from "./Sidebar";
 import cookie from "cookie";
 import { AdminTabType } from "@/types/store";
 import { Categories } from "../pages/categories/categorie";
-import { Dashboard } from "../pages/dashboard/dashboard";
-import { QrCode } from "../pages/qrcode/qrcode";
+import { Dashboard } from "../pages/dashboard/Dashboard";
+import { QrCode } from "../pages/qrcode/QrCode";
 import { Products } from "../pages/products/product";
 
 interface AdminContainerProps {}
