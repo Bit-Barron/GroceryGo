@@ -19,19 +19,28 @@ const config = {
     },
     extend: {
       colors: {
-        container: "#F1F5F9",
+        authContainer: "#16191E",
+        secondary: "#034e3a",
+        primary: "#046e4d",
+        container: "#16191E",
+        cart: "#16191E",
+        inputBg: "#16191E",
+        inputPlaceholder: "#D5D5D5",
+        inputBord: "#464645",
+        container2: "#1A1D22",
+        containerAlt: "#1A1D22",
+        submitAltButton: "#030303",
+        cardBackground: "#1A1D22",
+        cardBorder: "#2F3338",
+        chartBlue: "#3498db",
+
         adminContainer: "#2D2626",
-        primary: "#3B82F6",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
 
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",

@@ -8,7 +8,7 @@ interface DashboardProps {}
 export const Dashboard: React.FC<DashboardProps> = ({}) => {
   return (
     <div>
-      <main className="min-h-screen bg-slate-100">
+      <main className="min-h-screen">
         <TopCards />
         <div className="grid grid-cols-1 gap-4 p-4 md:grid-cols-3">
           <BarChart />

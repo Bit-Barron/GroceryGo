@@ -8,7 +8,7 @@ interface layoutProps {
 const layout: React.FC<layoutProps> = ({ children }) => {
   return (
     <section className="flex justify-center items-center h-screen">
-      <Card className="w-[400px]">
+      <Card className="w-[450px] bg-authContainer !text-white border-none">
         <CardContent>{children}</CardContent>
       </Card>
     </section>

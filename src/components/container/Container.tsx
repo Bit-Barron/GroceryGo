@@ -1,76 +1,92 @@
 "use client";
 
-import { useEffect } from "react";
-import { OrderHistory } from "../pages/orderhistory/order";
-import { RxExit } from "react-icons/rx";
-import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { AiOutlineMenu } from "react-icons/ai";
+import { Searchbar } from "./admin/AdminSearchBar";
+import { DesktopSidebar } from "./admin/desktopsidebar";
+import { MobileSidebar } from "./admin/MobileSideBar";
 import { AdminStore } from "@/store/admin/AdminStore";
-import { useSnapshot } from "valtio";
-import axios from "axios";
-import Sidebar from "./Sidebar";
-import cookie from "cookie";
-import { AdminTabType } from "@/types/store";
-import { Categories } from "../pages/categories/categorie";
-import { Dashboard } from "../pages/dashboard/Dashboard";
-import { QrCode } from "../pages/qrcode/QrCode";
-import { Products } from "../pages/products/product";
 import { AuthStore } from "@/store/AuthStore";
+import { useRouter } from "next/navigation";
+import { useSnapshot } from "valtio";
+import { AdminTabType } from "@/types/store";
+import { RxExit } from "react-icons/rx";
+import { Dashboard } from "../pages/dashboard/dashboard";
+import { Products } from "../pages/products/product";
+import { Categories } from "../pages/categories/categorie";
+import { OrderHistory } from "../pages/orderhistory/order";
+import { QrCode } from "../pages/qrcode/qrcode";
 
-interface AdminContainerProps {}
+interface AdminContainerProps {
+  children: React.ReactNode;
+}
 
-export const AdminContainer: React.FC<AdminContainerProps> = ({}) => {
-  const router = useRouter();
+export const Container: React.FC<AdminContainerProps> = ({ children }) => {
+  const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
   const adminStore = useSnapshot(AdminStore);
   const authStore = useSnapshot(AuthStore);
-
-  useEffect(() => {
-    const fetchAdminTabs = async () => {
-      try {
-        const getToken = cookie.parse(document.cookie);
-        const token = getToken["token"];
-        const response = await axios.post(
-          `${process.env.NEXT_PUBLIC_REST_ENDPOINT}/api/validate-token`,
-          {
-            token,
-          }
-        );
-        return response;
-      } catch (error) {
-        return router.push("/login");
-      }
-    };
-    fetchAdminTabs();
-  }, [router]);
-
-  const currentTab = adminStore.adminTabs.find((tab) => tab.current);
+  const router = useRouter();
 
   const menuProducts = (
     <>
-      {adminStore.adminTabs.map(({ Icon, name }, idx) => (
-        <div key={idx}>
-          <button onClick={() => adminStore.setAdminTab(name as AdminTabType)}>
-            <div className="my-4 inline-block cursor-pointer rounded-lg bg-slate-100 p-3 text-slate-600 hover:bg-gray-300">
-              <Icon size={22} />
-            </div>
+      <div className="flex flex-col flex-1 mt-10">
+        {adminStore.adminTabs.map(({ name, current, Icon }, idx) => (
+          <button
+            key={idx}
+            onClick={() => adminStore.setAdminTab(name as AdminTabType)}
+            className={`${
+              current &&
+              "border-primary border-l-4 border-b-1 border-b-gray-600"
+            } flex items-center p-6 text-sm hover:bg-secondary border-b border-gray-600`}
+            aria-current={current ? "page" : undefined}
+          >
+            <Icon className="mr-4 h-5 w-5" />
+            {name}
           </button>
-        </div>
-      ))}
+        ))}
+      </div>
       <div className="text-center p-3 hover:shadow-gray-800 hover:shadow-xl border-t justify-between hover:bg-gray-800 border-gray-700 flex duration-200">
-        <RxExit className="mt-2 text-xl" onClick={() => authStore.logout()} />
+        <div className="font-bold text-lg">
+          <div>{process.env.NEXT_PUBLIC_BRAND_NAME}</div>
+        </div>
+        <RxExit
+          className="mt-2 text-xl"
+          onClick={() => {
+            authStore.logout();
+            router.push("/auth/login");
+          }}
+        />
       </div>
     </>
   );
 
+  const currentTab = adminStore.adminTabs.find((tab) => tab.current);
+
   return (
     <>
-      <div className="min-h-full h-screen bg-[#F8F7F9]">
-        <Sidebar menu={menuProducts} />
-        <div className="flex flex-1 flex-col lg:pl-20">
+      <div className="min-h-full w-full">
+        <MobileSidebar
+          sidebarOpen={sidebarOpen}
+          setSidebarOpen={setSidebarOpen}
+          menuProducts={menuProducts}
+        />
+        <DesktopSidebar menu={menuProducts} />
+        <div className="flex flex-1 flex-col lg:pl-64">
+          <div className="flex h-16 w-full flex-shrink-0 border-b bg-container lg:border-none">
+            <button
+              className="border-r border-gray-200 px-4 text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-main lg:hidden"
+              onClick={() => setSidebarOpen(true)}
+            >
+              <span className="sr-only">Open sidebar</span>
+              <AiOutlineMenu className="h-6 w-6" aria-hidden="true" />
+            </button>
+            <Searchbar />
+          </div>
           {currentTab?.name === "Dashboard" && <Dashboard />}
           {currentTab?.name === "Products" && <Products />}
           {currentTab?.name === "Categories" && <Categories />}
+          {currentTab?.name === "Order History" && <OrderHistory />}
           {currentTab?.name === "Create QR-Code" && <QrCode />}
-          {currentTab?.name === "Order" && <OrderHistory />}
         </div>
       </div>
     </>

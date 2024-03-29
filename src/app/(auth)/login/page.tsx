@@ -45,13 +45,15 @@ const Page: React.FC<pageProps> = ({}) => {
             OR
           </p>
         </div>
-        <Button
-          className="w-full"
-          variant="outline"
-          onClick={() => router.push("/register")}
+
+        <button
+          className="w-full rounded bg-submitAltButton py-2.5 text-white shadow-md"
+          onClick={() => {
+            router.push("/register");
+          }}
         >
-          dont have an account? Register
-        </Button>
+          Register
+        </button>
       </div>
     </form>
   );

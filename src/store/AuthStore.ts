@@ -12,9 +12,9 @@ interface userProps {
 export type AuthStore = typeof AuthStore;
 
 export const AuthStore = proxy({
-  email: "admin@admin.de",
-  password: "admin1",
-  confirmPassword: "admin1",
+  email: "",
+  password: "",
+  confirmPassword: "",
   authInputType: "password",
 
   register: async (e: FormEvent) => {

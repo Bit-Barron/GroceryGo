@@ -14,16 +14,17 @@ export const Products: React.FC = ({}) => {
     <>
       <div className="flex space-x-5 bg-container2 p-5 text-white">
         <Button
-          Icon={AiOutlineAppstoreAdd}
           onClick={() => {
             productStore.setSubpage("upsert");
           }}
+          className="!bg-blue-500"
         >
           Add Product
         </Button>
+
         <Button
-          Icon={AiOutlineOrderedList}
           onClick={() => productStore.setSubpage("list")}
+          className="!bg-blue-500"
         >
           Show Products
         </Button>

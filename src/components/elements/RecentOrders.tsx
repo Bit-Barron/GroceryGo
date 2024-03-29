@@ -3,15 +3,15 @@ import { mockData } from "../../lib/mockData";
 
 const RecentOrders = () => {
   return (
-    <div className="relative col-span-1 m-auto h-[50vh] w-full overflow-scroll rounded-lg border bg-white p-4 lg:h-[70vh]">
+    <div className="relative col-span-1 m-auto h-[50vh] w-full overflow-scroll rounded-lg border p-4 lg:h-[70vh]">
       <h1>Recent Orders</h1>
       <ul>
         {mockData.map((order, id) => (
           <li
             key={id}
-            className="rouded-lg my-3 flex cursor-pointer items-center bg-slate-50 p-2 hover:bg-slate-100"
+            className="rouded-lg my-3 flex cursor-pointer items-center p-2"
           >
-            <div className="rounded-lg bg-rose-50 p-2">
+            <div className="rounded-lg p-2">
               <GiShoppingBag className="text-rose-500" />
             </div>
             {/* Order info */}

@@ -42,6 +42,7 @@ const Page: React.FC<pageProps> = ({}) => {
           Icon={GiConfirmed}
           type="password"
           placeholder="Confirm Password"
+          className=""
           onChange={(e) => (AuthStore.confirmPassword = e.target.value)}
           value={authStore.confirmPassword}
           required
@@ -56,14 +57,14 @@ const Page: React.FC<pageProps> = ({}) => {
 
         <div className="text-center">OR</div>
 
-        <Button
-          type="button"
-          className="w-full"
-          variant="outline"
-          onClick={() => router.push("/login")}
+        <button
+          className="w-full rounded bg-submitAltButton py-2.5 text-white shadow-md"
+          onClick={() => {
+            router.push("/login");
+          }}
         >
-          have an account? Login
-        </Button>
+          Login
+        </button>
       </div>
     </form>
   );

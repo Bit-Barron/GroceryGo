@@ -1,12 +1,16 @@
 "use client";
 
 import React from "react";
-import { AdminContainer } from "@/components/container/Container";
+import { Container } from "@/components/container/container";
 
 interface pageProps {}
 
 const Page: React.FC<pageProps> = ({}) => {
-  return <AdminContainer />;
+  return (
+    <Container>
+      <div></div>
+    </Container>
+  );
 };
 
 export default Page;
