@@ -1,17 +1,18 @@
 import { Toaster, toast } from "sonner";
 import axios from "axios";
 import { AdminProductsStore } from "@/store/admin/AdminProducts";
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent } from "react";
 import { useSnapshot } from "valtio";
 import cookie from "cookie";
 import { CgRename } from "react-icons/cg";
 import { Input } from "@/components/ui/input";
 import { FaDollarSign } from "react-icons/fa";
 import { MdOutlineDiscount } from "react-icons/md";
-import { GiCancel } from "react-icons/gi";
+import { MdOutlineFileUpload } from "react-icons/md";
 import { AiOutlineSave } from "react-icons/ai";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import { PiSubtitles } from "react-icons/pi";
 
 interface ProductsProps {}
 
@@ -53,6 +54,7 @@ export const ProductsUpsert: React.FC<ProductsProps> = ({}) => {
       </Button>
     </div>
   );
+
   return (
     <form
       onSubmit={createProduct}
@@ -73,8 +75,8 @@ export const ProductsUpsert: React.FC<ProductsProps> = ({}) => {
               value={productStore.title}
               onChange={(e) => productStore.setTitle(e.target.value)}
               type="text"
-              Icon={CgRename}
-              placeholder={"Title"}
+              Icon={PiSubtitles}
+              placeholder={"Product Title"}
               id={"title"}
               required
             />
@@ -84,7 +86,7 @@ export const ProductsUpsert: React.FC<ProductsProps> = ({}) => {
               onChange={(e) => productStore.setDescription(e.target.value)}
               type="text"
               Icon={CgRename}
-              placeholder={"description"}
+              placeholder={"Product Description"}
               name={"description"}
               id={"description"}
               required
@@ -95,7 +97,7 @@ export const ProductsUpsert: React.FC<ProductsProps> = ({}) => {
               onChange={(e) => productStore.setSmallDescription(e.target.value)}
               type="text"
               Icon={CgRename}
-              placeholder={"small description"}
+              placeholder={"Productt Small Description (optional)"}
               name={"description"}
               id={"description"}
             />
@@ -105,7 +107,19 @@ export const ProductsUpsert: React.FC<ProductsProps> = ({}) => {
               value={productStore.price}
               onChange={(e) => productStore.setPrice(e.target.value)}
               Icon={FaDollarSign}
-              placeholder={"price"}
+              placeholder={"Product Price"}
+              name={"price"}
+              id={"price"}
+              required
+            />
+
+            <Input
+              type="file"
+              value={productStore.price}
+              onChange={(e) => productStore.setPrice(e.target.value)}
+              Icon={MdOutlineFileUpload}
+              className="text-2xl"
+              placeholder={"Product File Upload"}
               name={"price"}
               id={"price"}
               required
@@ -131,7 +145,7 @@ export const ProductsUpsert: React.FC<ProductsProps> = ({}) => {
           <div className="space-y-6 sm:space-y-5">
             <Input
               type={"text"}
-              placeholder={"Discount"}
+              placeholder={"Product Discount (optional)"}
               value={productStore.discount}
               name={"promo code"}
               Icon={MdOutlineDiscount}

@@ -8,9 +8,12 @@ export interface ProductsProps {
   discount: string;
 }
 
-export interface Categories {
+export interface CategoriesProps {
   id: number;
   title: string;
+  description: string;
+  userId: number;
+  createdAt: string;
 }
 export interface AuthProps {
   email: string;

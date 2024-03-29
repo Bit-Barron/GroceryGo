@@ -11,8 +11,7 @@ export async function createProduct({
   discount,
 }: ProductsProps) {
   try {
-    console.log(price);
-    const user = db.insert(ProductModel).values({
+    const product = db.insert(ProductModel).values({
       title,
       description,
       smallDescription,
@@ -22,7 +21,7 @@ export async function createProduct({
       createdAt: new Date(),
     });
 
-    return user;
+    return product;
   } catch (err) {
     console.error(err);
   }

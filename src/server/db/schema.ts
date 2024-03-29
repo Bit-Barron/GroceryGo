@@ -22,7 +22,7 @@ export const CategoriesModel = pgTable("categories", {
   createdAt: timestamp("created_at").notNull().defaultNow(),
   title: text("title").notNull(),
   description: text("description").notNull(),
-  image: text("image").notNull(),
+  userId: integer("user_id").references(() => UserModel.id),
 });
 
 export const QRCodeModel = pgTable("qrcodes", {

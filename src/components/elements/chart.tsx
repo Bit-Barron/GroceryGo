@@ -1,39 +1,40 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Bar } from "react-chartjs-2";
 import {
   Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
   BarElement,
   Title,
-  LinearScale,
-  CategoryScale,
   Tooltip,
   Legend,
 } from "chart.js";
 
 ChartJS.register(
+  CategoryScale,
+  LinearScale,
   BarElement,
   Title,
-  LinearScale,
-  CategoryScale,
   Tooltip,
   Legend
 );
 
-const BarChart = () => {
+export const AdminChart = () => {
   const [chartData, setChartData] = useState({
     datasets: [],
   });
+
   const [chartOptions, setChartOptions] = useState({});
 
   useEffect(() => {
     setChartData({
-      labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+      labels: ["Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"],
       datasets: [
         {
           label: "Sales $",
-          data: [8514, 11255, 9885, 15554, 28551, 26318, 21579],
-          borderColor: "#F1F5F9",
-          backgroundColor: "#3482F6",
+          data: [18127, 22201, 19490, 17938, 24182, 17842, 22475],
+          borderColor: "bg-blue-500",
+          backgroundColor: "#3498db",
         },
       ],
     } as any);
@@ -51,13 +52,12 @@ const BarChart = () => {
       responsive: true,
     });
   }, []);
+
   return (
     <>
-      <div className="bh-white m-auto h-[50vh] w-full rounded-lg border p-4 md:col-span-2 lg:h-[70vh]">
+      <div className="w-full md:col-span-2 relative lg:h-[70vh] h-[50vh] m-auto p-4 rounded-lg bg-cardBackground border-cardBackground">
         <Bar data={chartData} options={chartOptions} />
       </div>
     </>
   );
 };
-
-export default BarChart;

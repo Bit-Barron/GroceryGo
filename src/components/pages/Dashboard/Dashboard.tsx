@@ -1,20 +1,39 @@
-import React from "react";
-import BarChart from "@/components/elements/barchart";
-import { TopCards } from "@/components/elements/topcards";
-import RecentOrders from "@/components/elements/recentorders";
+import { useState } from "react";
+import { AdminCard } from "@/components/elements/Card";
+import { CategoriesProps, ProductsProps } from "@/types/interface";
+import { AdminChart } from "@/components/elements/Chart";
+import { AdminOrders } from "@/components/elements/Order";
 
 interface DashboardProps {}
 
 export const Dashboard: React.FC<DashboardProps> = ({}) => {
+  const [products, setProducts] = useState<ProductsProps[]>([]);
+  const [category, setCategory] = useState<CategoriesProps[]>([]);
+
   return (
-    <div>
-      <main className="min-h-screen !text-white">
-        <TopCards />
-        <div className="grid grid-cols-1 gap-4 p-4 md:grid-cols-3">
-          <BarChart />
-          <RecentOrders />
-        </div>
-      </main>
-    </div>
+    <>
+      <div className="flex gap-10 p-4">
+        <AdminCard
+          amount={products.length}
+          description="Products"
+          percentage={products.length}
+        />
+        <AdminCard
+          amount={category.length}
+          description="Categories"
+          percentage={category.length}
+        />
+
+        <AdminCard
+          amount={category.length}
+          description="Categories"
+          percentage={category.length}
+        />
+      </div>
+      <div className="flex gap-5 p-4">
+        <AdminChart />
+        <AdminOrders />
+      </div>
+    </>
   );
 };
