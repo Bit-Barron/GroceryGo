@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
-import { Searchbar } from "./admin/AdminSearchBar";
+import { Searchbar } from "./admin/adminsearchbar";
 import { DesktopSidebar } from "./admin/desktopsidebar";
-import { MobileSidebar } from "./admin/MobileSideBar";
+import { MobileSidebar } from "./admin/mobilesidebar";
 import { AdminStore } from "@/store/admin/AdminStore";
 import { AuthStore } from "@/store/AuthStore";
 import { useRouter } from "next/navigation";
@@ -16,6 +16,8 @@ import { Products } from "../pages/products/product";
 import { Categories } from "../pages/categories/categorie";
 import { OrderHistory } from "../pages/orderhistory/order";
 import { QrCode } from "../pages/qrcode/qrcode";
+import cookie from "cookie";
+import axios from "axios";
 
 interface AdminContainerProps {
   children: React.ReactNode;
@@ -59,6 +61,25 @@ export const Container: React.FC<AdminContainerProps> = ({ children }) => {
       </div>
     </>
   );
+
+  useEffect(() => {
+    const verifyToken = async () => {
+      try {
+        const getToken = cookie.parse(document.cookie);
+        const token = getToken["token"];
+        const response = await axios.post(
+          `${process.env.NEXT_PUBLIC_REST_ENDPOINT}/api/validate-token`,
+          {
+            token,
+          }
+        );
+        return response;
+      } catch (error) {
+        return router.push("/login");
+      }
+    };
+    verifyToken();
+  }, [router]);
 
   const currentTab = adminStore.adminTabs.find((tab) => tab.current);
 

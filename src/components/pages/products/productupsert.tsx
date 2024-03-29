@@ -8,12 +8,16 @@ import { CgRename } from "react-icons/cg";
 import { Input } from "@/components/ui/input";
 import { FaDollarSign } from "react-icons/fa";
 import { MdOutlineDiscount } from "react-icons/md";
-import { ButtonActions } from "@/components/elements/buttonactions";
+import { GiCancel } from "react-icons/gi";
+import { AiOutlineSave } from "react-icons/ai";
+import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 interface ProductsProps {}
 
 export const ProductsUpsert: React.FC<ProductsProps> = ({}) => {
   const productStore = useSnapshot(AdminProductsStore);
+  const router = useRouter();
 
   const createProduct = async (e: FormEvent) => {
     e.preventDefault();
@@ -22,7 +26,7 @@ export const ProductsUpsert: React.FC<ProductsProps> = ({}) => {
     const userId = getToken["userId"];
 
     try {
-      const response = await axios.post(
+      const response: ProductsProps = await axios.post(
         `${process.env.NEXT_PUBLIC_REST_ENDPOINT}/api/createProduct`,
         {
           title: productStore.title,
@@ -34,18 +38,27 @@ export const ProductsUpsert: React.FC<ProductsProps> = ({}) => {
         }
       );
 
+      console.log(response);
+
       return toast.success("Product created");
     } catch (err) {
       return toast.error("An error occured");
     }
   };
 
+  const buttonActions = (
+    <div className="flex justify-end space-x-5">
+      <Button type="submit" Icon={AiOutlineSave}>
+        Save
+      </Button>
+    </div>
+  );
   return (
     <form
       onSubmit={createProduct}
       className="space-y-8 divide-y divide-gray-700 rounded-md bg-container p-5 text-white"
     >
-      <Toaster />
+      <Toaster position="top-right" />
       <div className="space-y-8 divide-y divide-gray-700 sm:space-y-5">
         <div className="space-y-6 sm:space-y-5">
           <div>
@@ -61,8 +74,9 @@ export const ProductsUpsert: React.FC<ProductsProps> = ({}) => {
               onChange={(e) => productStore.setTitle(e.target.value)}
               type="text"
               Icon={CgRename}
-              placeholder={"name"}
-              id={"name"}
+              placeholder={"Title"}
+              id={"title"}
+              required
             />
 
             <Input
@@ -71,6 +85,17 @@ export const ProductsUpsert: React.FC<ProductsProps> = ({}) => {
               type="text"
               Icon={CgRename}
               placeholder={"description"}
+              name={"description"}
+              id={"description"}
+              required
+            />
+
+            <Input
+              value={productStore.smallDescription}
+              onChange={(e) => productStore.setSmallDescription(e.target.value)}
+              type="text"
+              Icon={CgRename}
+              placeholder={"small description"}
               name={"description"}
               id={"description"}
             />
@@ -83,6 +108,7 @@ export const ProductsUpsert: React.FC<ProductsProps> = ({}) => {
               placeholder={"price"}
               name={"price"}
               id={"price"}
+              required
             />
           </div>
         </div>
@@ -115,7 +141,7 @@ export const ProductsUpsert: React.FC<ProductsProps> = ({}) => {
           </div>
         </div>
       </div>
-      <div className="pt-5">{ButtonActions}</div>
+      <div className="pt-5">{buttonActions}</div>
     </form>
   );
 };
