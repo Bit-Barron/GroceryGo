@@ -29,6 +29,11 @@ export const Container: React.FC<AdminContainerProps> = ({ children }) => {
   const authStore = useSnapshot(AuthStore);
   const router = useRouter();
 
+  const logout = () => {
+    authStore.logout();
+    return router.push("/login");
+  };
+
   const menuProducts = (
     <>
       <div className="flex flex-col flex-1 mt-10">
@@ -51,13 +56,7 @@ export const Container: React.FC<AdminContainerProps> = ({ children }) => {
         <div className="font-bold text-lg">
           <div>{process.env.NEXT_PUBLIC_BRAND_NAME}</div>
         </div>
-        <RxExit
-          className="mt-2 text-xl"
-          onClick={() => {
-            authStore.logout();
-            router.push("/auth/login");
-          }}
-        />
+        <RxExit className="mt-2 text-xl" onClick={() => logout()} />
       </div>
     </>
   );

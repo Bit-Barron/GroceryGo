@@ -67,8 +67,7 @@ export const AuthStore = proxy({
 
   logout: async () => {
     try {
-      await axios.get(`${process.env.NEXT_PUBLIC_REST_ENDPOINT}/api/logout`);
-      window.location.href = "/login";
+      await axios.post(`${process.env.NEXT_PUBLIC_REST_ENDPOINT}/api/logout`);
       return toast.success("Logout successful");
     } catch (err) {
       return toast.error("An error occured");
