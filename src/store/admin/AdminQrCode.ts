@@ -31,6 +31,11 @@ export const AdminQrCodeStore = proxy({
     AdminQrCodeStore.dotsOptions = dotsOptions;
   },
 
+  qrCode: [],
+  setQrCode: (qrCode: any) => {
+    AdminQrCodeStore.qrCode = qrCode;
+  },
+
   backgroundColor: "",
   setBackgroundColor: (backgroundColor: string) => {
     AdminQrCodeStore.backgroundColor = backgroundColor;
@@ -56,6 +61,40 @@ export const AdminQrCodeStore = proxy({
       return qrCode;
     } catch (err) {
       toast.error("Error Creating Qr Code");
+      console.error(err);
+    }
+  },
+
+  getQrCodeById: async () => {
+    const getUserId = cookie.parse(document.cookie);
+    const userId = getUserId["userId"];
+
+    try {
+      const qrCode = await axios.get(
+        `${process.env.NEXT_PUBLIC_REST_ENDPOINT}/api/getQrCodeById/${userId}`
+      );
+
+      console.log(qrCode.data);
+
+      AdminQrCodeStore.setQrCode(qrCode.data);
+      return qrCode;
+    } catch (err) {
+      console.error(err);
+    }
+  },
+
+  deleteQrCodeById: async (id: number) => {
+    try {
+      const qrCode = await axios.delete(
+        `${process.env.NEXT_PUBLIC_REST_ENDPOINT}/api/deleteQrCodeById/${id}`
+      );
+
+      toast.success("Qr Code Deleted Successfully");
+
+      window.location.reload();
+      return qrCode;
+    } catch (err) {
+      toast.error("Error Deleting Qr Code");
       console.error(err);
     }
   },

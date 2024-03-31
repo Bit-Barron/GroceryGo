@@ -27,6 +27,7 @@ export interface AuthProps {
 }
 
 export interface AdminQrCodeProps {
+  id: number;
   userId: number;
   tableNumber: string;
   createdAt: string;

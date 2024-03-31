@@ -9,7 +9,7 @@ const app = new Elysia({ prefix: "/api" })
   .use(AuthController)
   .use(ProductController)
   .use(CategoriesController)
-  .use(QrCodeController);
+  .use(QrCodeController)
 
 export const GET = app.handle;
 export const POST = app.handle;
