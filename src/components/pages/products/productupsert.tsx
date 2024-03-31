@@ -89,6 +89,7 @@ export const ProductsUpsert: React.FC<ProductsProps> = ({}) => {
               id={"title"}
               name={"title"}
               required
+              maxLength={20}
             />
 
             <Input
@@ -99,25 +100,16 @@ export const ProductsUpsert: React.FC<ProductsProps> = ({}) => {
               placeholder={"Product Description"}
               name={"description"}
               id={"description"}
+              maxLength={100}
               required
             />
 
             <Input
-              value={productStore.smallDescription}
-              onChange={(e) => productStore.setSmallDescription(e.target.value)}
-              type="text"
-              Icon={CgRename}
-              placeholder={"Product Small Description (optional)"}
-              name={"small description"}
-              id={"small description"}
-            />
-
-            <Input
               type="number"
-              value={productStore.price}
+              value={`${productStore.price}`}
               onChange={(e) => productStore.setPrice(e.target.value)}
               Icon={FaDollarSign}
-              placeholder={"Product Price"}
+              placeholder={"Product Price (just the number without €)"}
               name={"price"}
               id={"price"}
               required

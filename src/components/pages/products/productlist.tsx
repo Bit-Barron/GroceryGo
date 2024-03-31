@@ -7,6 +7,9 @@ import { ProductsProps } from "@/types/interface";
 import { RiUserAddFill, RiUserSettingsLine } from "react-icons/ri";
 import { MdDelete } from "react-icons/md";
 import { Button } from "@/components/ui/button";
+import { MdOutlineDiscount } from "react-icons/md";
+import { IoPricetag } from "react-icons/io5";
+import { TbFileDescription } from "react-icons/tb";
 
 interface ProductsListProps {}
 
@@ -19,7 +22,7 @@ export const ProductsList: React.FC<ProductsListProps> = ({}) => {
 
   return (
     <>
-      <div>
+      <div className="md:grid md:grid-cols-2 md:gap-10">
         {productStore.product.map((product: ProductsProps, idx) => (
           <div
             key={idx}
@@ -41,12 +44,12 @@ export const ProductsList: React.FC<ProductsListProps> = ({}) => {
               <div className="flex flex-col md:flex md:flex-row md:items-end md:justify-between mt-2">
                 <div className="order-1 text-sm text-gray-400 space-y-2">
                   <p className="flex items-center space-x-1">
-                    <RiUserAddFill className="text-main" />
+                    <TbFileDescription className="text-main" />
                     <span>description: </span>
-                    <span className="text-white">{product.description}</span>
+                    <span className="">{product.description}</span>
                   </p>
                   <p className="flex items-center space-x-1">
-                    <RiUserSettingsLine className="text-main" />
+                    <IoPricetag />
                     <span>price: </span>
                     <span>{product.price}€</span>
                   </p>
@@ -58,25 +61,28 @@ export const ProductsList: React.FC<ProductsListProps> = ({}) => {
                   </p>
 
                   <p className="flex items-center space-x-1">
-                    <BiCategoryAlt className="text-main" />
+                    <MdOutlineDiscount className="text-main" />
                     <span>discount: </span>
                     <span>{product.discount || "0%"}</span>
                   </p>
 
                   <p className="flex items-center space-x-1">
-                    <BiCategoryAlt className="text-main" />
+                    <TbFileDescription className="text-main" />
                     <span>small description </span>
                     <span>{product.smallDescription}</span>
                   </p>
 
-                  <p className="flex items-center space-x-1">
-                    <CldImage
-                      alt={"Product Image"}
-                      src={product.imageId}
-                      width={100}
-                      height={100}
-                    />
-                  </p>
+                  {product.imageId && (
+                    <p className="flex items-center space-x-1">
+                      <CldImage
+                        alt={"Product Image"}
+                        src={product.imageId}
+                        width={100}
+                        height={100}
+                      />
+                    </p>
+                  )}
+
                   <Button
                     Icon={MdDelete}
                     onClick={() =>
