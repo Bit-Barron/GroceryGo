@@ -72,6 +72,7 @@ export const Container: React.FC<AdminContainerProps> = ({ children }) => {
             token,
           }
         );
+
         return response;
       } catch (error) {
         return router.push("/login");

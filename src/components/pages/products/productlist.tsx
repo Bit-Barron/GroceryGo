@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSnapshot } from "valtio";
+import { AdminProductsStore } from "@/store/admin/AdminProducts";
 
 interface ProductsListProps {}
 
 export const ProductsList: React.FC<ProductsListProps> = ({}) => {
+  const productStore = useSnapshot(AdminProductsStore);
+
+  useEffect(() => {
+    productStore.getProductById();
+  }, [productStore]);
+
   return (
-    <form className="space-y-8 divide-y divide-gray-700 rounded-md bg-white p-5 text-white">
+    <form className="space-y-8 divide-y divide-gray-700 rounded-md">
       <div className="space-y-8 divide-y divide-gray-700 sm:space-y-5">
         <div className="space-y-6 sm:space-y-5">
           <div>

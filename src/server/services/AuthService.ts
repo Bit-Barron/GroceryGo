@@ -86,8 +86,6 @@ export const logout = async () => {
 
   const userId = CookieStore.delete("userId");
 
-  window.location.href = "/login";
-
   return {
     jwtCookie,
     userId,

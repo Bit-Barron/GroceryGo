@@ -20,7 +20,6 @@ export const QrCodeUpsert: React.FC<AdminTablesUpsertProps> = ({}) => {
   }, []);
 
   useEffect(() => {
-    console.log(qrCodeStore.backgroundColor);
     qrCode.update({
       data: `${qrCodeStore.tableNumber}` || "0",
       dotsOptions: {

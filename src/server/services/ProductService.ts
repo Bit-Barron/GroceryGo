@@ -9,6 +9,7 @@ export async function createProduct({
   title,
   userId,
   discount,
+  imageId,
 }: ProductsProps) {
   try {
     const product = db.insert(ProductModel).values({
@@ -19,6 +20,7 @@ export async function createProduct({
       userId,
       discount,
       createdAt: new Date(),
+      imageId,
     });
 
     return product;

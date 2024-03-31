@@ -19,14 +19,14 @@ export const Categories: React.FC<CategoriesProps> = ({}) => {
           }}
           className="!bg-blue-500"
         >
-          Add Product
+          Create Categories
         </Button>
 
         <Button
           onClick={() => categoryStore.setSubpage("list")}
           className="!bg-blue-500"
         >
-          Show Products
+          Show Categories
         </Button>
       </div>
       <div className="p-5">

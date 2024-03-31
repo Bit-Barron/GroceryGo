@@ -16,6 +16,7 @@ export const ProductModel = pgTable("products", {
   price: text("price").notNull(),
   userId: integer("user_id").references(() => UserModel.id),
   discount: text("discount").notNull(),
+  imageId: text("image_id").notNull(),
 });
 
 export const CategoriesModel = pgTable("categories", {

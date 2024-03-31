@@ -20,3 +20,16 @@ export async function createCategory({
     console.error(err);
   }
 }
+
+export async function getCategoriesById({ id }: any) {
+  try {
+    const categories = db
+      .select()
+      .from(CategoriesModel)
+      .where({ id } as any);
+
+    return categories;
+  } catch (err) {
+    console.error(err);
+  }
+}

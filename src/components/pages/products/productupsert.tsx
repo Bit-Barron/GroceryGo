@@ -1,22 +1,32 @@
 import { AdminProductsStore } from "@/store/admin/AdminProducts";
-import React, { FormEvent, useState } from "react";
+import cookie from "cookie";
+import { toast } from "sonner";
+import axios from "axios";
+import { buttonVariants } from "@/components/ui/button";
+import React, { FormEvent, useEffect, useState } from "react";
 import { useSnapshot } from "valtio";
 import { CgRename } from "react-icons/cg";
 import { Input } from "@/components/ui/input";
 import { FaDollarSign } from "react-icons/fa";
 import { MdOutlineDiscount } from "react-icons/md";
-import { MdOutlineFileUpload } from "react-icons/md";
 import { AiOutlineSave } from "react-icons/ai";
 import { Button } from "@/components/ui/button";
 import { PiSubtitles } from "react-icons/pi";
-import Image from "next/image";
-import { CldImage, CldUploadButton, CldUploadWidget } from "next-cloudinary";
+import { CldImage, CldUploadButton } from "next-cloudinary";
+import { cn } from "@/lib/utils";
+import { Dropdown } from "@/components/elements/dropdown";
 
 interface ProductsProps {}
 
+type UploadResult = {
+  info: {
+    public_id: string;
+  };
+  event: "success";
+};
+
 export const ProductsUpsert: React.FC<ProductsProps> = ({}) => {
   const productStore = useSnapshot(AdminProductsStore);
-  const [imageUrl, setImageUrl] = useState("");
 
   const buttonActions = (
     <div className="flex justify-end space-x-5">
@@ -26,9 +36,22 @@ export const ProductsUpsert: React.FC<ProductsProps> = ({}) => {
     </div>
   );
 
-  const handleImageUpload = (result: any) => {
-    console.log(result.info.public_id);
-  };
+  useEffect(() => {
+    const getCategory = async () => {
+      try {
+        const getUserId = cookie.parse(document.cookie);
+        const userId = getUserId["userId"];
+
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_REST_ENDPOINT}/api/getProductsById/${userId}`
+        );
+        console.log(response.data);
+      } catch (err) {
+        toast.error("An error occured");
+      }
+    };
+    getCategory();
+  }, []);
 
   return (
     <form
@@ -43,6 +66,14 @@ export const ProductsUpsert: React.FC<ProductsProps> = ({}) => {
               This Information will be displayed publicly
             </p>
           </div>
+          {productStore.imageId && (
+            <CldImage
+              alt={"Product Image"}
+              src={productStore.imageId}
+              width={100}
+              height={100}
+            />
+          )}
 
           <div className="space-y-6 sm:space-y-5">
             <Input
@@ -89,10 +120,14 @@ export const ProductsUpsert: React.FC<ProductsProps> = ({}) => {
             />
 
             <CldUploadButton
+              className={cn(buttonVariants({}))}
               uploadPreset="w64a5icc"
-              onUploadAdded={(result) => handleImageUpload(result)}
+              onSuccess={(result: UploadResult | any) =>
+                productStore.setImageId(result.info.public_id)
+              }
+              onError={() => toast.error("An error occured")}
             >
-              <Button>Upload Image For Product</Button>
+              Upload image for the product
             </CldUploadButton>
           </div>
         </div>
@@ -104,12 +139,22 @@ export const ProductsUpsert: React.FC<ProductsProps> = ({}) => {
               Specify Categories the product belongs to.
             </p>
           </div>
+          <Dropdown
+            label={""}
+            onChange={(value) => productStore.setCategories(value as string)}
+            values={[
+              { name: "Electronics" },
+              { name: "Clothing" },
+              { name: "Shoes" },
+              { name: "Accessories" },
+            ]}
+          />
         </div>
         <div className="space-y-3 pt-8 sm:space-y-5 sm:pt-10">
           <div>
-            <h3 className="text-lg font-medium leading-6 ">Attributes</h3>
+            <h3 className="text-lg font-medium leading-6">Discounts</h3>
             <p className="mt-1 max-w-2xl">
-              Specify Attributes the product belongs to.
+              Specify Discounts the product belongs to.
             </p>
           </div>
           <div className="space-y-6 sm:space-y-5">

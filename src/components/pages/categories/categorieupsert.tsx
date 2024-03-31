@@ -1,5 +1,4 @@
 import { FormEvent } from "react";
-import { Toaster } from "sonner";
 import { CgRename } from "react-icons/cg";
 import { useSnapshot } from "valtio";
 import { Input } from "@/components/ui/input";
@@ -52,13 +51,6 @@ export const CategoriesUpsert: React.FC<CategoriesUpsertProps> = ({}) => {
               placeholder={"Category Description"}
               id={"title"}
               required
-            />
-            <Input
-              value={categorieStore.image}
-              onChange={(e) => categorieStore.setImage(e.target.value)}
-              type="file"
-              Icon={CgRename}
-              placeholder={"Category Image"}
             />
           </div>
         </div>

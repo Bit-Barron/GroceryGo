@@ -17,9 +17,9 @@ export const AdminProductsStore = proxy({
     AdminProductsStore.price = price;
   },
 
-  image: File,
-  setImage: (image: File | null) => {
-    AdminProductsStore.image = image as any;
+  imageId: "",
+  setImageId: (imageId: string) => {
+    AdminProductsStore.imageId = imageId;
   },
 
   discount: "",
@@ -46,6 +46,11 @@ export const AdminProductsStore = proxy({
     AdminProductsStore.smallDescription = smallDescription;
   },
 
+  categories: "",
+  setCategories: (categories: string) => {
+    AdminProductsStore.categories = categories;
+  },
+
   createProduct: async (e: FormEvent) => {
     e.preventDefault();
 
@@ -56,6 +61,7 @@ export const AdminProductsStore = proxy({
       await axios.post(
         `${process.env.NEXT_PUBLIC_REST_ENDPOINT}/api/createProduct`,
         {
+          imageId: AdminProductsStore.imageId,
           price: AdminProductsStore.price,
           discount: AdminProductsStore.discount,
           userId: userId,
@@ -69,6 +75,19 @@ export const AdminProductsStore = proxy({
       return toast.success("Product created");
     } catch (err) {
       return toast.error("An error occured");
+    }
+  },
+
+  getProductById: async () => {
+    const getUserId = cookie.parse(document.cookie);
+    const id = getUserId["userId"];
+
+    try {
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_REST_ENDPOINT}/api/getProductsById/${id}`
+      );
+    } catch (err) {
+      console.error(err);
     }
   },
 });
