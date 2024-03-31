@@ -85,7 +85,7 @@ export const AdminQrCodeStore = proxy({
 
   deleteQrCodeById: async (id: number) => {
     try {
-      const qrCode = await axios.delete(
+      const qrCode = await axios.post(
         `${process.env.NEXT_PUBLIC_REST_ENDPOINT}/api/deleteQrCodeById/${id}`
       );
 

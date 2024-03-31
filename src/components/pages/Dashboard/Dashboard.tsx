@@ -12,7 +12,7 @@ export const Dashboard: React.FC<DashboardProps> = ({}) => {
 
   return (
     <>
-      <div className="flex gap-10 p-4">
+      <div className="md:flex gap-10 p-4">
         <AdminCard
           amount={products.length}
           description="Products"
@@ -30,7 +30,7 @@ export const Dashboard: React.FC<DashboardProps> = ({}) => {
           percentage={category.length}
         />
       </div>
-      <div className="flex gap-5 p-4">
+      <div className="md:flex gap-5 p-4">
         <AdminChart />
         <AdminOrders />
       </div>

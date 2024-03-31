@@ -33,7 +33,7 @@ export async function createProduct({
   }
 }
 
-export async function deleteProduict({ id }: any) {
+export async function deleteProduct({ id }: any) {
   try {
     const user = db.delete(ProductModel).where({ id } as any);
 

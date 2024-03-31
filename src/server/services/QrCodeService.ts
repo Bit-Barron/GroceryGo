@@ -36,3 +36,13 @@ export const getQrCodeById = async ({ userId }: any) => {
     console.log(err);
   }
 };
+
+export const deleteQrCodeById = async ({ qrCodeId }: any) => {
+  try {
+    const qrCode = db.delete(QrCodeModel).where(eq(qrCodeId, QrCodeModel.id));
+
+    return qrCode;
+  } catch (err) {
+    console.log(err);
+  }
+};

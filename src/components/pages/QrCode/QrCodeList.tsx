@@ -4,6 +4,7 @@ import { AdminQrCodeStore } from "../../../store/admin/AdminQrCode";
 import { MdDelete } from "react-icons/md";
 import { AdminQrCodeProps } from "@/types/interface";
 import { Button } from "@/components/ui/button";
+import QRCodeGenerator from "./qrcodegenerator";
 
 interface QrCodeListProps {}
 
@@ -25,6 +26,7 @@ export const QrCodeList: React.FC<QrCodeListProps> = ({}) => {
             <div className={`px-4 py-4 sm:px-6`}>
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-1">
+                  <span>Table Number:</span>
                   <p className="truncate font-medium">{qrcode.tableNumber}</p>
                 </div>
                 <p
@@ -35,6 +37,11 @@ export const QrCodeList: React.FC<QrCodeListProps> = ({}) => {
                   {qrcode.tableNumber || "no title"}
                 </p>
               </div>
+
+              <div>
+                <QRCodeGenerator table={qrcode} />
+              </div>
+
               <div className="flex flex-col md:flex md:flex-row md:items-end md:justify-between mt-2">
                 <div className="order-1 text-sm text-gray-400 space-y-2">
                   <Button

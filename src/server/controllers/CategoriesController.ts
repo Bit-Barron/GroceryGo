@@ -5,7 +5,6 @@ import {
   deleteCategoriesById,
 } from "../services/CategoriesService";
 import { getCategoriesById } from "../services/CategoriesService";
-import {} from "../services/CategoriesService";
 
 export let CategoriesController = new Elysia();
 
