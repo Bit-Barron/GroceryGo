@@ -21,6 +21,7 @@ export const ProductModel = pgTable("products", {
 });
 
 export const CategoriesModel = pgTable("categories", {
+  id: serial("id").primaryKey(),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   title: text("title").notNull(),
   description: text("description").notNull(),

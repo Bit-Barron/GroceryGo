@@ -19,11 +19,9 @@ import { QrCode } from "../pages/qrcode/qrcode";
 import cookie from "cookie";
 import axios from "axios";
 
-interface AdminContainerProps {
-  children: React.ReactNode;
-}
+interface AdminContainerProps {}
 
-export const Container: React.FC<AdminContainerProps> = ({ children }) => {
+export const Container: React.FC<AdminContainerProps> = ({}) => {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
   const adminStore = useSnapshot(AdminStore);
   const authStore = useSnapshot(AuthStore);

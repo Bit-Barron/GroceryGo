@@ -14,10 +14,9 @@ ProductController.get("/getProductsById/:userId", ({ params: { userId } }) => {
   return getProductsById({ userId });
 });
 
-ProductController.delete(
+ProductController.post(
   "/deleteProductById/:productId",
   ({ params: { productId } }) => {
-    console.log(productId);
     return deleteProductById({ productId });
   }
 );

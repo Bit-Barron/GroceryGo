@@ -4,7 +4,6 @@ import { useSnapshot } from "valtio";
 import { CldImage } from "next-cloudinary";
 import { AdminProductsStore } from "@/store/admin/AdminProducts";
 import { ProductsProps } from "@/types/interface";
-import { RiUserAddFill, RiUserSettingsLine } from "react-icons/ri";
 import { MdDelete } from "react-icons/md";
 import { Button } from "@/components/ui/button";
 import { MdOutlineDiscount } from "react-icons/md";
@@ -38,7 +37,7 @@ export const ProductsList: React.FC<ProductsListProps> = ({}) => {
                     "inline-flex rounded-full px-2 text-xs font-semibold leading-5 text-white"
                   }
                 >
-                  {product.title}
+                  {product.title || "no title"}
                 </p>
               </div>
               <div className="flex flex-col md:flex md:flex-row md:items-end md:justify-between mt-2">
@@ -46,18 +45,20 @@ export const ProductsList: React.FC<ProductsListProps> = ({}) => {
                   <p className="flex items-center space-x-1">
                     <TbFileDescription className="text-main" />
                     <span>description: </span>
-                    <span className="">{product.description}</span>
+                    <span className="">
+                      {product.description || "product description"}
+                    </span>
                   </p>
                   <p className="flex items-center space-x-1">
                     <IoPricetag />
                     <span>price: </span>
-                    <span>{product.price}€</span>
+                    <span>{product.price || "no price selected"}€</span>
                   </p>
 
                   <p className="flex items-center space-x-1">
                     <BiCategoryAlt className="text-main" />
                     <span>category: </span>
-                    <span>{product.category}</span>
+                    <span>{product.category || "no category selected"}</span>
                   </p>
 
                   <p className="flex items-center space-x-1">
@@ -69,7 +70,9 @@ export const ProductsList: React.FC<ProductsListProps> = ({}) => {
                   <p className="flex items-center space-x-1">
                     <TbFileDescription className="text-main" />
                     <span>small description </span>
-                    <span>{product.smallDescription}</span>
+                    <span>
+                      {product.smallDescription || "no small description"}
+                    </span>
                   </p>
 
                   {product.imageId && (
@@ -85,9 +88,9 @@ export const ProductsList: React.FC<ProductsListProps> = ({}) => {
 
                   <Button
                     Icon={MdDelete}
-                    onClick={() =>
-                      productStore.deleteProductById(product.id as number)
-                    }
+                    onClick={() => {
+                      productStore.deleteProductById(product.id as number);
+                    }}
                   >
                     Löschen
                   </Button>

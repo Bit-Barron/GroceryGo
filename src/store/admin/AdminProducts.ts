@@ -102,12 +102,12 @@ export const AdminProductsStore = proxy({
 
   deleteProductById: async (id: number) => {
     try {
-      console.log("daddysimson");
-      const res = await axios.delete(
+      const res = await axios.post(
         `${process.env.NEXT_PUBLIC_REST_ENDPOINT}/api/deleteProductById/${id}`
       );
 
-      console.log(res.data);
+      window.location.reload();
+
       return toast.success("Product deleted");
     } catch (err) {
       console.log(err);

@@ -11,6 +11,12 @@ export const AdminCategoryStore = proxy({
   setSubpage: (subpage: "list" | "upsert") => {
     AdminCategoryStore.subpage = subpage;
   },
+
+  category: [],
+  setCategory: (category: any) => {
+    AdminCategoryStore.category = category;
+  },
+
   createdAt: "",
   setCreatedAt: (createdAt: string) => {
     AdminCategoryStore.createdAt = createdAt;
@@ -52,5 +58,36 @@ export const AdminCategoryStore = proxy({
       console.error(err);
     }
   },
-});
 
+  getCategoriesById: async () => {
+    const cookies = cookie.parse(document.cookie);
+    const userId = cookies["userId"];
+
+    try {
+      const categories = await axios.get(
+        `${process.env.NEXT_PUBLIC_REST_ENDPOINT}/api/getCategoriesById/${userId}`
+      );
+
+      AdminCategoryStore.setCategory(categories.data);
+
+      return categories;
+    } catch (err) {
+      console.error(err);
+    }
+  },
+
+  deleteCategoriesById: async (id: number) => {
+    try {
+      const res = await axios.post(
+        `${process.env.NEXT_PUBLIC_REST_ENDPOINT}/api/deleteCategoriesById/${id}`
+      );
+
+      window.location.reload();
+
+      return toast.success("Category Deleted Successfully");
+    } catch (err) {
+      toast.error("Error Deleting Category");
+      console.error(err);
+    }
+  },
+});

@@ -1,6 +1,7 @@
 import { ProductsProps } from "../../types/interface/index";
 import { db } from "../db";
 import { ProductModel } from "../db/schema";
+import { toast } from "sonner";
 import { eq } from "drizzle-orm";
 
 export async function createProduct({
@@ -58,8 +59,6 @@ export async function getProductsById({ userId }: any) {
 export async function deleteProductById({ productId }: any) {
   try {
     const user = db.delete(ProductModel).where(eq(productId, ProductModel.id));
-
-    console.log(user);
     return user;
   } catch (err) {
     console.error(err);
