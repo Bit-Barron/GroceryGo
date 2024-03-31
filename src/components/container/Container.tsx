@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
-import { Searchbar } from "./admin/adminsearchbar";
+import { Searchbar } from "./admin/seachbar";
 import { DesktopSidebar } from "./admin/desktopsidebar";
 import { MobileSidebar } from "./admin/mobilesidebar";
 import { AdminStore } from "@/store/admin/AdminStore";

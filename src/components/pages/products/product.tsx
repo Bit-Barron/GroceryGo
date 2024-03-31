@@ -1,8 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSnapshot } from "valtio";
 import { AdminProductsStore } from "@/store/admin/AdminProducts";
-import { AiOutlineAppstoreAdd, AiOutlineOrderedList } from "react-icons/ai";
-import axios from "axios";
 import { Button } from "@/components/ui/button";
 import { ProductsList } from "./productlist";
 import { ProductsUpsert } from "./productupsert";

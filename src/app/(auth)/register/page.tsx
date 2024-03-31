@@ -19,7 +19,6 @@ const Page: React.FC<pageProps> = ({}) => {
 
   return (
     <form onSubmit={(e) => authStore.register(e)}>
-      <Toaster />
       <h1 className="font-bold text-2xl text-center mt-7">Register</h1>
       <div className="mt-10 space-y-5">
         <Input

@@ -1,4 +1,3 @@
-import { Toaster } from "sonner";
 import { AdminProductsStore } from "@/store/admin/AdminProducts";
 import React, { FormEvent, useState } from "react";
 import { useSnapshot } from "valtio";
@@ -11,6 +10,7 @@ import { AiOutlineSave } from "react-icons/ai";
 import { Button } from "@/components/ui/button";
 import { PiSubtitles } from "react-icons/pi";
 import Image from "next/image";
+import { CldImage, CldUploadButton, CldUploadWidget } from "next-cloudinary";
 
 interface ProductsProps {}
 
@@ -26,20 +26,15 @@ export const ProductsUpsert: React.FC<ProductsProps> = ({}) => {
     </div>
   );
 
+  const handleImageUpload = (result: any) => {
+    console.log(result.info.public_id);
+  };
+
   return (
     <form
       onSubmit={(e) => productStore.createProduct(e as FormEvent)}
       className="space-y-8 divide-y divide-gray-700 rounded-md bg-container p-5 text-white"
     >
-      {imageUrl && (
-        <Image
-          src={imageUrl}
-          alt="Selected Image"
-          width={100}
-          height={100}
-        />
-      )}
-
       <div className="space-y-8 divide-y divide-gray-700 sm:space-y-5">
         <div className="space-y-6 sm:space-y-5">
           <div>
@@ -57,6 +52,7 @@ export const ProductsUpsert: React.FC<ProductsProps> = ({}) => {
               Icon={PiSubtitles}
               placeholder={"Product Title"}
               id={"title"}
+              name={"title"}
               required
             />
 
@@ -77,8 +73,8 @@ export const ProductsUpsert: React.FC<ProductsProps> = ({}) => {
               type="text"
               Icon={CgRename}
               placeholder={"Product Small Description (optional)"}
-              name={"description"}
-              id={"description"}
+              name={"small description"}
+              id={"small description"}
             />
 
             <Input
@@ -92,21 +88,12 @@ export const ProductsUpsert: React.FC<ProductsProps> = ({}) => {
               required
             />
 
-            <Input
-              type="file"
-              onChange={(e) => {
-                if (e.target.files && e.target.files.length > 0) {
-                  const selectedFile = e.target.files[0];
-                  const temporaryUrl = URL.createObjectURL(selectedFile);
-                  setImageUrl(temporaryUrl);
-                }
-              }}
-              Icon={MdOutlineFileUpload}
-              className="text-2xl"
-              placeholder={"Product File Upload"}
-              name={"File Upload"}
-              id={"Product File Upload"}
-            />
+            <CldUploadButton
+              uploadPreset="w64a5icc"
+              onUploadAdded={(result) => handleImageUpload(result)}
+            >
+              <Button>Upload Image For Product</Button>
+            </CldUploadButton>
           </div>
         </div>
 

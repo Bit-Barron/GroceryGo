@@ -1,13 +1,11 @@
 import React, { useEffect, useRef } from "react";
 import { AdminQrCodeStore } from "@/store/admin/AdminQrCode";
 import QRCodeStyling from "qr-code-styling";
-
 import { AiOutlineSave } from "react-icons/ai";
 import { MdDriveFileRenameOutline, MdOutlineColorize } from "react-icons/md";
 import { useSnapshot } from "valtio";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { createQrCode } from "@/server/services/QrCodeService";
 
 interface AdminTablesUpsertProps {}
 const qrCode = new QRCodeStyling({});
