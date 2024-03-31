@@ -25,10 +25,11 @@ export const CategoriesModel = pgTable("categories", {
   userId: integer("user_id").references(() => UserModel.id),
 });
 
-export const QRCodeModel = pgTable("qrcodes", {
+export const QrCodeModel = pgTable("qrcodes", {
   id: serial("id").primaryKey(),
   createdAt: timestamp("created_at").notNull().defaultNow(),
-  code: text("code").notNull(),
-  status: text("status").notNull(),
-  productId: text("product_id").notNull(),
+  tableNumber: text("table_number").notNull(),
+  backgroundColor: text("background_color").notNull(),
+  dotsOptions: text("dots_options").notNull(),
+  userId: integer("user_id").references(() => UserModel.id),
 });

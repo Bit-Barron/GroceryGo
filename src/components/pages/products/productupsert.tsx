@@ -1,9 +1,7 @@
-import { Toaster, toast } from "sonner";
-import axios from "axios";
+import { Toaster } from "sonner";
 import { AdminProductsStore } from "@/store/admin/AdminProducts";
-import React, { FormEvent } from "react";
+import React, { FormEvent, useState } from "react";
 import { useSnapshot } from "valtio";
-import cookie from "cookie";
 import { CgRename } from "react-icons/cg";
 import { Input } from "@/components/ui/input";
 import { FaDollarSign } from "react-icons/fa";
@@ -11,41 +9,14 @@ import { MdOutlineDiscount } from "react-icons/md";
 import { MdOutlineFileUpload } from "react-icons/md";
 import { AiOutlineSave } from "react-icons/ai";
 import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
 import { PiSubtitles } from "react-icons/pi";
+import Image from "next/image";
 
 interface ProductsProps {}
 
 export const ProductsUpsert: React.FC<ProductsProps> = ({}) => {
   const productStore = useSnapshot(AdminProductsStore);
-  const router = useRouter();
-
-  const createProduct = async (e: FormEvent) => {
-    e.preventDefault();
-
-    const getToken = cookie.parse(document.cookie);
-    const userId = getToken["userId"];
-
-    try {
-      const response: ProductsProps = await axios.post(
-        `${process.env.NEXT_PUBLIC_REST_ENDPOINT}/api/createProduct`,
-        {
-          title: productStore.title,
-          description: productStore.description,
-          smallDescription: productStore.smallDescription,
-          price: `${productStore.price}€`,
-          userId: userId,
-          discount: `${productStore.discount}%`,
-        }
-      );
-
-      console.log(response);
-
-      return toast.success("Product created");
-    } catch (err) {
-      return toast.error("An error occured");
-    }
-  };
+  const [imageUrl, setImageUrl] = useState("");
 
   const buttonActions = (
     <div className="flex justify-end space-x-5">
@@ -57,10 +28,18 @@ export const ProductsUpsert: React.FC<ProductsProps> = ({}) => {
 
   return (
     <form
-      onSubmit={createProduct}
+      onSubmit={(e) => productStore.createProduct(e as FormEvent)}
       className="space-y-8 divide-y divide-gray-700 rounded-md bg-container p-5 text-white"
     >
-      <Toaster position="top-right" />
+      {imageUrl && (
+        <Image
+          src={imageUrl}
+          alt="Selected Image"
+          width={100}
+          height={100}
+        />
+      )}
+
       <div className="space-y-8 divide-y divide-gray-700 sm:space-y-5">
         <div className="space-y-6 sm:space-y-5">
           <div>
@@ -97,7 +76,7 @@ export const ProductsUpsert: React.FC<ProductsProps> = ({}) => {
               onChange={(e) => productStore.setSmallDescription(e.target.value)}
               type="text"
               Icon={CgRename}
-              placeholder={"Productt Small Description (optional)"}
+              placeholder={"Product Small Description (optional)"}
               name={"description"}
               id={"description"}
             />
@@ -115,14 +94,18 @@ export const ProductsUpsert: React.FC<ProductsProps> = ({}) => {
 
             <Input
               type="file"
-              value={productStore.price}
-              onChange={(e) => productStore.setPrice(e.target.value)}
+              onChange={(e) => {
+                if (e.target.files && e.target.files.length > 0) {
+                  const selectedFile = e.target.files[0];
+                  const temporaryUrl = URL.createObjectURL(selectedFile);
+                  setImageUrl(temporaryUrl);
+                }
+              }}
               Icon={MdOutlineFileUpload}
               className="text-2xl"
               placeholder={"Product File Upload"}
-              name={"price"}
-              id={"price"}
-              required
+              name={"File Upload"}
+              id={"Product File Upload"}
             />
           </div>
         </div>

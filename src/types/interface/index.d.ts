@@ -21,3 +21,12 @@ export interface AuthProps {
   password: string;
   confirmPassword?: string;
 }
+
+export interface AdminQrCodeProps {
+  userId: number;
+  tableNumber: string;
+  createdAt: string;
+  image: string;
+  backgroundColor: string;
+  dotsOptions: string;
+}

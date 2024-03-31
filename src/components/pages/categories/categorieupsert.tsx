@@ -1,43 +1,16 @@
 import { FormEvent } from "react";
 import { Toaster } from "sonner";
 import { CgRename } from "react-icons/cg";
-import axios from "axios";
-import { toast } from "sonner";
 import { useSnapshot } from "valtio";
 import { Input } from "@/components/ui/input";
 import { AiOutlineSave } from "react-icons/ai";
 import { AdminCategoryStore } from "@/store/admin/AdminCategory";
 import { Button } from "@/components/ui/button";
-import cookie from "cookie";
 
 interface CategoriesUpsertProps {}
 
 export const CategoriesUpsert: React.FC<CategoriesUpsertProps> = ({}) => {
   const categorieStore = useSnapshot(AdminCategoryStore);
-
-  console.log();
-
-  const createCategorie = async (e: FormEvent) => {
-    e.preventDefault();
-
-    const getToken = cookie.parse(document.cookie);
-    const userId = getToken["userId"];
-
-    try {
-      const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_REST_ENDPOINT}/api/createCategory`,
-        {
-          title: categorieStore.title,
-          description: categorieStore.description,
-          userId: userId,
-        }
-      );
-      console.log(response);
-      toast.success("Categorie created");
-    } catch (err) {
-      toast.error("An error occured");
-    }
-  };
 
   const buttonActions = (
     <div className="flex justify-end space-x-5">
@@ -49,10 +22,9 @@ export const CategoriesUpsert: React.FC<CategoriesUpsertProps> = ({}) => {
 
   return (
     <form
-      onSubmit={createCategorie}
+      onSubmit={(e) => categorieStore.createCategories(e as FormEvent)}
       className="space-y-8 divide-y divide-gray-700 rounded-md bg-container p-5 text-white"
     >
-      <Toaster position="top-right" />
       <div className="space-y-8 divide-y divide-gray-700 sm:space-y-5">
         <div className="space-y-6 sm:space-y-5">
           <div>
