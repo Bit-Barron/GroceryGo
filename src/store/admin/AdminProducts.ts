@@ -12,6 +12,11 @@ export const AdminProductsStore = proxy({
     AdminProductsStore.subpage = subpage;
   },
 
+  product: [],
+  setProduct: (product: any) => {
+    AdminProductsStore.product = product;
+  },
+
   price: "",
   setPrice: (price: string) => {
     AdminProductsStore.price = price;
@@ -69,6 +74,7 @@ export const AdminProductsStore = proxy({
           description: AdminProductsStore.description,
           title: AdminProductsStore.title,
           smallDescription: AdminProductsStore.smallDescription,
+          category: AdminProductsStore.categories,
         }
       );
 
@@ -86,8 +92,26 @@ export const AdminProductsStore = proxy({
       const response = await axios.get(
         `${process.env.NEXT_PUBLIC_REST_ENDPOINT}/api/getProductsById/${id}`
       );
+
+      AdminProductsStore.setProduct(response.data);
+      return response;
     } catch (err) {
       console.error(err);
+    }
+  },
+
+  deleteProductById: async (id: number) => {
+    try {
+      console.log("daddysimson");
+      const res = await axios.delete(
+        `${process.env.NEXT_PUBLIC_REST_ENDPOINT}/api/deleteProductById/${id}`
+      );
+
+      console.log(res.data);
+      return toast.success("Product deleted");
+    } catch (err) {
+      console.log(err);
+      return toast.error("An error occured");
     }
   },
 });

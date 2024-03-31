@@ -1,6 +1,7 @@
 import { ProductsProps } from "../../types/interface/index";
 import { db } from "../db";
 import { ProductModel } from "../db/schema";
+import { eq } from "drizzle-orm";
 
 export async function createProduct({
   description,
@@ -10,6 +11,7 @@ export async function createProduct({
   userId,
   discount,
   imageId,
+  category,
 }: ProductsProps) {
   try {
     const product = db.insert(ProductModel).values({
@@ -21,6 +23,7 @@ export async function createProduct({
       discount,
       createdAt: new Date(),
       imageId,
+      category,
     });
 
     return product;
@@ -39,13 +42,24 @@ export async function deleteProduict({ id }: any) {
   }
 }
 
-export async function getProductsById({ id }: any) {
+export async function getProductsById({ userId }: any) {
   try {
     const user = db
       .select()
       .from(ProductModel)
-      .where({ id } as any);
+      .where(eq(userId, ProductModel.userId));
 
+    return user;
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+export async function deleteProductById({ productId }: any) {
+  try {
+    const user = db.delete(ProductModel).where(eq(productId, ProductModel.id));
+
+    console.log(user);
     return user;
   } catch (err) {
     console.error(err);

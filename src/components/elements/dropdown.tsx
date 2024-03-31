@@ -8,7 +8,7 @@ interface DropdownProps {
   label: string;
   value?: string | null;
   onChange: (value?: string) => void;
-  values: { name: string; icon?: [string, string] }[];
+  values: { title: string; icon?: [string, string] }[];
 }
 
 export const Dropdown: React.FC<DropdownProps> = ({
@@ -22,14 +22,14 @@ export const Dropdown: React.FC<DropdownProps> = ({
   const filteredValues =
     query === ""
       ? values
-      : values.filter(({ name }) =>
-          name.toLowerCase().includes(query.toLowerCase())
+      : values.filter(({ title }) =>
+          title.toLowerCase().includes(query.toLowerCase())
         );
 
-  const current = values.find((v) => v.name === value);
+  const current = values.find((v) => v.title === value);
 
   return (
-    <div className="">
+    <div className="!text-white">
       <label
         htmlFor={label}
         className="block text-sm font-medium  sm:mt-px sm:pt-2"
@@ -51,7 +51,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
                 <Combobox.Input
                   className="w-full border-inputBord bg-transparent p-2 outline-none focus-within:border-main"
                   onChange={(event) => setQuery(event.target.value)}
-                  displayValue={() => (current ? current.name : "")}
+                  displayValue={() => (current ? current.title : "")}
                 />
                 <div className="absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none">
                   {value ? (
@@ -71,10 +71,10 @@ export const Dropdown: React.FC<DropdownProps> = ({
 
               {filteredValues.length > 0 && (
                 <Combobox.Options className="absolute z-10 max-h-60 w-full overflow-auto rounded-md bg-containerAlt py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                  {filteredValues.map(({ name, icon }) => (
+                  {filteredValues.map(({ title, icon }) => (
                     <Combobox.Option
-                      key={name}
-                      value={name}
+                      key={title}
+                      value={title}
                       className={({ active }) =>
                         classNames(
                           "relative hover:bg-primary cursor-pointer select-none py-2 px-3",
@@ -83,7 +83,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
                       }
                     >
                       <div className="flex justify-between">
-                        <span className="block">{name}</span>
+                        <span className="block">{title}</span>
                       </div>
                     </Combobox.Option>
                   ))}

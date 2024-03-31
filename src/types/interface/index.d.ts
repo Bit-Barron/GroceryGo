@@ -7,6 +7,9 @@ export interface ProductsProps {
   userId: number;
   discount: string;
   imageId: string;
+  category: string;
+  createdAt?: string;
+  id?: number;
 }
 
 export interface CategoriesProps {

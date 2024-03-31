@@ -9,6 +9,6 @@ CategoriesController.post("/createCategories", ({ body }) => {
   return createCategory(body as CategoriesProps);
 });
 
-CategoriesController.get("/getCategoriesById/:id", ({ params: { id } }) => {
-  return getCategoriesById({ id });
+CategoriesController.get("/getCategoriesById/:userId", ({ params: { userId } }) => {
+  return getCategoriesById({ userId });
 });

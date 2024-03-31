@@ -1,6 +1,7 @@
 import { db } from "../db";
 import { CategoriesModel } from "../db/schema";
 import { CategoriesProps } from "../../types/interface/index";
+import { eq } from "drizzle-orm";
 
 export async function createCategory({
   description,
@@ -21,12 +22,14 @@ export async function createCategory({
   }
 }
 
-export async function getCategoriesById({ id }: any) {
+export async function getCategoriesById({ userId }: any) {
   try {
-    const categories = db
+    // get all categories by id
+
+    const categories = await db
       .select()
       .from(CategoriesModel)
-      .where({ id } as any);
+      .where(eq(userId, CategoriesModel.userId));
 
     return categories;
   } catch (err) {

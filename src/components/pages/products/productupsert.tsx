@@ -15,6 +15,7 @@ import { PiSubtitles } from "react-icons/pi";
 import { CldImage, CldUploadButton } from "next-cloudinary";
 import { cn } from "@/lib/utils";
 import { Dropdown } from "@/components/elements/dropdown";
+import { CategoriesProps } from "@/types/interface";
 
 interface ProductsProps {}
 
@@ -27,6 +28,7 @@ type UploadResult = {
 
 export const ProductsUpsert: React.FC<ProductsProps> = ({}) => {
   const productStore = useSnapshot(AdminProductsStore);
+  const [categories, setCategories] = useState<CategoriesProps[]>([]);
 
   const buttonActions = (
     <div className="flex justify-end space-x-5">
@@ -40,12 +42,14 @@ export const ProductsUpsert: React.FC<ProductsProps> = ({}) => {
     const getCategory = async () => {
       try {
         const getUserId = cookie.parse(document.cookie);
-        const userId = getUserId["userId"];
+        const id = getUserId["userId"];
 
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_REST_ENDPOINT}/api/getProductsById/${userId}`
+          `${process.env.NEXT_PUBLIC_REST_ENDPOINT}/api/getCategoriesById/${id}`
         );
-        console.log(response.data);
+
+        setCategories(response.data);
+        return response;
       } catch (err) {
         toast.error("An error occured");
       }
@@ -142,12 +146,8 @@ export const ProductsUpsert: React.FC<ProductsProps> = ({}) => {
           <Dropdown
             label={""}
             onChange={(value) => productStore.setCategories(value as string)}
-            values={[
-              { name: "Electronics" },
-              { name: "Clothing" },
-              { name: "Shoes" },
-              { name: "Accessories" },
-            ]}
+            values={categories.map((c) => ({ title: c.title }))}
+            value={productStore.categories || ""}
           />
         </div>
         <div className="space-y-3 pt-8 sm:space-y-5 sm:pt-10">
