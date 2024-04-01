@@ -1,7 +1,6 @@
 import { ProductsProps } from "../../types/interface/index";
 import { db } from "../db";
 import { ProductModel } from "../db/schema";
-import { toast } from "sonner";
 import { eq } from "drizzle-orm";
 
 export async function createProduct({

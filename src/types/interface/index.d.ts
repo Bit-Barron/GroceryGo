@@ -35,3 +35,13 @@ export interface AdminQrCodeProps {
   backgroundColor: string;
   dotsOptions: string;
 }
+
+export interface OrderProps {
+  userId: number;
+  productId: number;
+  quantity: number;
+  tableNumber: string;
+  createdAt: string;
+  id: number;
+  paymentMethod: string;
+}

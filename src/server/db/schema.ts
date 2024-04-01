@@ -36,3 +36,13 @@ export const QrCodeModel = pgTable("qrcodes", {
   dotsOptions: text("dots_options").notNull(),
   userId: integer("user_id").references(() => UserModel.id),
 });
+
+export const OrderModel = pgTable("orders", {
+  id: serial("id").primaryKey(),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+  userId: integer("user_id").references(() => UserModel.id),
+  productId: integer("product_id").notNull(),
+  quantity: integer("quantity").notNull(),
+  tableNumber: text("table_number").notNull(),
+  paymentMethod: text("payment_method").notNull(),
+});

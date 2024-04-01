@@ -51,6 +51,7 @@ export const AdminCategoryStore = proxy({
         }
       );
 
+      window.location.reload();
       toast.success("Category Created Successfully");
       return categories;
     } catch (err) {

@@ -57,6 +57,8 @@ export const AdminQrCodeStore = proxy({
         }
       );
 
+      window.location.reload();
+
       toast.success("Qr Code Created Successfully");
       return qrCode;
     } catch (err) {

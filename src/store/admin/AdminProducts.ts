@@ -78,6 +78,7 @@ export const AdminProductsStore = proxy({
         }
       );
 
+      window.location.reload();
       return toast.success("Product created");
     } catch (err) {
       return toast.error("An error occured");
