@@ -32,7 +32,7 @@ export const AdminChart = () => {
       datasets: [
         {
           label: "Sales $",
-          data: [18127, 22201, 19490, 17938, 24182, 17842, 22475],
+          data: [1, 2, 3, 4, 5, 6, 8, 9, 10, 11],
           borderColor: "bg-blue-500",
           backgroundColor: "#3498db",
         },

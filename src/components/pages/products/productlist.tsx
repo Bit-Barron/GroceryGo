@@ -82,6 +82,7 @@ export const ProductsList: React.FC<ProductsListProps> = ({}) => {
                         src={product.imageId}
                         width={100}
                         height={100}
+                        className="rounded-md w-20 h-20 object-cover"
                       />
                     </p>
                   )}

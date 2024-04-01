@@ -27,7 +27,7 @@ export const CategoriesUpsert: React.FC<CategoriesUpsertProps> = ({}) => {
       <div className="space-y-8 divide-y divide-gray-700 sm:space-y-5">
         <div className="space-y-6 sm:space-y-5">
           <div>
-            <h3 className="text-lg font-medium leading-6">Category</h3>
+            <h3 className="text-lg font-medium leading-6">Categories</h3>
             <p className="mt-1 max-w-2xl text-sm ">
               This Information will be displayed publicly
             </p>
@@ -39,7 +39,7 @@ export const CategoriesUpsert: React.FC<CategoriesUpsertProps> = ({}) => {
               onChange={(e) => categorieStore.setTitle(e.target.value)}
               type="text"
               Icon={CgRename}
-              placeholder={"Category Title"}
+              placeholder={"Categories Title"}
               id={"title"}
               required
               maxLength={20}
@@ -49,7 +49,7 @@ export const CategoriesUpsert: React.FC<CategoriesUpsertProps> = ({}) => {
               onChange={(e) => categorieStore.setDescription(e.target.value)}
               type="text"
               Icon={CgRename}
-              placeholder={"Category Description (optional)"}
+              placeholder={"Categories Description (optional)"}
               id={"title"}
               maxLength={20}
             />

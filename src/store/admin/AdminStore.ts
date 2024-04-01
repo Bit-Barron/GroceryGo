@@ -16,9 +16,11 @@ const adminStoreProxy = proxy<AdminStore>({
     { name: "Dashboard", Icon: MdDashboardCustomize, current: true },
     { name: "Products", Icon: BiFoodMenu, current: false },
     { name: "Categories", Icon: BiCategoryAlt, current: false },
+    { name: "Create Menu", Icon: IoMdCreate, current: false },
     { name: "Order", Icon: AiOutlineShoppingCart, current: false },
     { name: "Order History", Icon: AiOutlineHistory, current: false },
     { name: "Create QR-Code", Icon: IoMdCreate, current: false },
+
   ],
   setAdminTab: (name: AdminTabType) => {
     adminStoreProxy.adminTabs = adminStoreProxy.adminTabs.map((t) => ({

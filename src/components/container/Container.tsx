@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
-import { Searchbar } from "./admin/seachbar";
-import { DesktopSidebar } from "./admin/desktopsidebar";
-import { MobileSidebar } from "./admin/mobilesidebar";
+import { Searchbar } from "../elements/admin/seachbar";
+import { DesktopSidebar } from "../elements/admin/desktopsidebar";
+import { MobileSidebar } from "../elements/admin/mobilesidebar";
 import { AdminStore } from "@/store/admin/AdminStore";
 import { AuthStore } from "@/store/AuthStore";
 import { useRouter } from "next/navigation";

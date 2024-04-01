@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { AdminCard } from "@/components/elements/card";
-import { CategoriesProps, ProductsProps } from "@/types/interface";
 import { AdminChart } from "@/components/elements/chart";
 import { AdminOrders } from "@/components/elements/order";
 import { useSnapshot } from "valtio";

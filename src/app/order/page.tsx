@@ -1,10 +1,12 @@
 "use client";
 
+import { AiOutlinePlus } from "react-icons/ai";
 import React, { useEffect } from "react";
 import { AdminProductsStore } from "@/store/admin/AdminProducts";
 import { useSnapshot } from "valtio";
-import { ProductsProps } from "@/types/interface";
+import { CategoriesProps, ProductsProps } from "@/types/interface";
 import { AdminCategoryStore } from "@/store/admin/AdminCategory";
+import { CldImage } from "next-cloudinary";
 
 interface pageProps {}
 
@@ -25,24 +27,12 @@ const Page: React.FC<pageProps> = ({}) => {
     if (location.search) {
       extractParamsAndSaveAsCookies();
     }
-  }, [categoryStore, productStore]);
-
-  console.log(productStore.product, categoryStore.category);
+  }, []);
 
   return (
-    <>
-      <div className="!text-black !bg-white !h-screen">
-        {productStore.product.map((item: ProductsProps) => (
-          <div key={item.id}>
-            <h1>{item.title}</h1>
-            <p>{item.description}</p>
-            <p>{item.price}</p>
-            <p>{item.discount}</p>
-            <p>{item.category}</p>
-          </div>
-        ))}
-      </div>
-    </>
+    <div className="!bg-white !h-screen">
+      <div></div>
+    </div>
   );
 };
 export default Page;
