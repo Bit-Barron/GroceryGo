@@ -17,7 +17,7 @@ export const QrCodeList: React.FC<QrCodeListProps> = ({}) => {
 
   return (
     <div>
-      <div className="md:grid md:grid-cols-2 md:gap-10">
+      <div className="">
         {qrCodeStore.qrCode.map((qrcode: AdminQrCodeProps, idx) => (
           <div
             key={idx}
@@ -44,14 +44,13 @@ export const QrCodeList: React.FC<QrCodeListProps> = ({}) => {
 
               <div className="flex flex-col md:flex md:flex-row md:items-end md:justify-between mt-2">
                 <div className="order-1 text-sm text-gray-400 space-y-2">
-                  <Button
-                    Icon={MdDelete}
+                  <div
                     onClick={() => {
                       qrCodeStore.deleteQrCodeById(qrcode.id);
                     }}
                   >
-                    Löschen
-                  </Button>
+                    <MdDelete className="text-xl" />
+                  </div>
                 </div>
               </div>
             </div>

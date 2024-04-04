@@ -17,7 +17,7 @@ export const CategoriesList: React.FC<CategoriesListProps> = ({}) => {
 
   return (
     <div>
-      <div className="md:grid md:grid-cols-2 md:gap-10">
+      <div className="">
         {categoriesStore.category.map((categories: CategoriesProps, idx) => (
           <div
             key={idx}
@@ -46,14 +46,13 @@ export const CategoriesList: React.FC<CategoriesListProps> = ({}) => {
                     </span>
                   </p>
 
-                  <Button
-                    Icon={MdDelete}
+                  <div
                     onClick={() => {
                       categoriesStore.deleteCategoriesById(categories.id);
                     }}
                   >
-                    Löschen
-                  </Button>
+                    <MdDelete className="text-xl" />
+                  </div>
                 </div>
               </div>
             </div>

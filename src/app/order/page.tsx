@@ -1,12 +1,9 @@
 "use client";
 
-import { AiOutlinePlus } from "react-icons/ai";
 import React, { useEffect } from "react";
 import { AdminProductsStore } from "@/store/admin/AdminProducts";
 import { useSnapshot } from "valtio";
-import { CategoriesProps, ProductsProps } from "@/types/interface";
 import { AdminCategoryStore } from "@/store/admin/AdminCategory";
-import { CldImage } from "next-cloudinary";
 
 interface pageProps {}
 

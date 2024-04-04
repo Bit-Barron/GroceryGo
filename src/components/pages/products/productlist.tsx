@@ -21,7 +21,7 @@ export const ProductsList: React.FC<ProductsListProps> = ({}) => {
 
   return (
     <>
-      <div className="md:grid md:grid-cols-2 md:gap-10">
+      <div className="">
         {productStore.product.map((product: ProductsProps, idx) => (
           <div
             key={idx}
@@ -87,14 +87,13 @@ export const ProductsList: React.FC<ProductsListProps> = ({}) => {
                     </p>
                   )}
 
-                  <Button
-                    Icon={MdDelete}
+                  <div
                     onClick={() => {
                       productStore.deleteProductById(product.id as number);
                     }}
                   >
-                    Löschen
-                  </Button>
+                    <MdDelete className="text-xl" />
+                  </div>
                 </div>
               </div>
             </div>

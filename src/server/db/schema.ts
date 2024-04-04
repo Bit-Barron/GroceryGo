@@ -46,3 +46,9 @@ export const OrderModel = pgTable("orders", {
   tableNumber: text("table_number").notNull(),
   paymentMethod: text("payment_method").notNull(),
 });
+
+export const MenuModel = pgTable("menu", {
+  id: serial("id").primaryKey(),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+  productName: text("product_name").notNull(),
+});

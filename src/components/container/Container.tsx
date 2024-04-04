@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { UploadMenu } from "../pages/uploadmenu/uploadmenu";
 import { AiOutlineMenu } from "react-icons/ai";
 import { Searchbar } from "../elements/admin/seachbar";
 import { DesktopSidebar } from "../elements/admin/desktopsidebar";
@@ -105,7 +106,8 @@ export const Container: React.FC<AdminContainerProps> = ({}) => {
           {currentTab?.name === "Products" && <Products />}
           {currentTab?.name === "Categories" && <Categories />}
           {currentTab?.name === "Order History" && <OrderHistory />}
-          {currentTab?.name === "Create QR-Code" && <QrCode />}
+          {currentTab?.name === "Creat QR-Code" && <QrCode />}
+          {currentTab?.name === "Upload Menu Cart" && <UploadMenu />}
         </div>
       </div>
     </>

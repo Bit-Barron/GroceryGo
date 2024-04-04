@@ -4,7 +4,7 @@ export type AdminTabType =
   | "Products"
   | "Create QR-Code"
   | "Categories"
-  | "Create Menu"
+  | "Upload Menu Cart"
 
 export type AdminTab = {
   Icon: IconType;
