@@ -3,10 +3,8 @@ import cookie from "cookie";
 import { toast } from "sonner";
 import axios from "axios";
 import { Button } from "@/components/ui/button";
-import { CldImage } from "next-cloudinary";
 import { AiOutlineSave } from "react-icons/ai";
 import { Input } from "@/components/ui/input";
-import { AdminProductsStore } from "@/store/admin/AdminProducts";
 import { useSnapshot } from "valtio";
 import { AdminMenuStore } from "@/store/admin/AdminMenu";
 
@@ -68,18 +66,15 @@ export const UploadMenuUpsert: React.FC<UploadMenuUpsertProps> = ({}) => {
       }));
 
       for (let i = 0; i < getProductName.length; i++) {
-        const response = adminMenuStore.createProductMenu({
+        adminMenuStore.createMenu({
           productName: getProductData[i].productName,
           productPrice: getProductData[i].productPrice,
           productDescription: getProductData[i].productDescription,
           productCategory: getProductData[i].productCategory,
           userId: parseInt(userId),
         });
-
-        console.log(response);
-
-        toast.success("Menu Uploaded Successfully");
       }
+      return toast.success("Menu Uploaded Successfully");
     } catch (error) {
       toast.error("Error: Menu not uploaded");
       console.error("Error: ", error);

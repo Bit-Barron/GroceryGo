@@ -1,6 +1,7 @@
 import { db } from "../db";
 import { MenuModel } from "../db/schema";
 import { ProductDataProps } from "@/store/admin/AdminMenu";
+import { eq } from "drizzle-orm";
 
 export async function createMenu({
   productName,
@@ -20,6 +21,19 @@ export async function createMenu({
     });
 
     return product;
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+export async function getMenuById({ userId }: any) {
+  try {
+    const user = db
+      .select()
+      .from(MenuModel)
+      .where(eq(userId, MenuModel.userId));
+
+    return user;
   } catch (err) {
     console.error(err);
   }
