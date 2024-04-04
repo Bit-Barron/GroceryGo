@@ -1,10 +1,10 @@
 import { FormEvent } from "react";
 import { CgRename } from "react-icons/cg";
 import { useSnapshot } from "valtio";
-import { Input } from "@/components/ui/input";
+import { Input } from "@/components/ui/Input";
 import { AiOutlineSave } from "react-icons/ai";
 import { AdminCategoryStore } from "@/store/admin/AdminCategory";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/Button";
 
 interface CategoriesUpsertProps {}
 

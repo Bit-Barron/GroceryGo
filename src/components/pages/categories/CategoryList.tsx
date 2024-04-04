@@ -3,7 +3,7 @@ import { CategoriesProps } from "@/types/interface";
 import { useSnapshot } from "valtio";
 import React, { useEffect } from "react";
 import { MdDelete } from "react-icons/md";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/Button";
 import { TbFileDescription } from "react-icons/tb";
 
 interface CategoriesListProps {}

@@ -1,9 +1,9 @@
 import React from "react";
 import { useSnapshot } from "valtio";
 import { AdminProductsStore } from "@/store/admin/AdminProducts";
-import { Button } from "@/components/ui/button";
-import { ProductsList } from "./productlist";
-import { ProductsUpsert } from "./productupsert";
+import { Button } from "@/components/ui/Button";
+import { ProductsList } from "./ProductList";
+import { ProductsUpsert } from "./ProductUpsert";
 
 export const Products: React.FC = ({}) => {
   const productStore = useSnapshot(AdminProductsStore);

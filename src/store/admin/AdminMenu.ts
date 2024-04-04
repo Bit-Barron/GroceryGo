@@ -10,6 +10,7 @@ export type ProductDataProps = {
   productDescription: string;
   productCategory: string;
   userId: number;
+  id?: number;
 };
 
 export const AdminMenuStore = proxy({
@@ -27,7 +28,7 @@ export const AdminMenuStore = proxy({
           productName,
           productCategory,
           productDescription,
-          productPrice,
+          productPrice: `${productPrice}€`,
           userId,
         }
       );
@@ -42,6 +43,8 @@ export const AdminMenuStore = proxy({
   setMenuData: (data: ProductDataProps[]) => {
     AdminMenuStore.menuData = data;
   },
+
+  subpage: "menu" as string,
 
   getMenuById: async () => {
     try {
@@ -58,5 +61,16 @@ export const AdminMenuStore = proxy({
     }
   },
 
-  deleteMenuById: async (userId: number) => {},
+  deleteMenuById: async (id: number) => {
+    try {
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_REST_ENDPOINT}/api/deleteMenuById/${id}`
+      );
+      console.log(response.data);
+      AdminMenuStore.getMenuById();
+      window.location.reload();
+    } catch (err) {
+      console.error(err);
+    }
+  },
 });

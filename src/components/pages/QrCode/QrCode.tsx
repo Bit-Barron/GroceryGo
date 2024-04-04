@@ -1,9 +1,9 @@
 import React from "react";
 import { useSnapshot } from "valtio";
 import { AdminProductsStore } from "@/store/admin/AdminProducts";
-import { Button } from "@/components/ui/button";
-import { QrCodeList } from "./qrcodelist";
-import { QrCodeUpsert } from "./qrcodeupsert";
+import { Button } from "@/components/ui/Button";
+import { QrCodeList } from "./QrCodeList";
+import { QrCodeUpsert } from "./QrCodeUpsert";
 
 export const QrCode: React.FC = ({}) => {
   const productStore = useSnapshot(AdminProductsStore);

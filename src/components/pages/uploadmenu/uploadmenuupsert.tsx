@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import cookie from "cookie";
 import { toast } from "sonner";
 import axios from "axios";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/Button";
 import { AiOutlineSave } from "react-icons/ai";
-import { Input } from "@/components/ui/input";
+import { Input } from "@/components/ui/Input";
 import { useSnapshot } from "valtio";
 import { AdminMenuStore } from "@/store/admin/AdminMenu";
 
@@ -27,7 +27,7 @@ export const UploadMenuUpsert: React.FC<UploadMenuUpsertProps> = ({}) => {
     const userId = getUserId["userId"];
 
     const data = {
-      url: "https://cdn.discordapp.com/attachments/1225089995027513344/1225092666950418612/WhatsApp_Bild_2024-04-02_um_09.59.57_0da00050.jpg?ex=661fdf74&is=660d6a74&hm=9f2de5aa68f4c6408cbe4b41f65a825bd1bdb3cdc9cc695564b47d1a0e5587a2&",
+      url: "https://cdn.discordapp.com/attachments/1220880200448081952/1225330206844129340/WhatsApp_Bild_2024-04-02_um_11.21.50_9ae89261.jpg?ex=6620bcae&is=660e47ae&hm=6fa9feb5e971df719224628fcff612e9e992a10b9fa60bed20b790645a2cd0b7&",
       question:
         'Give the prices, category, description and product in a json, format it like that {"products": [{"category":"","name":"","price", "description": FLOAT}]}. dont set a code block around it, just send it as a json string.',
       restaurantId: userId,

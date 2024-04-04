@@ -1,9 +1,9 @@
 import React from "react";
 import { useSnapshot } from "valtio";
 import { AdminCategoryStore } from "@/store/admin/AdminCategory";
-import { Button } from "@/components/ui/button";
-import { CategoriesList } from "./categorielist";
-import { CategoriesUpsert } from "./categorieupsert";
+import { Button } from "@/components/ui/Button";
+import { CategoriesList } from "./CategoryList";
+import { CategoriesUpsert } from "./CategoryUpsert";
 
 interface CategoriesProps {}
 

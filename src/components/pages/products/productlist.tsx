@@ -5,7 +5,7 @@ import { CldImage } from "next-cloudinary";
 import { AdminProductsStore } from "@/store/admin/AdminProducts";
 import { ProductsProps } from "@/types/interface";
 import { MdDelete } from "react-icons/md";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/Button";
 import { MdOutlineDiscount } from "react-icons/md";
 import { IoPricetag } from "react-icons/io5";
 import { TbFileDescription } from "react-icons/tb";

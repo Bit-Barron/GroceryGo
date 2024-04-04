@@ -4,8 +4,8 @@ import QRCodeStyling from "qr-code-styling";
 import { AiOutlineSave } from "react-icons/ai";
 import { MdDriveFileRenameOutline, MdOutlineColorize } from "react-icons/md";
 import { useSnapshot } from "valtio";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/Input";
+import { Button } from "@/components/ui/Button";
 
 interface AdminTablesUpsertProps {}
 const qrCode = new QRCodeStyling({});

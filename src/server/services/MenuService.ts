@@ -38,3 +38,12 @@ export async function getMenuById({ userId }: any) {
     console.error(err);
   }
 }
+
+export async function deleteMenuById({ id }: any) {
+  try {
+    const menu = db.delete(MenuModel).where(eq(id, MenuModel.id));
+    return menu;
+  } catch (err) {
+    console.error(err);
+  }
+}

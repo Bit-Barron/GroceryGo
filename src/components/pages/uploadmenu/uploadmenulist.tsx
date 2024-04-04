@@ -58,14 +58,18 @@ export const UploadMenuList: React.FC<UploadMenuListProps> = ({}) => {
                 </p>
 
                 <div onClick={() => {}}>
-                  <MdDelete className="text-xl" />
+                  <MdDelete
+                    className="text-xl"
+                    onClick={() =>
+                      adminMenuStore.deleteMenuById(menu.id as number)
+                    }
+                  />
                 </div>
               </div>
             </div>
           </div>
         </div>
       ))}
-      asdasd
     </div>
   );
 };
