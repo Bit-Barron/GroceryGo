@@ -12,16 +12,8 @@ import { AdminMenuStore } from "@/store/admin/AdminMenu";
 
 interface UploadMenuUpsertProps {}
 
-type UploadResult = {
-  info: {
-    public_id: string;
-  };
-  event: "success";
-};
-
 export const UploadMenuUpsert: React.FC<UploadMenuUpsertProps> = ({}) => {
-  const [imageId, setImageId] = useState<string | null>(null);
-  const [data, setData] = useState<UploadResult | null>(null);
+  const [imageUrl, setImageUrl] = useState<string>("");
   const adminMenuStore = useSnapshot(AdminMenuStore);
 
   const buttonActions = (
@@ -104,14 +96,6 @@ export const UploadMenuUpsert: React.FC<UploadMenuUpsertProps> = ({}) => {
               This Information will be displayed publicly
             </p>
           </div>
-          {imageId && (
-            <CldImage
-              alt={"Product Image"}
-              src={imageId}
-              width={100}
-              height={100}
-            />
-          )}
 
           <div className="space-y-6 sm:space-y-5">
             <Input type="file" />
