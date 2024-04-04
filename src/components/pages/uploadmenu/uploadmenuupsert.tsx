@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import cookie from "cookie";
+import { toast } from "sonner";
 import axios from "axios";
 import { Button } from "@/components/ui/button";
 import { CldImage } from "next-cloudinary";
@@ -47,7 +48,6 @@ export const UploadMenuUpsert: React.FC<UploadMenuUpsertProps> = ({}) => {
         "http://127.0.0.1:5000/image/vision",
         data
       );
-      // Check if data is present
       if (!response.data || !response.data[0] || !response.data[0].response) {
         console.error("Error: Response data not in the expected format");
         return;
@@ -68,13 +68,28 @@ export const UploadMenuUpsert: React.FC<UploadMenuUpsertProps> = ({}) => {
         (item: any) => item.name
       );
 
+      const getProductData = formattedData.products.map((item: any) => ({
+        productName: item.name,
+        productPrice: item.price,
+        productDescription: item.description,
+        productCategory: item.category,
+      }));
+
       for (let i = 0; i < getProductName.length; i++) {
         const response = adminMenuStore.createProductMenu({
-          productName: getProductName[i],
-        } as any);
+          productName: getProductData[i].productName,
+          productPrice: getProductData[i].productPrice,
+          productDescription: getProductData[i].productDescription,
+          productCategory: getProductData[i].productCategory,
+          userId: parseInt(userId),
+        });
+
         console.log(response);
+
+        toast.success("Menu Uploaded Successfully");
       }
     } catch (error) {
+      toast.error("Error: Menu not uploaded");
       console.error("Error: ", error);
     }
   }

@@ -51,4 +51,8 @@ export const MenuModel = pgTable("menu", {
   id: serial("id").primaryKey(),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   productName: text("product_name").notNull(),
+  productPrice: text("product_price").notNull(),
+  productDescription: text("product_description").notNull(),
+  productCategory: text("product_category").notNull(),
+  userId: integer("user_id").references(() => UserModel.id),
 });

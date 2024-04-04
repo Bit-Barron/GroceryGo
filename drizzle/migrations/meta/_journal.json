@@ -169,6 +169,20 @@
       "when": 1712208093283,
       "tag": "0023_shiny_viper",
       "breakpoints": true
+    },
+    {
+      "idx": 24,
+      "version": "5",
+      "when": 1712209062273,
+      "tag": "0024_mixed_typhoid_mary",
+      "breakpoints": true
+    },
+    {
+      "idx": 25,
+      "version": "5",
+      "when": 1712209365166,
+      "tag": "0025_legal_scrambler",
+      "breakpoints": true
     }
   ]
 }
