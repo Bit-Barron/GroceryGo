@@ -39,7 +39,6 @@ export async function getCategoriesById({ userId }: any) {
 
 export async function deleteCategoriesById({ categoryId }: any) {
   try {
-    console.log(categoryId);
     const categories = await db
       .delete(CategoriesModel)
       .where(eq(categoryId, CategoriesModel.id));

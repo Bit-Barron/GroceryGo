@@ -11,8 +11,8 @@ import { AdminMenuStore } from "@/store/admin/AdminMenu";
 interface UploadMenuUpsertProps {}
 
 export const UploadMenuUpsert: React.FC<UploadMenuUpsertProps> = ({}) => {
-  const [imageUrl, setImageUrl] = useState<string>("");
   const adminMenuStore = useSnapshot(AdminMenuStore);
+  const [uploadFile, setUploadFile] = useState<File | null>(null);
 
   const buttonActions = (
     <div className="flex justify-end space-x-5 p-1.5 border-gray-700">
@@ -93,7 +93,12 @@ export const UploadMenuUpsert: React.FC<UploadMenuUpsertProps> = ({}) => {
           </div>
 
           <div className="space-y-6 sm:space-y-5">
-            <Input type="file" />
+            <Input
+              type="file"
+              onChange={(e) =>
+                e.target.files && setUploadFile(e.target.files[0])
+              }
+            />
             <Button onClick={() => uploadMenu()}>Upload Menu</Button>
           </div>
         </div>

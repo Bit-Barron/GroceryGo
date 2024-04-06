@@ -76,8 +76,6 @@ export const AdminQrCodeStore = proxy({
         `${process.env.NEXT_PUBLIC_REST_ENDPOINT}/api/getQrCodeById/${userId}`
       );
 
-      console.log(qrCode.data);
-
       AdminQrCodeStore.setQrCode(qrCode.data);
       return qrCode;
     } catch (err) {

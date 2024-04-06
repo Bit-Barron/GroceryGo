@@ -32,7 +32,6 @@ export const AdminMenuStore = proxy({
           userId,
         }
       );
-      console.log(response.data);
       return response;
     } catch (err) {
       console.error(err);
@@ -55,7 +54,6 @@ export const AdminMenuStore = proxy({
       );
 
       AdminMenuStore.setMenuData(response.data);
-      console.log(response.data);
     } catch (err) {
       console.error(err);
     }
@@ -66,7 +64,6 @@ export const AdminMenuStore = proxy({
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_REST_ENDPOINT}/api/deleteMenuById/${id}`
       );
-      console.log(response.data);
       AdminMenuStore.getMenuById();
       window.location.reload();
     } catch (err) {

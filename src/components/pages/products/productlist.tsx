@@ -42,35 +42,39 @@ export const ProductsList: React.FC<ProductsListProps> = ({}) => {
               </div>
               <div className="flex flex-col md:flex md:flex-row md:items-end md:justify-between mt-2">
                 <div className="order-1 text-sm text-gray-400 space-y-2">
-                  <p className="flex items-center space-x-1">
-                    <TbFileDescription className="text-main" />
+                  <p className="flex items-center space-x-1 text-white">
+                    <TbFileDescription className="text-main text-white font-bold" />
                     <span>description: </span>
                     <span className="">
                       {product.description || "product description"}
                     </span>
                   </p>
-                  <p className="flex items-center space-x-1">
-                    <IoPricetag />
+                  <p className="flex items-center space-x-1 text-green-600">
+                    <IoPricetag className="font-bold" />
                     <span>price: </span>
-                    <span>{product.price || "no price selected"}€</span>
+                    <span className="font-bold">
+                      {product.price || "no price selected"}€
+                    </span>
                   </p>
 
-                  <p className="flex items-center space-x-1">
-                    <BiCategoryAlt className="text-main" />
+                  <p className="flex items-center space-x-1 text-blue-700">
+                    <BiCategoryAlt className="text-maine" />
                     <span>category: </span>
-                    <span>{product.category || "no category selected"}</span>
+                    <span className="font-bold">
+                      {product.category || "no category selected"}
+                    </span>
                   </p>
 
-                  <p className="flex items-center space-x-1">
+                  <p className="flex items-center space-x-1 text-red-600">
                     <MdOutlineDiscount className="text-main" />
                     <span>discount: </span>
-                    <span>{product.discount || "0%"}</span>
+                    <span className="font-bold">{product.discount || "0%"}</span>
                   </p>
 
-                  <p className="flex items-center space-x-1">
+                  <p className="flex items-center space-x-1 text-white">
                     <TbFileDescription className="text-main" />
                     <span>small description </span>
-                    <span>
+                    <span className="font-bold">
                       {product.smallDescription || "no small description"}
                     </span>
                   </p>
@@ -92,7 +96,7 @@ export const ProductsList: React.FC<ProductsListProps> = ({}) => {
                       productStore.deleteProductById(product.id as number);
                     }}
                   >
-                    <MdDelete className="text-xl" />
+                    <MdDelete className="text-xl text-red-700 font-bold" />
                   </div>
                 </div>
               </div>

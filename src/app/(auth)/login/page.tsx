@@ -4,7 +4,6 @@ import React from "react";
 import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
 import { useRouter } from "next/navigation";
-import { Toaster } from "sonner";
 import { FaRegUser } from "react-icons/fa";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { AuthStore } from "@/store/AuthStore";

@@ -16,7 +16,7 @@ import { Dashboard } from "../pages/dashboard/Dashboard";
 import { Products } from "../pages/products/Product";
 import { Categories } from "../pages/categories/Category";
 import { OrderHistory } from "../pages/orderhistory/Order";
-import { QrCode } from "../pages/qrcode/qrcode";
+import { QrCode } from "../pages/qrcode/QrCode";
 import cookie from "cookie";
 import axios from "axios";
 

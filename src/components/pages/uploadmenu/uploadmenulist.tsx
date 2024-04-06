@@ -38,28 +38,32 @@ export const UploadMenuList: React.FC<UploadMenuListProps> = ({}) => {
             </div>
             <div className="flex flex-col md:flex md:flex-row md:items-end md:justify-between mt-2">
               <div className="order-1 text-sm text-gray-400 space-y-2">
-                <p className="flex items-center space-x-1">
-                  <TbFileDescription className="text-main" />
+                <p className="flex items-center space-x-1 text-white">
+                  <TbFileDescription className="text-main text-white font-bold" />
                   <span>description: </span>
                   <span className="">
                     {menu.productDescription || "menu description"}
                   </span>
                 </p>
-                <p className="flex items-center space-x-1">
-                  <IoPricetag />
+                <p className="flex items-center space-x-1 text-green-600">
+                  <IoPricetag className="font-bold" />
                   <span>price: </span>
-                  <span>{menu.productPrice || "no price selected"}€</span>
+                  <span className="font-bold">
+                    {menu.productPrice || "no price selected"}
+                  </span>
                 </p>
 
-                <p className="flex items-center space-x-1">
+                <p className="flex items-center space-x-1 text-blue-700">
                   <BiCategoryAlt className="text-main" />
                   <span>category: </span>
-                  <span>{menu.productCategory || "no category selected"}</span>
+                  <span className="font-bold">
+                    {menu.productCategory || "no category selected"}
+                  </span>
                 </p>
 
                 <div onClick={() => {}}>
                   <MdDelete
-                    className="text-xl"
+                    className="text-xl text-red-500 font-bold"
                     onClick={() =>
                       adminMenuStore.deleteMenuById(menu.id as number)
                     }

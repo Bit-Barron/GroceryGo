@@ -22,7 +22,6 @@ CategoriesController.get(
 CategoriesController.post(
   "/deleteCategoriesById/:categoryId",
   ({ params: { categoryId } }) => {
-    console.log(categoryId);
     return deleteCategoriesById({ categoryId });
   }
 );

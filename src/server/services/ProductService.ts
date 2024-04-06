@@ -1,3 +1,4 @@
+import { cookies } from "next/headers";
 import { ProductsProps } from "../../types/interface/index";
 import { db } from "../db";
 import { ProductModel } from "../db/schema";
@@ -33,7 +34,11 @@ export async function createProduct({
 }
 
 export async function deleteProduct({ id }: any) {
+  // get userid
   try {
+
+    
+
     const user = db.delete(ProductModel).where({ id } as any);
 
     return user;

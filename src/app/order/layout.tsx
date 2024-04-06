@@ -1,6 +1,5 @@
 import React from "react";
 import { AiOutlineHome, AiFillHeart } from "react-icons/ai";
-import { AiOutlineUser } from "react-icons/ai";
 import { MdDiscount } from "react-icons/md";
 import { CiShoppingBasket } from "react-icons/ci";
 
