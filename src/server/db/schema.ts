@@ -55,4 +55,5 @@ export const MenuModel = pgTable("menu", {
   productDescription: text("product_description").notNull(),
   productCategory: text("product_category").notNull(),
   userId: integer("user_id").references(() => UserModel.id),
+  imageId: text("image_id").notNull().default("no image"),
 });

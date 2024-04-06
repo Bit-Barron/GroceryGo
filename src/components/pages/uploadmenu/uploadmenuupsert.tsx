@@ -13,6 +13,7 @@ interface UploadMenuUpsertProps {}
 export const UploadMenuUpsert: React.FC<UploadMenuUpsertProps> = ({}) => {
   const adminMenuStore = useSnapshot(AdminMenuStore);
   const [uploadFile, setUploadFile] = useState<File | null>(null);
+  const [loading, setLoading] = useState(false);
 
   const buttonActions = (
     <div className="flex justify-end space-x-5 p-1.5 border-gray-700">
@@ -23,6 +24,7 @@ export const UploadMenuUpsert: React.FC<UploadMenuUpsertProps> = ({}) => {
   );
 
   async function uploadMenu() {
+    setLoading(true);
     const getUserId = cookie.parse(document.cookie);
     const userId = getUserId["userId"];
 
@@ -74,10 +76,12 @@ export const UploadMenuUpsert: React.FC<UploadMenuUpsertProps> = ({}) => {
           userId: parseInt(userId),
         });
       }
-      return toast.success("Menu Uploaded Successfully");
+      toast.success("Menu Uploaded Successfully");
     } catch (error) {
       toast.error("Error: Menu not uploaded");
       console.error("Error: ", error);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -99,7 +103,7 @@ export const UploadMenuUpsert: React.FC<UploadMenuUpsertProps> = ({}) => {
                 e.target.files && setUploadFile(e.target.files[0])
               }
             />
-            <Button onClick={() => uploadMenu()}>Upload Menu</Button>
+            <Button onClick={() => uploadMenu()}>{loading ? 'Loading...' : 'Upload Menu'}</Button>
           </div>
         </div>
       </div>

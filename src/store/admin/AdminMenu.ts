@@ -1,6 +1,7 @@
 import axios from "axios";
 import { proxy } from "valtio";
 import cookie from "cookie";
+import { toast } from "sonner";
 
 export type AdminMenuStore = typeof AdminMenuStore;
 
@@ -32,6 +33,8 @@ export const AdminMenuStore = proxy({
           userId,
         }
       );
+
+      toast.success("Menu created successfully");
       return response;
     } catch (err) {
       console.error(err);
@@ -66,6 +69,31 @@ export const AdminMenuStore = proxy({
       );
       AdminMenuStore.getMenuById();
       window.location.reload();
+      toast.success("Menu deleted successfully");
+    } catch (err) {
+      console.error(err);
+    }
+  },
+
+  imageId: "",
+  setImageId: (imageId: string) => {
+    AdminMenuStore.imageId = imageId;
+  },
+
+  updateMenu: async (id: string) => {
+    try {
+      console.log("id", id);
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_REST_ENDPOINT}/api/updateMenu`,
+        {
+          imageId: AdminMenuStore.imageId,
+          id: id,
+        }
+      );
+
+      console.log(response.data);
+      toast.success("Menu updated successfully");
+      return response;
     } catch (err) {
       console.error(err);
     }

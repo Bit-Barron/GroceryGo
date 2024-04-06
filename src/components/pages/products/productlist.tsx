@@ -5,7 +5,6 @@ import { CldImage } from "next-cloudinary";
 import { AdminProductsStore } from "@/store/admin/AdminProducts";
 import { ProductsProps } from "@/types/interface";
 import { MdDelete } from "react-icons/md";
-import { Button } from "@/components/ui/Button";
 import { MdOutlineDiscount } from "react-icons/md";
 import { IoPricetag } from "react-icons/io5";
 import { TbFileDescription } from "react-icons/tb";
@@ -73,14 +72,6 @@ export const ProductsList: React.FC<ProductsListProps> = ({}) => {
                     </span>
                   </p>
 
-                  <p className="flex items-center space-x-1">
-                    <TbFileDescription className="text-main" />
-                    <span>small description </span>
-                    <span className="font-bold">
-                      {product.smallDescription || "no small description"}
-                    </span>
-                  </p>
-
                   {product.imageId && (
                     <p className="flex items-center space-x-1">
                       <CldImage
@@ -92,7 +83,7 @@ export const ProductsList: React.FC<ProductsListProps> = ({}) => {
                       />
                     </p>
                   )}
-
+                  
                   <div
                     onClick={() => {
                       productStore.deleteProductById(product.id as number);

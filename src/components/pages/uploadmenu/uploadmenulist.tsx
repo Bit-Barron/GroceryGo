@@ -1,13 +1,23 @@
 import React, { useEffect } from "react";
 import { useSnapshot } from "valtio";
+import { CldUploadButton } from "next-cloudinary";
+import { CldImage } from "next-cloudinary";
 import { TbFileDescription } from "react-icons/tb";
 import { AdminMenuStore } from "@/store/admin/AdminMenu";
 import { ProductDataProps } from "@/store/admin/AdminMenu";
 import { MdDelete } from "react-icons/md";
 import { BiCategoryAlt } from "react-icons/bi";
 import { IoPricetag } from "react-icons/io5";
+import { toast } from "sonner";
 
 interface UploadMenuListProps {}
+
+type UploadResult = {
+  info: {
+    public_id: string;
+  };
+  event: "success";
+};
 
 export const UploadMenuList: React.FC<UploadMenuListProps> = ({}) => {
   const adminMenuStore = useSnapshot(AdminMenuStore);
@@ -18,6 +28,14 @@ export const UploadMenuList: React.FC<UploadMenuListProps> = ({}) => {
 
   return (
     <div className="">
+      {adminMenuStore.imageId && (
+        <CldImage
+          alt={"Product Image"}
+          src={adminMenuStore.imageId}
+          width={100}
+          height={100}
+        />
+      )}
       {adminMenuStore.menuData.map((menu: ProductDataProps, idx) => (
         <div
           key={idx}
@@ -61,13 +79,24 @@ export const UploadMenuList: React.FC<UploadMenuListProps> = ({}) => {
                   </span>
                 </p>
 
-                <div onClick={() => {}}>
+                <div className="flex">
                   <MdDelete
                     className="text-xl font-bold text-red-500"
                     onClick={() =>
                       adminMenuStore.deleteMenuById(menu.id as number)
                     }
                   />
+                  <div>|</div>
+                  <CldUploadButton
+                    className="ml-2 font-bold"
+                    uploadPreset="w64a5icc"
+                    onSuccess={() =>
+                      adminMenuStore.updateMenu(menu.id as any)
+                    }
+                    onError={() => toast.error("An error occured")}
+                  >
+                    Upload image for the product
+                  </CldUploadButton>
                 </div>
               </div>
             </div>

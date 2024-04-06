@@ -1,3 +1,4 @@
+import { UpdateMenuProps } from "@/types/interface";
 import { db } from "../db";
 import { MenuModel } from "../db/schema";
 import { ProductDataProps } from "@/store/admin/AdminMenu";
@@ -42,6 +43,20 @@ export async function getMenuById({ userId }: any) {
 export async function deleteMenuById({ id }: any) {
   try {
     const menu = db.delete(MenuModel).where(eq(id, MenuModel.id));
+    return menu;
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+export async function updateMenuById({ imageId, id }: UpdateMenuProps) {
+  try {
+    // update imageId
+    const menu = db
+      .update(MenuModel)
+      .set({ imageId: imageId })
+      .where(eq(MenuModel.id, id!)); 
+
     return menu;
   } catch (err) {
     console.error(err);

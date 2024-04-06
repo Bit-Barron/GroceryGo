@@ -45,3 +45,9 @@ export interface OrderProps {
   id: number;
   paymentMethod: string;
 }
+
+export interface UpdateMenuProps {
+  id?: number;
+  createdAt?: string;
+  imageId: string;
+}
