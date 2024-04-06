@@ -83,8 +83,9 @@ export const AdminMenuStore = proxy({
   updateMenu: async (id: string) => {
     try {
       console.log("id", id);
+      console.log("imageId", AdminMenuStore.imageId);
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_REST_ENDPOINT}/api/updateMenu`,
+        `${process.env.NEXT_PUBLIC_REST_ENDPOINT}/api/updateMenuById`,
         {
           imageId: AdminMenuStore.imageId,
           id: id,
