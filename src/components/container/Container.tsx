@@ -3,9 +3,9 @@
 import { useEffect, useState } from "react";
 import { UploadMenu } from "../pages/uploadmenu/UploadMenu";
 import { AiOutlineMenu } from "react-icons/ai";
-import { Searchbar } from "../elements/admin/seachbar";
-import { DesktopSidebar } from "../elements/admin/desktopsidebar";
-import { MobileSidebar } from "../elements/admin/mobilesidebar";
+import { Searchbar } from "../elements/admin/Searchbar";
+import { DesktopSidebar } from "../elements/admin/DesktopSidebar";
+import { MobileSidebar } from "../elements/admin/MobileSidebar";
 import { AdminStore } from "@/store/admin/AdminStore";
 import { AuthStore } from "@/store/AuthStore";
 import { useRouter } from "next/navigation";

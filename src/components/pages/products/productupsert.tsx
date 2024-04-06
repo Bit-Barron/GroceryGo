@@ -14,7 +14,7 @@ import { Button } from "@/components/ui/Button";
 import { PiSubtitles } from "react-icons/pi";
 import { CldImage, CldUploadButton } from "next-cloudinary";
 import { cn } from "@/lib/utils";
-import { Dropdown } from "@/components/elements/dropdown";
+import { Dropdown } from "@/components/elements/Dropdown";
 import { CategoriesProps } from "@/types/interface";
 
 interface ProductsProps {}

@@ -16,7 +16,7 @@ export const Searchbar: React.FC<AdminSearchBarProps> = ({}) => {
 
   return (
     <div className="flex w-full justify-end px-4">
-      <button onClick={() => logout()}>Logout</button>
+      <button onClick={() => logout()} className="font-bold hover:text-gray-500">Logout</button>
     </div>
   );
 };

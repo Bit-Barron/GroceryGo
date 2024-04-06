@@ -6,15 +6,15 @@ interface AdminOrdersProps {}
 
 export const AdminOrders: React.FC<AdminOrdersProps> = ({}) => {
   return (
-    <div className="w-full col-span-1 relative lg:h-[70vh] h-[50vh] m-auto p-4 border rounded-lg bg-cardBackground border-cardBorder overflow-scroll ">
-      <h1 className="text-white">Recent Orders</h1>
+    <div className="w-full col-span-1 relative lg:h-[70vh] h-[50vh] overflow-hidden overflow-y-auto m-auto p-4 border rounded-lg bg-cardBackground border-cardBorder">
+      <h1 className="text-white font-bold">Recent Orders</h1>
       {mockData.map((order, id) => (
         <li
           key={id}
           className="bg-[#14161b] hover:bg-[#0d0e12] rounded-lg my-3 p-2 flex items-center cursor-pointer"
         >
-          <div className="bg-green-200 rounded-lg p-3">
-            <FaShoppingBag className="text-purple-800 " />
+          <div className="bg-secondary rounded-lg p-3">
+            <FaShoppingBag className="text-white font-bold" />
           </div>
           <div className="pl-4">
             <p className="text-whitefont-bold">${order.total}</p>

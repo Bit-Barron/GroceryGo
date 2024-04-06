@@ -42,14 +42,14 @@ export const ProductsList: React.FC<ProductsListProps> = ({}) => {
               </div>
               <div className="flex flex-col md:flex md:flex-row md:items-end md:justify-between mt-2">
                 <div className="order-1 text-sm text-gray-400 space-y-2">
-                  <p className="flex items-center space-x-1 text-white">
-                    <TbFileDescription className="text-main text-white font-bold" />
+                  <p className="flex items-center space-x-1">
+                    <TbFileDescription className="" />
                     <span>description: </span>
                     <span className="">
                       {product.description || "product description"}
                     </span>
                   </p>
-                  <p className="flex items-center space-x-1 text-green-600">
+                  <p className="flex items-center space-x-1">
                     <IoPricetag className="font-bold" />
                     <span>price: </span>
                     <span className="font-bold">
@@ -57,7 +57,7 @@ export const ProductsList: React.FC<ProductsListProps> = ({}) => {
                     </span>
                   </p>
 
-                  <p className="flex items-center space-x-1 text-blue-700">
+                  <p className="flex items-center space-x-1">
                     <BiCategoryAlt className="text-maine" />
                     <span>category: </span>
                     <span className="font-bold">
@@ -65,13 +65,15 @@ export const ProductsList: React.FC<ProductsListProps> = ({}) => {
                     </span>
                   </p>
 
-                  <p className="flex items-center space-x-1 text-red-600">
+                  <p className="flex items-center space-x-1">
                     <MdOutlineDiscount className="text-main" />
                     <span>discount: </span>
-                    <span className="font-bold">{product.discount || "0%"}</span>
+                    <span className="font-bold">
+                      {product.discount || "0%"}
+                    </span>
                   </p>
 
-                  <p className="flex items-center space-x-1 text-white">
+                  <p className="flex items-center space-x-1">
                     <TbFileDescription className="text-main" />
                     <span>small description </span>
                     <span className="font-bold">
@@ -96,7 +98,7 @@ export const ProductsList: React.FC<ProductsListProps> = ({}) => {
                       productStore.deleteProductById(product.id as number);
                     }}
                   >
-                    <MdDelete className="text-xl text-red-700 font-bold" />
+                    <MdDelete className="text-xl font-bold text-red-500" />
                   </div>
                 </div>
               </div>

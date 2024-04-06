@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import { AdminCard } from "@/components/elements/card";
-import { AdminChart } from "@/components/elements/chart";
-import { AdminOrders } from "@/components/elements/order";
+import { useEffect } from "react";
+import { AdminCard } from "@/components/elements/Card";
+import { AdminChart } from "@/components/elements/Chart";
+import { AdminOrders } from "@/components/elements/Order";
 import { useSnapshot } from "valtio";
 import { AdminCategoryStore } from "@/store/admin/AdminCategory";
 import { AdminProductsStore } from "@/store/admin/AdminProducts";

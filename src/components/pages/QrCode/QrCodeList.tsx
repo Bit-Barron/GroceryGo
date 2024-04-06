@@ -49,7 +49,7 @@ export const QrCodeList: React.FC<QrCodeListProps> = ({}) => {
                       qrCodeStore.deleteQrCodeById(qrcode.id);
                     }}
                   >
-                    <MdDelete className="text-xl" />
+                    <MdDelete className="text-xl font-bold text-red-500" />
                   </div>
                 </div>
               </div>

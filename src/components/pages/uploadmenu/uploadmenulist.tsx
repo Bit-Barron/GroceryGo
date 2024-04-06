@@ -36,16 +36,16 @@ export const UploadMenuList: React.FC<UploadMenuListProps> = ({}) => {
                 {menu.productDescription || "no title"}
               </p>
             </div>
-            <div className="flex flex-col md:flex md:flex-row md:items-end md:justify-between mt-2">
+            <div className="flex flex-col md:flex md:flex-row md:items-end md:justify-between mt-">
               <div className="order-1 text-sm text-gray-400 space-y-2">
-                <p className="flex items-center space-x-1 text-white">
-                  <TbFileDescription className="text-main text-white font-bold" />
-                  <span>description: </span>
+                <p className="flex items-center space-x-1">
+                  <TbFileDescription className="text-main font-bold" />
+                  <span className="text-gray-400">description: </span>
                   <span className="">
                     {menu.productDescription || "menu description"}
                   </span>
                 </p>
-                <p className="flex items-center space-x-1 text-green-600">
+                <p className="flex items-center space-x-1">
                   <IoPricetag className="font-bold" />
                   <span>price: </span>
                   <span className="font-bold">
@@ -53,7 +53,7 @@ export const UploadMenuList: React.FC<UploadMenuListProps> = ({}) => {
                   </span>
                 </p>
 
-                <p className="flex items-center space-x-1 text-blue-700">
+                <p className="flex items-center space-x-1">
                   <BiCategoryAlt className="text-main" />
                   <span>category: </span>
                   <span className="font-bold">
@@ -63,7 +63,7 @@ export const UploadMenuList: React.FC<UploadMenuListProps> = ({}) => {
 
                 <div onClick={() => {}}>
                   <MdDelete
-                    className="text-xl text-red-500 font-bold"
+                    className="text-xl font-bold text-red-500"
                     onClick={() =>
                       adminMenuStore.deleteMenuById(menu.id as number)
                     }

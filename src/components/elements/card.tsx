@@ -18,8 +18,8 @@ export const AdminCard: React.FC<AdminCardProps> = ({
           <p className="text-2xl font-bold text-white">{`${amount}`}</p>
           <p className="text-white">{description}</p>
         </div>
-        <p className="bg-green-200 flex justify-center items-center p-4 rounded-lg">
-          <span className="text-green-700 text-lg">{`+${percentage}`}</span>
+        <p className="bg-secondary flex justify-center items-center p-4 rounded-lg">
+          <span className="text-white font-bold text-lg">{`+${percentage}`}</span>
         </p>
       </div>
     </div>

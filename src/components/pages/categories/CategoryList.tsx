@@ -51,7 +51,7 @@ export const CategoriesList: React.FC<CategoriesListProps> = ({}) => {
                       categoriesStore.deleteCategoriesById(categories.id);
                     }}
                   >
-                    <MdDelete className="text-xl" />
+                    <MdDelete className="text-xl font-bold text-red-500" />
                   </div>
                 </div>
               </div>

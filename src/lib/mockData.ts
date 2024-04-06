@@ -128,6 +128,42 @@ export const mockData = [
     method: "Stripe",
     date: "2 Days ago",
   },
+  {
+    id: 11,
+    name: {
+      first: "Isabella",
+      last: "Wong",
+    },
+    email: "isabella.wong@example.com",
+    total: 135.5,
+    status: "Refunded",
+    method: "Stripe",
+    date: "2 Days ago",
+  },
+  {
+    id: 12,
+    name: {
+      first: "Isabella",
+      last: "Wong",
+    },
+    email: "isabella.wong@example.com",
+    total: 135.5,
+    status: "Refunded",
+    method: "Stripe",
+    date: "2 Days ago",
+  },
+  {
+    id: 12,
+    name: {
+      first: "Isabella",
+      last: "Wong",
+    },
+    email: "isabella.wong@example.com",
+    total: 135.5,
+    status: "Refunded",
+    method: "Stripe",
+    date: "2 Days ago",
+  },
 ];
 
 export type Payment = {

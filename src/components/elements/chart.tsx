@@ -33,8 +33,8 @@ export const AdminChart = () => {
         {
           label: "Sales $",
           data: [1, 2, 3, 4, 5, 6, 8, 9, 10, 11],
-          borderColor: "bg-blue-500",
-          backgroundColor: "#3498db",
+          borderColor: "#3B82F6",
+          backgroundColor: "#3B82F6",
         },
       ],
     } as any);
