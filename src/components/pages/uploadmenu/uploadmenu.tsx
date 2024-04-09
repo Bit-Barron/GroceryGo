@@ -1,7 +1,7 @@
 import React from "react";
 import { useSnapshot } from "valtio";
-import { UploadMenuUpsert } from "@/components/pages/uploadmenu/UploadMenuUpsert";
-import { UploadMenuList } from "@/components/pages/uploadmenu/UploadMenuList";
+import { UploadMenuUpsert } from "@/components/pages/uploadMenu/UploadMenuUpsert";
+import { UploadMenuList } from "@/components/pages/uploadMenu/UploadMenuList";
 import { AdminProductsStore } from "@/store/admin/AdminProducts";
 import { Button } from "@/components/ui/Button";
 

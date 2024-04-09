@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { UploadMenu } from "../pages/uploadmenu/UploadMenu";
+import { UploadMenu } from "../pages/uploadMenu/UploadMenu";
 import { AiOutlineMenu } from "react-icons/ai";
 import { Searchbar } from "../elements/admin/Searchbar";
 import { DesktopSidebar } from "../elements/admin/DesktopSidebar";
@@ -15,7 +15,7 @@ import { RxExit } from "react-icons/rx";
 import { Dashboard } from "../pages/dashboard/Dashboard";
 import { Products } from "../pages/products/Product";
 import { Categories } from "../pages/categories/Category";
-import { OrderHistory } from "../pages/orderhistory/Order";
+import { OrderHistory } from "../pages/orderhistory/OrderHistory";
 import { QrCode } from "../pages/qrcode/QrCode";
 import cookie from "cookie";
 import axios from "axios";
