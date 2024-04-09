@@ -23,6 +23,7 @@ export const UploadMenuUpsert: React.FC<UploadMenuUpsertProps> = ({}) => {
     </div>
   );
 
+
   async function uploadMenu() {
     setLoading(true);
     const getUserId = cookie.parse(document.cookie);

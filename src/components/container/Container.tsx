@@ -13,7 +13,7 @@ import { useSnapshot } from "valtio";
 import { AdminTabType } from "@/types/store";
 import { RxExit } from "react-icons/rx";
 import { Dashboard } from "../pages/Dashboard";
-import { Products } from "../pages/products/Product";
+import { Products } from "../pages/product/Product";
 import { Categories } from "../pages/category/Category";
 import { OrderHistory } from "../pages/OrderHistory";
 import { QrCode } from "../pages/qrcode/QrCode";
