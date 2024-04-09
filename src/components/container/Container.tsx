@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { UploadMenu } from "../pages/uploadMenu/UploadMenu";
+import { UploadMenu } from "../pages/uploadmenu/UploadMenu";
 import { AiOutlineMenu } from "react-icons/ai";
 import { Searchbar } from "../elements/admin/Searchbar";
 import { DesktopSidebar } from "../elements/admin/DesktopSidebar";
@@ -12,10 +12,10 @@ import { useRouter } from "next/navigation";
 import { useSnapshot } from "valtio";
 import { AdminTabType } from "@/types/store";
 import { RxExit } from "react-icons/rx";
-import { Dashboard } from "../pages/dashboard/Dashboard";
+import { Dashboard } from "../pages/Dashboard";
 import { Products } from "../pages/products/Product";
-import { Categories } from "../pages/categories/Category";
-import { OrderHistory } from "../pages/orderhistory/OrderHistory";
+import { Categories } from "../pages/category/Category";
+import { OrderHistory } from "../pages/OrderHistory";
 import { QrCode } from "../pages/qrcode/QrCode";
 import cookie from "cookie";
 import axios from "axios";
