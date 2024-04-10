@@ -1,5 +1,8 @@
+"use client"
+
 import React from "react";
 import { AiOutlineHome } from "react-icons/ai";
+import { useRouter } from "next/navigation";
 import { MdDiscount } from "react-icons/md";
 import { CiShoppingBasket } from "react-icons/ci";
 import { BiCategoryAlt } from "react-icons/bi";
@@ -8,10 +11,12 @@ interface layoutProps {
   children: React.ReactNode;
 }
 
-const layout: React.FC<layoutProps> = ({ children }) => {
+const Layout: React.FC<layoutProps> = ({ children }) => {
+  const router = useRouter();
+
   return (
-    <div className="">
-      <div className="fixed bottom-0 w-full p-5 bg-[#008000] text-white text-center">
+    <div className="!bg-white">
+      <div className="fixed bottom-0 mt-6 w-full p-5 bg-[#008000] text-white text-center">
         <div className="flex justify-between p-2">
           <div>
             <AiOutlineHome className="scale-150" />
@@ -20,7 +25,7 @@ const layout: React.FC<layoutProps> = ({ children }) => {
             <MdDiscount className="scale-150" />
           </div>
           <div>
-            <BiCategoryAlt className="scale-150" />
+            <BiCategoryAlt className="scale-150" onClick={() => router.push("/home/categories")} />
           </div>
           <div>
             <CiShoppingBasket className="scale-150" />
@@ -31,4 +36,4 @@ const layout: React.FC<layoutProps> = ({ children }) => {
     </div>
   );
 };
-export default layout;
+export default Layout;
