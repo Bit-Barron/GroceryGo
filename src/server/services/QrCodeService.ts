@@ -20,7 +20,7 @@ export const createQrCode = async ({
 
     return qrCode;
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 };
 
@@ -33,7 +33,7 @@ export const getQrCodeById = async ({ userId }: any) => {
 
     return qrCode;
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 };
 
@@ -43,6 +43,6 @@ export const deleteQrCodeById = async ({ qrCodeId }: any) => {
 
     return qrCode;
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 };

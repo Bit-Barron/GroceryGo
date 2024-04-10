@@ -23,7 +23,6 @@ export const AdminMenuStore = proxy({
     userId,
   }: ProductDataProps) => {
     try {
-      console.log("productName", productName);
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_REST_ENDPOINT}/api/createMenu`,
         {
@@ -90,7 +89,7 @@ export const AdminMenuStore = proxy({
           id: id,
         }
       );
-      console.log(response.data);
+      console.error(response.data);
       toast.success("Menu updated successfully");
       return response;
     } catch (err) {

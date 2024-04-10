@@ -111,7 +111,7 @@ export const AdminProductsStore = proxy({
 
       return toast.success("Product deleted");
     } catch (err) {
-      console.log(err);
+      console.error(err);
       return toast.error("An error occured");
     }
   },
