@@ -7,7 +7,7 @@ import { FormEvent } from "react";
 export type AdminQrCodeStore = typeof AdminQrCodeStore;
 
 export const AdminQrCodeStore = proxy({
-  subpage: "list",
+  subpage: "upsert",
   setSubpage: (subpage: "list" | "upsert") => {
     AdminQrCodeStore.subpage = subpage;
   },

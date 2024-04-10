@@ -7,7 +7,7 @@ import { toast } from "sonner";
 export type AdminProductsStore = typeof AdminCategoryStore;
 
 export const AdminCategoryStore = proxy({
-  subpage: "list",
+  subpage: "upsert",
   setSubpage: (subpage: "list" | "upsert") => {
     AdminCategoryStore.subpage = subpage;
   },
@@ -46,10 +46,11 @@ export const AdminCategoryStore = proxy({
         {
           title: AdminCategoryStore.title,
           description: AdminCategoryStore.description,
-          image: AdminCategoryStore.image,
           userId,
         }
       );
+
+      console.log(categories.data)
 
       window.location.reload();
       toast.success("Category Created Successfully");

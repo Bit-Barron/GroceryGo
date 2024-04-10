@@ -7,7 +7,7 @@ import { toast } from "sonner";
 export type AdminProductsStore = typeof AdminProductsStore;
 
 export const AdminProductsStore = proxy({
-  subpage: "list",
+  subpage: "upsert",
   setSubpage: (subpage: "list" | "upsert") => {
     AdminProductsStore.subpage = subpage;
   },
