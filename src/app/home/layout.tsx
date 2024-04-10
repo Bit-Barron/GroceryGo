@@ -1,7 +1,8 @@
 import React from "react";
-import { AiOutlineHome, AiFillHeart } from "react-icons/ai";
+import { AiOutlineHome } from "react-icons/ai";
 import { MdDiscount } from "react-icons/md";
 import { CiShoppingBasket } from "react-icons/ci";
+import { BiCategoryAlt } from "react-icons/bi";
 
 interface layoutProps {
   children: React.ReactNode;
@@ -19,7 +20,7 @@ const layout: React.FC<layoutProps> = ({ children }) => {
             <MdDiscount className="scale-150" />
           </div>
           <div>
-            <AiFillHeart className="scale-150" />
+            <BiCategoryAlt className="scale-150" />
           </div>
           <div>
             <CiShoppingBasket className="scale-150" />

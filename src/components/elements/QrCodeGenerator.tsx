@@ -22,7 +22,7 @@ const QRCodeGenerator: React.FC<QRCodeGeneratorProps> = ({ table }) => {
     const qrCodeInstance = qrCodeInstanceRef?.current;
     if (qrCodeRef.current && qrCodeInstance) {
       qrCodeInstance.update({
-        data: `http://localhost:3000/order?restaurantid=${userId}&tablenumber=${table.tableNumber}`,
+        data: `http://localhost:3000/home/order?restaurantid=${userId}&tablenumber=${table.tableNumber}`,
 
         height: 100,
         width: 100,
@@ -57,8 +57,10 @@ const QRCodeGenerator: React.FC<QRCodeGeneratorProps> = ({ table }) => {
   }, [scannedData, router]);
 
   const simulateQRCodeScan = () => {
-    const generatedLink = `http://localhost:3000/order?restaurantid=${userId}&tablenumber=${table.tableNumber}`;
+    console.log("Simulating QR-Code scan");
+    const generatedLink = `http://localhost:3000/home/order?restaurantid=${userId}&tablenumber=${table.tableNumber}`;
     setScannedData(generatedLink);
+    return router.push(`http://localhost:3000/home/order?restaurantid=${userId}&tablenumber=${table.tableNumber}`);
   };
 
   return (
@@ -66,7 +68,7 @@ const QRCodeGenerator: React.FC<QRCodeGeneratorProps> = ({ table }) => {
       <div className="mt-10">
         <div ref={qrCodeRef} />
       </div>
-      <button onClick={simulateQRCodeScan}>QR-Code scannen (Simuliert)</button>
+      <button onClick={() => simulateQRCodeScan()}>QR-Code scannen (Simuliert)</button>
       <p>
         Scanned Data:
         {scannedData}

@@ -1,5 +1,6 @@
 "use client";
 
+import cookie from 'cookie';
 import React, { useEffect } from "react";
 import { AdminProductsStore } from "@/store/admin/AdminProducts";
 import { useSnapshot } from "valtio";
@@ -17,8 +18,16 @@ const Page: React.FC<pageProps> = ({}) => {
       const tablenumber = url.searchParams.get("tablenumber");
       const restaurantid = url.searchParams.get("restaurantid");
 
-      productStore.getProductById();
-      categoryStore.getCategoriesById();
+      if (tablenumber && restaurantid) {
+        document.cookie = cookie.serialize("tablenumber", tablenumber);
+        document.cookie = cookie.serialize("restaurantid", restaurantid);
+      }
+
+      url.searchParams.delete("tablenumber");
+      url.searchParams.delete("restaurantid");
+      const cleanedURL = url.toString();
+
+      window.location.href = cleanedURL;
     };
 
     if (location.search) {

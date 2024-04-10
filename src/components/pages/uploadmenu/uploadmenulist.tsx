@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useSnapshot } from "valtio";
-import { CldUploadButton } from "next-cloudinary";
 import { CldImage } from "next-cloudinary";
 import { TbFileDescription } from "react-icons/tb";
 import { AdminMenuStore } from "@/store/admin/AdminMenu";
@@ -8,7 +7,6 @@ import { ProductDataProps } from "@/store/admin/AdminMenu";
 import { MdDelete } from "react-icons/md";
 import { BiCategoryAlt } from "react-icons/bi";
 import { IoPricetag } from "react-icons/io5";
-import { toast } from "sonner";
 
 interface UploadMenuListProps {}
 
