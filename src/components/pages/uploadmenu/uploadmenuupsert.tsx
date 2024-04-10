@@ -41,12 +41,13 @@ export const UploadMenuUpsert: React.FC<UploadMenuUpsertProps> = ({}) => {
         "http://127.0.0.1:5000/image/vision",
         data
       );
-      if (!response.data || !response.data[0] || !response.data[0].response) {
-        console.error("Error: Response data not in the expected format");
+
+      const responseData = JSON.parse(response.data.response);
+
+      if (!responseData.products) {
+        toast.error("Error: No products found in the image");
         return;
       }
-
-      const responseData = JSON.parse(response.data[0].response);
 
       const formattedData = {
         products: responseData.products.map((product: any) => ({

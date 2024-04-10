@@ -101,7 +101,6 @@ export const ProductsUpsert: React.FC<ProductsProps> = ({}) => {
               name={"description"}
               id={"description"}
               maxLength={100}
-              required
             />
 
             <Input
