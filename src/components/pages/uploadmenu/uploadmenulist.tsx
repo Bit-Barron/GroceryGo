@@ -86,18 +86,6 @@ export const UploadMenuList: React.FC<UploadMenuListProps> = ({}) => {
                       adminMenuStore.deleteMenuById(menu.id as number)
                     }
                   />
-                  <div>|</div>
-                  <CldUploadButton
-                    className="ml-2 font-bold"
-                    uploadPreset="w64a5icc"
-                    onSuccess={(result: UploadResult | any) => {
-                      adminMenuStore.setImageId(result.info_public_id);
-                      adminMenuStore.updateMenu(menu.id as any);
-                    }}
-                    onError={() => toast.error("An error occured")}
-                  >
-                    Upload image for the product
-                  </CldUploadButton>
                 </div>
               </div>
             </div>
