@@ -1,7 +1,7 @@
 import React from "react";
 import { useSnapshot } from "valtio";
 import { AdminProductsStore } from "@/store/admin/AdminProducts";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/elements/Button";
 import { ProductsList } from "./ProductList";
 import { ProductsUpsert } from "./ProductUpsert";
 

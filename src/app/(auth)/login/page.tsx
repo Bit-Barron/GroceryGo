@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import { Input } from "@/components/ui/Input";
-import { Button } from "@/components/ui/Button";
+import { Input } from "@/components/ui/elements/Input";
+import { Button } from "@/components/ui/elements/Button";
 import { useRouter } from "next/navigation";
 import { FaRegUser } from "react-icons/fa";
 import { RiLockPasswordLine } from "react-icons/ri";

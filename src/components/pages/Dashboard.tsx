@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import { AdminCard } from "@/components/elements/Card";
-import { AdminChart } from "@/components/elements/Chart";
-import { AdminOrders } from "@/components/elements/Order";
+import { AdminCard } from "@/components/ui/dashboard/DashboardCard";
+import { AdminChart } from "@/components/ui/dashboard/DashboardChart";
+import { AdminOrders } from "@/components/ui/dashboard/DashboardOrder";
 import { useSnapshot } from "valtio";
 import { AdminCategoryStore } from "@/store/admin/AdminCategory";
 import { AdminProductsStore } from "@/store/admin/AdminProducts";

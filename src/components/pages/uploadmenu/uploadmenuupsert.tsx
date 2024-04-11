@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import cookie from "cookie";
 import { toast } from "sonner";
 import axios from "axios";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/elements/Button";
 import { AiOutlineSave } from "react-icons/ai";
-import { Input } from "@/components/ui/Input";
+import { Input } from "@/components/ui/elements/Input";
 import { useSnapshot } from "valtio";
 import { AdminMenuStore } from "@/store/admin/AdminMenu";
 
@@ -22,7 +22,6 @@ export const UploadMenuUpsert: React.FC<UploadMenuUpsertProps> = ({}) => {
       </Button>
     </div>
   );
-
 
   async function uploadMenu() {
     setLoading(true);
@@ -105,7 +104,9 @@ export const UploadMenuUpsert: React.FC<UploadMenuUpsertProps> = ({}) => {
                 e.target.files && setUploadFile(e.target.files[0])
               }
             />
-            <Button onClick={() => uploadMenu()}>{loading ? 'Loading...' : 'Upload Menu'}</Button>
+            <Button onClick={() => uploadMenu()}>
+              {loading ? "Loading..." : "Upload Menu"}
+            </Button>
           </div>
         </div>
       </div>

@@ -2,19 +2,19 @@ import { AdminProductsStore } from "@/store/admin/AdminProducts";
 import cookie from "cookie";
 import { toast } from "sonner";
 import axios from "axios";
-import { buttonVariants } from "@/components/ui/Button";
+import { buttonVariants } from "@/components/ui/elements/Button";
 import React, { FormEvent, useEffect, useState } from "react";
 import { useSnapshot } from "valtio";
 import { CgRename } from "react-icons/cg";
-import { Input } from "@/components/ui/Input";
+import { Input } from "@/components/ui/elements/Input";
 import { FaDollarSign } from "react-icons/fa";
 import { MdOutlineDiscount } from "react-icons/md";
 import { AiOutlineSave } from "react-icons/ai";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/elements/Button";
 import { PiSubtitles } from "react-icons/pi";
 import { CldImage, CldUploadButton } from "next-cloudinary";
 import { cn } from "@/lib/utils";
-import { Dropdown } from "@/components/elements/Dropdown";
+import { Dropdown } from "@/components/ui/elements/Dropdown";
 import { CategoriesProps } from "@/types/interface";
 
 interface ProductsProps {}

@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import { useSnapshot } from "valtio";
 import { CategoriesProps } from "@/types/interface";
 import { AdminCategoryStore } from "@/store/admin/AdminCategory";
-import { Card, CardContent } from "@/components/ui/Card";
+import { Card, CardContent } from "@/components/ui/elements/Card";
 
 interface pageProps {}
 
