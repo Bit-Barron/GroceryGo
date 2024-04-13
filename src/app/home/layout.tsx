@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React from "react";
 import { AiOutlineHome } from "react-icons/ai";
@@ -15,20 +15,29 @@ const Layout: React.FC<layoutProps> = ({ children }) => {
   const router = useRouter();
 
   return (
-    <div className="!bg-white">
+    <div className="!bg-white !h-screen">
       <div className="fixed bottom-0 mt-6 w-full p-5 bg-[#008000] text-white text-center">
         <div className="flex justify-between p-2">
           <div>
-            <AiOutlineHome className="scale-150" />
+            <AiOutlineHome
+              className="scale-150"
+              onClick={() => router.push("/home/product")}
+            />
           </div>
           <div>
-            <MdDiscount className="scale-150" />
+            <MdDiscount
+              className="scale-150"
+              onClick={() => router.push("/home/discount")}
+            />
           </div>
           <div>
-            <BiCategoryAlt className="scale-150" onClick={() => router.push("/home/categories")} />
+            <BiCategoryAlt
+              className="scale-150"
+              onClick={() => router.push("/home/categories")}
+            />
           </div>
           <div>
-            <CiShoppingBasket className="scale-150" />
+            <CiShoppingBasket className="scale-150" onClick={() => router.push("/home/product")} />
           </div>
         </div>
       </div>

@@ -22,7 +22,7 @@ const QRCodeGenerator: React.FC<QRCodeGeneratorProps> = ({ table }) => {
     const qrCodeInstance = qrCodeInstanceRef?.current;
     if (qrCodeRef.current && qrCodeInstance) {
       qrCodeInstance.update({
-        data: `http://localhost:3000/home/order?restaurantid=${userId}&tablenumber=${table.tableNumber}`,
+        data: `http://localhost:3000/home/product?restaurantid=${userId}&tablenumber=${table.tableNumber}`,
 
         height: 100,
         width: 100,
@@ -58,9 +58,9 @@ const QRCodeGenerator: React.FC<QRCodeGeneratorProps> = ({ table }) => {
 
   const simulateQRCodeScan = () => {
     console.log("Simulating QR-Code scan");
-    const generatedLink = `http://localhost:3000/home/order?restaurantid=${userId}&tablenumber=${table.tableNumber}`;
+    const generatedLink = `http://localhost:3000/home/product?restaurantid=${userId}&tablenumber=${table.tableNumber}`;
     setScannedData(generatedLink);
-    return router.push(`http://localhost:3000/home/order?restaurantid=${userId}&tablenumber=${table.tableNumber}`);
+    return router.push(`http://localhost:3000/home/product?restaurantid=${userId}&tablenumber=${table.tableNumber}`);
   };
 
   return (
