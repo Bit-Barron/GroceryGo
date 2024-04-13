@@ -62,14 +62,14 @@ export const login = async ({ email, password }: AuthProps) => {
 
   const jwtCookie = CookieStore.set("token", token);
 
-  const userId = user[0].id;
+  const userId = user[0].id.toString(); // Convert userId to string
 
-  CookieStore.set("userId", userId as any);
+  CookieStore.set("userId", userId);
 
   return jwtCookie;
 };
 
-export const validateToken = async ({ token }: String | any) => {
+export const validateToken = async ({ token }: { token: string }) => {
   const verifyToken = jwt.verify(
     token,
     `${process.env.NEXT_PUBLIC_JWT_SECRET}`

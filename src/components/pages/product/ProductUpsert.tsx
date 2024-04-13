@@ -19,6 +19,13 @@ import { CategoriesProps } from "@/types/interface";
 
 interface ProductsProps {}
 
+type uploadProductType = {
+  result: {
+    info: {
+      public_id: string;
+    };
+  };
+};
 
 export const ProductsUpsert: React.FC<ProductsProps> = ({}) => {
   const productStore = useSnapshot(AdminProductsStore);

@@ -22,7 +22,7 @@ export async function createCategory({
   }
 }
 
-export async function getCategoriesById({ userId }: any) {
+export async function getCategoriesById({ userId }: { userId: any }) {
   try {
     // get all categories by id
 
