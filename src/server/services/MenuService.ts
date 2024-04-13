@@ -48,17 +48,3 @@ export async function deleteMenuById({ id }: any) {
     console.error(err);
   }
 }
-
-export async function updateMenuById({ imageId, id }: UpdateMenuProps) {
-  try {
-    // update imageId
-    const menu = db
-      .update(MenuModel)
-      .set({ imageId: imageId })
-      .where(eq(MenuModel.id, id!)); 
-
-    return menu;
-  } catch (err) {
-    console.error(err);
-  }
-}
