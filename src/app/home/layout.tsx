@@ -33,11 +33,14 @@ const Layout: React.FC<layoutProps> = ({ children }) => {
           <div>
             <BiCategoryAlt
               className="scale-150"
-              onClick={() => router.push("/home/categories")}
+              onClick={() => router.push("/home/category")}
             />
           </div>
           <div>
-            <CiShoppingBasket className="scale-150" onClick={() => router.push("/home/product")} />
+            <CiShoppingBasket
+              className="scale-150"
+              onClick={() => router.push("/home/order")}
+            />
           </div>
         </div>
       </div>
