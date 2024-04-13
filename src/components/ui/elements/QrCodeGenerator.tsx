@@ -10,7 +10,7 @@ interface QRCodeGeneratorProps {
 
 const QRCodeGenerator: React.FC<QRCodeGeneratorProps> = ({ table }) => {
   const qrCodeRef = useRef<null>(null);
-  const qrCodeInstanceRef = useRef<any>(null);
+  const qrCodeInstanceRef = useRef<QRCodeStyling | null>(null);
   const [scannedData, setScannedData] = useState<string | null>(null);
   const router = useRouter();
 

@@ -13,7 +13,7 @@ export const AdminCategoryStore = proxy({
   },
 
   category: [],
-  setCategory: (category: any) => {
+  setCategory: (category: never[]) => {
     AdminCategoryStore.category = category;
   },
 

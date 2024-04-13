@@ -49,24 +49,38 @@ export const UploadMenuUpsert: React.FC<UploadMenuUpsertProps> = ({}) => {
       }
 
       const formattedData = {
-        products: responseData.products.map((product: any) => ({
-          category: product.category,
-          name: product.name,
-          price: parseFloat(product.price),
-          description: product.description,
-        })),
+        products: responseData.products.map(
+          (product: {
+            category: string;
+            name: string;
+            price: string;
+            description: string;
+          }) => ({
+            category: product.category,
+            name: product.name,
+            price: parseFloat(product.price),
+            description: product.description,
+          })
+        ),
       };
 
       const getProductName = formattedData.products.map(
-        (item: any) => item.name
+        (item: { name: string }) => item.name
       );
 
-      const getProductData = formattedData.products.map((item: any) => ({
-        productName: item.name,
-        productPrice: item.price,
-        productDescription: item.description,
-        productCategory: item.category,
-      }));
+      const getProductData = formattedData.products.map(
+        (item: {
+          name: string;
+          price: string;
+          description: string;
+          category: string;
+        }) => ({
+          productName: item.name,
+          productPrice: item.price,
+          productDescription: item.description,
+          productCategory: item.category,
+        })
+      );
 
       for (let i = 0; i < getProductName.length; i++) {
         adminMenuStore.createMenu({

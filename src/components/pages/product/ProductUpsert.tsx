@@ -19,12 +19,6 @@ import { CategoriesProps } from "@/types/interface";
 
 interface ProductsProps {}
 
-type UploadResult = {
-  info: {
-    public_id: string;
-  };
-  event: "success";
-};
 
 export const ProductsUpsert: React.FC<ProductsProps> = ({}) => {
   const productStore = useSnapshot(AdminProductsStore);
@@ -117,7 +111,7 @@ export const ProductsUpsert: React.FC<ProductsProps> = ({}) => {
             <CldUploadButton
               className={cn(buttonVariants({}))}
               uploadPreset="w64a5icc"
-              onSuccess={(result: UploadResult | any) =>
+              onSuccess={(result: any) =>
                 productStore.setImageId(result.info.public_id)
               }
               onError={() => toast.error("An error occured")}

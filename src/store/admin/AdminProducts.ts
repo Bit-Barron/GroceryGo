@@ -13,7 +13,7 @@ export const AdminProductsStore = proxy({
   },
 
   product: [],
-  setProduct: (product: any) => {
+  setProduct: (product: never[]) => {
     AdminProductsStore.product = product;
   },
 

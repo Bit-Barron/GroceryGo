@@ -2,6 +2,7 @@ import { FormEvent } from "react";
 import { proxy } from "valtio";
 import axios from "axios";
 import { toast } from "sonner";
+import { AxiosError } from "axios";
 
 interface userProps {
   id: string;
@@ -38,11 +39,12 @@ export const AuthStore = proxy({
         window.location.href = "/login";
         return toast.success("Succesfully created an account");
       }
-    } catch (err: any) {
-      if (err.response.status === 500) {
+    } catch (err) {
+      const axiosError = err as AxiosError;
+      if (axiosError.response && axiosError.response.status === 500) {
         return toast.error("user already exists");
       }
-      return toast.error("An error occured");
+      return toast.error("An error occurred");
     }
   },
 

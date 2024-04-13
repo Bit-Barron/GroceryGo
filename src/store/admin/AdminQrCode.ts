@@ -3,6 +3,7 @@ import axios from "axios";
 import cookie from "cookie";
 import { toast } from "sonner";
 import { FormEvent } from "react";
+import { AdminQrCodeProps } from "@/types/interface";
 
 export type AdminQrCodeStore = typeof AdminQrCodeStore;
 
@@ -32,7 +33,7 @@ export const AdminQrCodeStore = proxy({
   },
 
   qrCode: [],
-  setQrCode: (qrCode: any) => {
+  setQrCode: (qrCode: never[]) => {
     AdminQrCodeStore.qrCode = qrCode;
   },
 
