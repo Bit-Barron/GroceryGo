@@ -3,7 +3,6 @@ import { useSnapshot } from "valtio";
 import { AdminQrCodeStore } from "../../../store/admin/AdminQrCode";
 import { MdDelete } from "react-icons/md";
 import { AdminQrCodeProps } from "@/types/interface";
-import { Button } from "@/components/ui/elements/Button";
 import QRCodeGenerator from "../../ui/elements/QrCodeGenerator";
 
 interface QrCodeListProps {}
