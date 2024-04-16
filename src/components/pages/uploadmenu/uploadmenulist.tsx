@@ -10,13 +10,6 @@ import { IoPricetag } from "react-icons/io5";
 
 interface UploadMenuListProps {}
 
-type UploadResult = {
-  info: {
-    public_id: string;
-  };
-  event: "success";
-};
-
 export const UploadMenuList: React.FC<UploadMenuListProps> = ({}) => {
   const adminMenuStore = useSnapshot(AdminMenuStore);
 
@@ -49,31 +42,31 @@ export const UploadMenuList: React.FC<UploadMenuListProps> = ({}) => {
                   "inline-flex rounded-full px-2 text-xs font-semibold leading-5 text-white"
                 }
               >
-                {menu.productDescription || "no title"}
+                {menu.productDescription || "No Title"}
               </p>
             </div>
             <div className="flex flex-col md:flex md:flex-row md:items-end md:justify-between mt-">
               <div className="order-1 text-sm text-gray-400 space-y-2">
                 <p className="flex items-center space-x-1">
                   <TbFileDescription className="text-main font-bold" />
-                  <span className="text-gray-400">description: </span>
+                  <span className="text-gray-400">Description: </span>
                   <span className="">
-                    {menu.productDescription || "menu description"}
+                    {menu.productDescription || "No Description"}
                   </span>
                 </p>
                 <p className="flex items-center space-x-1">
                   <IoPricetag className="font-bold" />
-                  <span>price: </span>
+                  <span>Price: </span>
                   <span className="font-bold">
-                    {menu.productPrice || "no price selected"}
+                    {menu.productPrice || "No Price"}
                   </span>
                 </p>
 
                 <p className="flex items-center space-x-1">
                   <BiCategoryAlt className="text-main" />
-                  <span>category: </span>
+                  <span>Category: </span>
                   <span className="font-bold">
-                    {menu.productCategory || "no category selected"}
+                    {menu.productCategory || "No Category"}
                   </span>
                 </p>
 

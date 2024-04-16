@@ -30,6 +30,7 @@
     "cloudinary": "^2.1.0",
     "clsx": "^2.1.0",
     "cookie": "^0.6.0",
+    "date-fns": "^3.6.0",
     "drizzle-orm": "^0.30.4",
     "drizzle-typebox": "^0.1.1",
     "elysia": "^1.0.7",

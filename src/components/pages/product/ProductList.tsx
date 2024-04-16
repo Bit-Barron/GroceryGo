@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { parseISO, format } from "date-fns";
 import { BiCategoryAlt } from "react-icons/bi";
 import { useSnapshot } from "valtio";
 import { CldImage } from "next-cloudinary";
@@ -36,39 +37,48 @@ export const ProductsList: React.FC<ProductsListProps> = ({}) => {
                     "inline-flex rounded-full px-2 text-xs font-semibold leading-5 text-white"
                   }
                 >
-                  {product.title || "no title"}
+                  {product.title || "No Title"}
                 </p>
               </div>
               <div className="flex flex-col md:flex md:flex-row md:items-end md:justify-between mt-2">
                 <div className="order-1 text-sm text-gray-400 space-y-2">
                   <p className="flex items-center space-x-1">
                     <TbFileDescription className="" />
-                    <span>description: </span>
+                    <span>Description: </span>
                     <span className="">
-                      {product.description || "product description"}
+                      {product.description || "No Description"}
                     </span>
                   </p>
                   <p className="flex items-center space-x-1">
                     <IoPricetag className="font-bold" />
-                    <span>price: </span>
+                    <span>Price: </span>
                     <span className="font-bold">
-                      {product.price || "no price selected"}€
+                      {product.price || "No Price"}€
                     </span>
                   </p>
 
                   <p className="flex items-center space-x-1">
                     <BiCategoryAlt className="text-maine" />
-                    <span>category: </span>
+                    <span>Category: </span>
                     <span className="font-bold">
-                      {product.category || "no category selected"}
+                      {product.category || "No Category"}
                     </span>
                   </p>
 
                   <p className="flex items-center space-x-1">
                     <MdOutlineDiscount className="text-main" />
-                    <span>discount: </span>
+                    <span>Discount: </span>
                     <span className="font-bold">
                       {product.discount || "0%"}
+                    </span>
+                  </p>
+
+                  <p className="flex items-center space-x-1">
+                    <span>Created At: </span>
+                    <span className="font-bold">
+                      <time dateTime={product.createdAt}>
+                        {format(product.createdAt, "LLLL d, yyyy")}
+                      </time>
                     </span>
                   </p>
 
@@ -83,7 +93,7 @@ export const ProductsList: React.FC<ProductsListProps> = ({}) => {
                       />
                     </p>
                   )}
-                  
+
                   <div
                     onClick={() => {
                       productStore.deleteProductById(product.id as number);

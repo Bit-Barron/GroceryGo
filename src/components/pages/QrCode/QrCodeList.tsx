@@ -4,6 +4,7 @@ import { AdminQrCodeStore } from "../../../store/admin/AdminQrCode";
 import { MdDelete } from "react-icons/md";
 import { AdminQrCodeProps } from "@/types/interface";
 import QRCodeGenerator from "../../ui/elements/QrCodeGenerator";
+import { format } from "date-fns";
 
 interface QrCodeListProps {}
 
@@ -28,13 +29,11 @@ export const QrCodeList: React.FC<QrCodeListProps> = ({}) => {
                   <span>Table Number:</span>
                   <p className="truncate font-medium">{qrcode.tableNumber}</p>
                 </div>
-                <p
-                  className={
-                    "inline-flex rounded-full px-2 text-xs font-semibold leading-5 text-white"
-                  }
-                >
-                  {qrcode.tableNumber || "no title"}
-                </p>
+                <span>
+                  <time dateTime={qrcode.createdAt}>
+                    {format(qrcode.createdAt, "LLLL d, yyyy")}
+                  </time>
+                </span>
               </div>
 
               <div>
