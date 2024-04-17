@@ -37,7 +37,7 @@ export const UploadMenuUpsert: React.FC<UploadMenuUpsertProps> = ({}) => {
 
     try {
       const response = await axios.post(
-        "http://127.0.0.1:80/image/vision",
+        "https://api.barron.agency/image/vision",
         data
       );
 
