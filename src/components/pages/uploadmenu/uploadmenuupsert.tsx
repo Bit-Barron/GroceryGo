@@ -64,10 +64,6 @@ export const UploadMenuUpsert: React.FC<UploadMenuUpsertProps> = ({}) => {
         ),
       };
 
-      const getProductName = formattedData.products.map(
-        (item: { name: string }) => item.name
-      );
-
       const getProductData = formattedData.products.map(
         (item: {
           name: string;
@@ -82,7 +78,7 @@ export const UploadMenuUpsert: React.FC<UploadMenuUpsertProps> = ({}) => {
         })
       );
 
-      for (let i = 0; i < getProductName.length; i++) {
+      for (let i = 0; i < getProductData.length; i++) {
         adminMenuStore.createMenu({
           productName: getProductData[i].productName,
           productPrice: getProductData[i].productPrice,
