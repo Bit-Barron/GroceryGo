@@ -14,7 +14,7 @@ AuthController.post("/login", ({ body }) => {
 });
 
 AuthController.post("/validate-token", ({ body }) => {
-  return validateToken(body);
+  return validateToken(body as any);
 });
 
 AuthController.post("/logout", ({}) => {
