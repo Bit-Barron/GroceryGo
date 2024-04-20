@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Container } from "@/components/container/Container";
+import { Container } from "@/components/container/AdminContainer";
 
 interface pageProps {}
 
