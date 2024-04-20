@@ -82,7 +82,7 @@ export const ProductsUpsert: React.FC<ProductsProps> = ({}) => {
               id={"title"}
               name={"title"}
               required
-              maxLength={20}
+              maxLength={10}
             />
 
             <Input
@@ -93,7 +93,7 @@ export const ProductsUpsert: React.FC<ProductsProps> = ({}) => {
               placeholder={"Product Description"}
               name={"description"}
               id={"description"}
-              maxLength={100}
+              maxLength={10}
             />
 
             <Input

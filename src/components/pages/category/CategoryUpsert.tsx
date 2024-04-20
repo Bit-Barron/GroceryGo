@@ -42,7 +42,7 @@ export const CategoriesUpsert: React.FC<CategoriesUpsertProps> = ({}) => {
               placeholder={"Categories Title"}
               id={"title"}
               required
-              maxLength={20}
+              maxLength={10}
             />
             <Input
               value={categorieStore.description}
@@ -51,7 +51,7 @@ export const CategoriesUpsert: React.FC<CategoriesUpsertProps> = ({}) => {
               Icon={CgRename}
               placeholder={"Categories Description (optional)"}
               id={"title"}
-              maxLength={20}
+              maxLength={10}
             />
           </div>
         </div>

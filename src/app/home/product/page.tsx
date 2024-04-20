@@ -1,13 +1,21 @@
 "use client";
 
+import { CldImage } from "next-cloudinary";
 import cookie from "cookie";
 import { useEffect } from "react";
 import React from "react";
 import { CiSearch } from "react-icons/ci";
+import { useSnapshot } from "valtio";
+import { AdminProductsStore } from "@/store/admin/AdminProducts";
+import { ProductsProps } from "@/types/interface";
+import { Card, CardContent } from "@/components/ui/elements/Card";
+import { TiPlus } from "react-icons/ti";
 
 interface pageProps {}
 
 const Page: React.FC<pageProps> = ({}) => {
+  const productStore = useSnapshot(AdminProductsStore);
+
   useEffect(() => {
     const extractParamsAndSaveAsCookies = () => {
       const url = new URL(window.location.href);
@@ -31,8 +39,12 @@ const Page: React.FC<pageProps> = ({}) => {
     }
   }, []);
 
+  useEffect(() => {
+    productStore.getProductById();
+  }, [productStore]);
+
   return (
-    <div className="!bg-white h-screen">
+    <div className="!bg-[#F4F6F6] h-screen">
       <form className="max-w-md mx-auto">
         <label
           htmlFor="default-search"
@@ -59,6 +71,38 @@ const Page: React.FC<pageProps> = ({}) => {
           </button>
         </div>
       </form>
+
+      <div className="!text-black grid grid-cols-2 gap-5">
+        {productStore.product.map((product: ProductsProps) => (
+          <div key={product.id} className="mt-10 ">
+            <Card className="bg-white ">
+              <CardContent className="">
+                {product.imageId && (
+                  <p className="flex items-center space-x-1 mt-6 justify-center mx-auto">
+                    <CldImage
+                      alt={"Product Image"}
+                      src={product.imageId}
+                      className="w-40 h-40 object-cover rounded-lg"
+                      width={200}
+                      height={200}
+                    />
+                  </p>
+                )}
+                <div className="font-semibold text-lg mt-2">
+                  {product.title}
+                </div>
+                <div className="text-gray-500">{product.category}</div>
+                <div className="flex justify-between">
+                  <div className="mt-1">{product.price}€</div>
+                  <div className="bg-blue-700 rounded-full p-2">
+                    <TiPlus className="text-white" />
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
