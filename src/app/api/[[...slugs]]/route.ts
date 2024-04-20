@@ -1,4 +1,3 @@
-// app/[[...slugs]]/route.ts
 import { AuthController } from "@/server/controllers/AuthController";
 import { CategoriesController } from "@/server/controllers/CategoriesController";
 import { ProductController } from "@/server/controllers/ProductController";
