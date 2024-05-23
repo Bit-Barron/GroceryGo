@@ -33,6 +33,7 @@ const config = {
         cardBackground: "#1A1D22",
         cardBorder: "#2F3338",
         chartBlue: "#3498db",
+        userContainer: "#ffffff",
 
         adminContainer: "#2D2626",
         border: "hsl(var(--border))",

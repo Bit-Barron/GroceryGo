@@ -1,4 +1,4 @@
-import { ProductDataProps } from "@/store/admin/AdminMenu";
+import { ShoppingCart } from "@/types/interface";
 import { ProductsProps } from "@/types/interface";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
@@ -12,6 +12,6 @@ export function classNames(...classes: string[]) {
 }
 
 
-export function shoppingCart(product: ProductsProps) {
+export function shoppingCart(product: ProductsProps, cart: ShoppingCart) {
   console.log(product)
 }

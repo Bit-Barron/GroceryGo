@@ -47,7 +47,7 @@ const Page: React.FC<pageProps> = ({}) => {
  
 
   return (
-    <div className="!bg-[#F4F6F6] h-screen">
+    <div className="!bg-white h-screen">
       <form className="max-w-md mx-auto">
         <label
           htmlFor="default-search"
@@ -99,7 +99,7 @@ const Page: React.FC<pageProps> = ({}) => {
                 <div className="flex justify-between">
                   <div className="mt-1">{product.price}€</div>
                   <div className="bg-blue-700 rounded-full p-2">
-                    <TiPlus className="text-white" onClick={() => shoppingCart(product)} />
+                    <TiPlus className="text-white" />
                   </div>
                 </div>
               </CardContent>
