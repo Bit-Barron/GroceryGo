@@ -16,7 +16,7 @@ const Layout: React.FC<layoutProps> = ({ children }) => {
 
   return (
     <div className="!bg-[#F4F6F6] !h-screen">
-      <div className="fixed bottom-0 mt-6 w-full p-5 bg-[#008000] text-white text-center">
+      <div className="fixed bottom-0 mt-6 w-full p-5 bg-blue-700 text-white text-center">
         <div className="flex justify-between p-2">
           <div>
             <AiOutlineHome

@@ -10,6 +10,7 @@ import { AdminProductsStore } from "@/store/admin/AdminProducts";
 import { ProductsProps } from "@/types/interface";
 import { Card, CardContent } from "@/components/ui/elements/Card";
 import { TiPlus } from "react-icons/ti";
+import { shoppingCart } from "@/lib/utils";
 
 interface pageProps {}
 
@@ -43,6 +44,8 @@ const Page: React.FC<pageProps> = ({}) => {
     productStore.getProductById();
   }, [productStore]);
 
+ 
+
   return (
     <div className="!bg-[#F4F6F6] h-screen">
       <form className="max-w-md mx-auto">
@@ -73,16 +76,17 @@ const Page: React.FC<pageProps> = ({}) => {
       </form>
 
       <div className="!text-black grid grid-cols-2 gap-5">
-        {productStore.product.map((product: ProductsProps) => (
-          <div key={product.id} className="mt-10 ">
-            <Card className="bg-white ">
+        {productStore.product.map((product: ProductsProps) => {
+          return (
+          <div key={product.id} className="mt-6">
+            <Card className="bg-white h-72">
               <CardContent className="">
                 {product.imageId && (
                   <p className="flex items-center space-x-1 mt-6 justify-center mx-auto">
                     <CldImage
                       alt={"Product Image"}
                       src={product.imageId}
-                      className="w-40 h-40 object-cover rounded-lg"
+                      className="w-40 h-40 object-cover !rounded-2xl"
                       width={200}
                       height={200}
                     />
@@ -95,13 +99,15 @@ const Page: React.FC<pageProps> = ({}) => {
                 <div className="flex justify-between">
                   <div className="mt-1">{product.price}€</div>
                   <div className="bg-blue-700 rounded-full p-2">
-                    <TiPlus className="text-white" />
+                    <TiPlus className="text-white" onClick={() => shoppingCart(product)} />
                   </div>
                 </div>
               </CardContent>
             </Card>
           </div>
-        ))}
+          )
+        }
+        )}
       </div>
     </div>
   );

@@ -12,6 +12,13 @@ export interface ProductsProps {
   id?: number;
 }
 
+export type ShoppingCart = {
+  getItemQuantity: (id: number) => number;
+  increaseCartQuantity: (id: number) => void;
+  decreaseCartQuantity: (id: number) => void;
+  removeFromCart: (id: number) => void;
+}
+
 export interface CategoriesProps {
   id: number;
   title: string;
