@@ -10,7 +10,7 @@ import { AdminProductsStore } from "@/store/admin/AdminProducts";
 import { ProductsProps } from "@/types/interface";
 import { Card, CardContent } from "@/components/ui/elements/Card";
 import { TiPlus } from "react-icons/ti";
-import { shoppingCart } from "@/lib/utils";
+
 
 interface pageProps {}
 
@@ -44,7 +44,7 @@ const Page: React.FC<pageProps> = ({}) => {
     productStore.getProductById();
   }, [productStore]);
 
- 
+
 
   return (
     <div className="!bg-white h-screen">

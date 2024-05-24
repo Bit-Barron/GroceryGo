@@ -3,12 +3,7 @@ import { proxy } from "valtio";
 import axios from "axios";
 import { toast } from "sonner";
 import { AxiosError } from "axios";
-
-interface userProps {
-  id: string;
-  email: string;
-  password: string;
-}
+import { AuthProps } from "@/types/interface";
 
 export type AuthStore = typeof AuthStore;
 
@@ -24,7 +19,7 @@ export const AuthStore = proxy({
     if (AuthStore.password.length < 6) return toast.error("Password too short");
 
     try {
-      const registerUser: userProps = await axios.post(
+      const registerUser: AuthProps = await axios.post(
         `${process.env.NEXT_PUBLIC_REST_ENDPOINT}/api/register`,
         {
           email: AuthStore.email,
@@ -52,7 +47,7 @@ export const AuthStore = proxy({
     e.preventDefault();
 
     try {
-      const loginUser: userProps = await axios.post(
+      const loginUser: AuthProps = await axios.post(
         `${process.env.NEXT_PUBLIC_REST_ENDPOINT}/api/login`,
         {
           email: AuthStore.email,

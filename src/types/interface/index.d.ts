@@ -12,6 +12,12 @@ export interface ProductsProps {
   id?: number;
 }
 
+export interface AuthProps {
+  id: string;
+  email: string;
+  password: string;
+}
+
 export type ShoppingCart = {
   getItemQuantity: (id: number) => number;
   increaseCartQuantity: (id: number) => void;
