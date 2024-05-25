@@ -1,6 +1,7 @@
 "use client";
 
 import { adminCartStore } from "@/store/admin/CartStore";
+import { LuStar } from "react-icons/lu";
 import { CldImage } from "next-cloudinary";
 import cookie from "cookie";
 import { useEffect } from "react";
@@ -47,7 +48,7 @@ const Page: React.FC<pageProps> = ({}) => {
   }, [productStore]);
 
   return (
-    <div className="!bg-white h-screen">
+    <div className="!bg-[#F6F6F6] h-screen">
       <form className="max-w-md mx-auto">
         <label
           htmlFor="default-search"
@@ -80,8 +81,9 @@ const Page: React.FC<pageProps> = ({}) => {
           return (
             <div key={product.id} className="mt-6">
               <Card className="bg-white">
-                <div className="flex justify-end p-1">
+                <div className="flex justify-between p-1">
                   <MdOutlineBookmarkBorder className="text-2xl" />
+                  <LuStar className="text-2xl" />
                 </div>
                 <CardContent className="">
                   {product.imageId && (
