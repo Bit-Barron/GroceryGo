@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSnapshot } from "valtio";
-import { AdminQrCodeStore } from "../../../store/admin/AdminQrCode";
+import { AdminQrCodeStore } from "../../../store/admin/QrCodeStore";
 import { MdDelete } from "react-icons/md";
 import { AdminQrCodeProps } from "@/types/interface";
 import QRCodeGenerator from "../../ui/elements/QrCodeGenerator";

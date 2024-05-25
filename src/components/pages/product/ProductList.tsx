@@ -3,7 +3,7 @@ import { format } from "date-fns";
 import { BiCategoryAlt } from "react-icons/bi";
 import { useSnapshot } from "valtio";
 import { CldImage } from "next-cloudinary";
-import { AdminProductsStore } from "@/store/admin/AdminProducts";
+import { AdminProductsStore } from "@/store/admin/ProductStore";
 import { ProductsProps } from "@/types/interface";
 import { MdDelete } from "react-icons/md";
 import { MdOutlineDiscount } from "react-icons/md";

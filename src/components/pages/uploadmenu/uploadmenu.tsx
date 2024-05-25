@@ -2,7 +2,7 @@ import React from "react";
 import { useSnapshot } from "valtio";
 import { UploadMenuUpsert } from "@/components/pages/uploadmenu/UploadMenuUpsert";
 import { UploadMenuList } from "@/components/pages/uploadmenu/UploadMenuList";
-import { AdminProductsStore } from "@/store/admin/AdminProducts";
+import { AdminProductsStore } from "@/store/admin/ProductStore";
 import { Button } from "@/components/ui/elements/Button";
 
 export const UploadMenu: React.FC = ({}) => {

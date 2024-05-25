@@ -1,4 +1,4 @@
-import { AdminCategoryStore } from "@/store/admin/AdminCategory";
+import { AdminCategoryStore } from "@/store/admin/CategoryStore";
 import { CategoriesProps } from "@/types/interface";
 import { format } from "date-fns";
 import { useSnapshot } from "valtio";

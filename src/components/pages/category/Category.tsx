@@ -1,6 +1,6 @@
 import React from "react";
 import { useSnapshot } from "valtio";
-import { AdminCategoryStore } from "@/store/admin/AdminCategory";
+import { AdminCategoryStore } from "@/store/admin/CategoryStore";
 import { Button } from "@/components/ui/elements/Button";
 import { CategoriesList } from "./CategoryList";
 import { CategoriesUpsert } from "./CategoryUpsert";

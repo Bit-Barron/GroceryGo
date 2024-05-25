@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { AdminQrCodeStore } from "@/store/admin/AdminQrCode";
+import { AdminQrCodeStore } from "@/store/admin/QrCodeStore";
 import QRCodeStyling from "qr-code-styling";
 import { AiOutlineSave } from "react-icons/ai";
 import { MdDriveFileRenameOutline, MdOutlineColorize } from "react-icons/md";

@@ -3,9 +3,9 @@ import { AdminCard } from "@/components/ui/dashboard/DashboardCard";
 import { AdminChart } from "@/components/ui/dashboard/DashboardChart";
 import { AdminOrders } from "@/components/ui/dashboard/DashboardOrder";
 import { useSnapshot } from "valtio";
-import { AdminCategoryStore } from "@/store/admin/AdminCategory";
-import { AdminProductsStore } from "@/store/admin/AdminProducts";
-import { AdminQrCodeStore } from "@/store/admin/AdminQrCode";
+import { AdminCategoryStore } from "@/store/admin/CategoryStore";
+import { AdminProductsStore } from "@/store/admin/ProductStore";
+import { AdminQrCodeStore } from "@/store/admin/QrCodeStore";
 
 interface DashboardProps {}
 

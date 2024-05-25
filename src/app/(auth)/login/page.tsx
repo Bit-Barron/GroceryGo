@@ -16,7 +16,7 @@ const Page: React.FC<pageProps> = ({}) => {
   const router = useRouter();
 
   return (
-    <form onSubmit={(e) => authStore.login(e)}>
+     <form onSubmit={(e) => authStore.login(e)}>
       <h1 className="font-bold text-2xl text-center mt-7">Login</h1>
       <div className="mt-10 space-y-5">
         <Input

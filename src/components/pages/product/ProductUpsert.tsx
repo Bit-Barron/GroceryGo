@@ -1,4 +1,4 @@
-import { AdminProductsStore } from "@/store/admin/AdminProducts";
+import { AdminProductsStore } from "@/store/admin/ProductStore";
 import cookie from "cookie";
 import { toast } from "sonner";
 import axios from "axios";

@@ -3,7 +3,7 @@ import { CgRename } from "react-icons/cg";
 import { useSnapshot } from "valtio";
 import { Input } from "@/components/ui/elements/Input";
 import { AiOutlineSave } from "react-icons/ai";
-import { AdminCategoryStore } from "@/store/admin/AdminCategory";
+import { AdminCategoryStore } from "@/store/admin/CategoryStore";
 import { Button } from "@/components/ui/elements/Button";
 
 interface CategoriesUpsertProps {}
