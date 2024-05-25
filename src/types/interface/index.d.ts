@@ -12,6 +12,10 @@ export interface ProductsProps {
   id?: number;
 }
 
+export interface CategoriesProps {
+  userId: string;
+}
+
 export interface AuthProps {
   id: string;
   email: string;

@@ -1,7 +1,6 @@
-import { UpdateMenuProps } from "@/types/interface";
 import { db } from "../db";
 import { MenuModel } from "../db/schema";
-import { ProductDataProps } from "@/store/admin/AdminMenu";
+import { ProductDataProps } from "@/store/admin/MenuStore";
 import { eq } from "drizzle-orm";
 
 export async function createMenu({

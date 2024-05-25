@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/elements/Button";
 import { AiOutlineSave } from "react-icons/ai";
 import { Input } from "@/components/ui/elements/Input";
 import { useSnapshot } from "valtio";
-import { AdminMenuStore } from "@/store/admin/AdminMenu";
+import { AdminMenuStore } from "@/store/admin/MenuStore";
 
 interface UploadMenuUpsertProps {}
 

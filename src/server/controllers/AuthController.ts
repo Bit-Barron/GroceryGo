@@ -3,6 +3,10 @@ import { logout, register, validateToken } from "../services/AuthService";
 import { login } from "../services/AuthService";
 import { AuthProps } from "@/types/interface";
 
+interface ValidTokenProps {
+  token: string;
+}
+
 export let AuthController = new Elysia();
 
 AuthController.post("/register", ({ body }) => {
@@ -14,7 +18,7 @@ AuthController.post("/login", ({ body }) => {
 });
 
 AuthController.post("/validate-token", ({ body }) => {
-  return validateToken(body as any);
+  return validateToken(body as ValidTokenProps);
 });
 
 AuthController.post("/logout", ({}) => {

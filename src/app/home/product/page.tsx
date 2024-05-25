@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import React from "react";
 import { CiSearch } from "react-icons/ci";
 import { useSnapshot } from "valtio";
-import { AdminProductsStore } from "@/store/admin/AdminProducts";
+import { AdminProductsStore } from "@/store/admin/ProductStore";
 import { ProductsProps } from "@/types/interface";
 import { Card, CardContent } from "@/components/ui/elements/Card";
 import { TiPlus } from "react-icons/ti";

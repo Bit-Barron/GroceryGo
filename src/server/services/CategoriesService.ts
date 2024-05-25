@@ -14,7 +14,7 @@ export async function createCategory({
       description,
       createdAt: new Date(),
       userId,
-    });
+    }as any);
 
     return categories;
   } catch (err) {
