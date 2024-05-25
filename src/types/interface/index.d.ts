@@ -10,7 +10,7 @@ export interface ProductsProps {
   category: string;
   createdAt?: string;
   id?: number;
-  quantity?: number;
+  quantity: number;
 }
 
 export interface ShoppingCartProps {

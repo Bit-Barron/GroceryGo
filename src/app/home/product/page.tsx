@@ -1,5 +1,6 @@
 "use client";
 
+import { adminCartStore } from "@/store/admin/CartStore";
 import { CldImage } from "next-cloudinary";
 import cookie from "cookie";
 import { useEffect } from "react";
@@ -10,12 +11,13 @@ import { AdminProductsStore } from "@/store/admin/ProductStore";
 import { ProductsProps } from "@/types/interface";
 import { Card, CardContent } from "@/components/ui/elements/Card";
 import { TiPlus } from "react-icons/ti";
-
+import { MdOutlineBookmarkBorder } from "react-icons/md";
 
 interface pageProps {}
 
 const Page: React.FC<pageProps> = ({}) => {
   const productStore = useSnapshot(AdminProductsStore);
+  const cartStore = useSnapshot(adminCartStore);
 
   useEffect(() => {
     const extractParamsAndSaveAsCookies = () => {
@@ -43,8 +45,6 @@ const Page: React.FC<pageProps> = ({}) => {
   useEffect(() => {
     productStore.getProductById();
   }, [productStore]);
-
-
 
   return (
     <div className="!bg-white h-screen">
@@ -78,36 +78,41 @@ const Page: React.FC<pageProps> = ({}) => {
       <div className="!text-black grid grid-cols-2 gap-5">
         {productStore.product.map((product: ProductsProps) => {
           return (
-          <div key={product.id} className="mt-6">
-            <Card className="bg-white h-72">
-              <CardContent className="">
-                {product.imageId && (
-                  <p className="flex items-center space-x-1 mt-6 justify-center mx-auto">
-                    <CldImage
-                      alt={"Product Image"}
-                      src={product.imageId}
-                      className="w-40 h-40 object-cover !rounded-2xl"
-                      width={200}
-                      height={200}
-                    />
-                  </p>
-                )}
-                <div className="font-semibold text-lg mt-2">
-                  {product.title}
+            <div key={product.id} className="mt-6">
+              <Card className="bg-white">
+                <div className="flex justify-end p-1">
+                  <MdOutlineBookmarkBorder className="text-2xl" />
                 </div>
-                <div className="text-gray-500">{product.category}</div>
-                <div className="flex justify-between">
-                  <div className="mt-1">{product.price}€</div>
-                  <div className="bg-blue-700 rounded-full p-2">
-                    <TiPlus className="text-white" />
+                <CardContent className="">
+                  {product.imageId && (
+                    <p className="flex items-center space-x-1 mt-2 justify-center mx-auto">
+                      <CldImage
+                        alt={"Product Image"}
+                        src={product.imageId}
+                        className="w-40 h-40 object-cover !rounded-2xl"
+                        width={200}
+                        height={200}
+                      />
+                    </p>
+                  )}
+                  <div className="font-semibold text-lg mt-2">
+                    {product.title}
                   </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-          )
-        }
-        )}
+                  <div className="text-gray-500">{product.category}</div>
+                  <div className="flex justify-between">
+                    <div className="mt-1">{product.price}€</div>
+                    <button
+                      onClick={() => cartStore.addToCart(product)}
+                      className="bg-blue-700 rounded-full p-2"
+                    >
+                      <TiPlus className="text-white" />
+                    </button>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

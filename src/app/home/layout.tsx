@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { MdDiscount } from "react-icons/md";
 import { CiShoppingBasket } from "react-icons/ci";
 import { BiCategoryAlt } from "react-icons/bi";
+import { RiShoppingBagFill } from "react-icons/ri";
 
 interface layoutProps {
   children: React.ReactNode;
@@ -31,7 +32,7 @@ const Layout: React.FC<layoutProps> = ({ children }) => {
             />
           </div>
           <div>
-            <BiCategoryAlt
+            <RiShoppingBagFill
               className="scale-150"
               onClick={() => router.push("/home/category")}
             />

@@ -85,6 +85,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
                       <div className="flex justify-between">
                         <span className="block">{title}</span>
                       </div>
+                    
                     </Combobox.Option>
                   ))}
                 </Combobox.Options>
