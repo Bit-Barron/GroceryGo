@@ -10,6 +10,18 @@ export interface ProductsProps {
   category: string;
   createdAt?: string;
   id?: number;
+  quantity?: number;
+}
+
+export interface ShoppingCartProps {
+  userId: number;
+  productId: number;
+  quantity: number;
+  createdAt: string;
+  price: string;
+  id: number;
+  paymentMethod: string;
+  tableNumber: string;
 }
 
 export interface CategoriesProps {
