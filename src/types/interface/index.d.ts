@@ -33,14 +33,6 @@ export interface AuthProps {
   email: string;
   password: string;
 }
-
-export type ShoppingCart = {
-  getItemQuantity: (id: number) => number;
-  increaseCartQuantity: (id: number) => void;
-  decreaseCartQuantity: (id: number) => void;
-  removeFromCart: (id: number) => void;
-}
-
 export interface CategoriesProps {
   id: number;
   title: string;
