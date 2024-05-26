@@ -1,6 +1,6 @@
 "use client";
 
-import { adminCartStore } from "@/store/admin/CartStore";
+import { adminCartStore } from "@/store/CartStore";
 import { LuStar } from "react-icons/lu";
 import { CldImage } from "next-cloudinary";
 import cookie from "cookie";
