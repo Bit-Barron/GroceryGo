@@ -9,9 +9,8 @@ import React from "react";
 import { CiSearch } from "react-icons/ci";
 import { useSnapshot } from "valtio";
 import { AdminProductsStore } from "@/store/admin/ProductStore";
-import { CategoriesProps, ProductsProps } from "@/types/interface";
+import { ProductsProps } from "@/types/interface";
 import { Card, CardContent } from "@/components/ui/elements/Card";
-import { TiPlus } from "react-icons/ti";
 import { MdOutlineBookmarkBorder } from "react-icons/md";
 import { AdminCategoryStore } from "@/store/admin/CategoryStore";
 
@@ -20,7 +19,6 @@ interface pageProps {}
 const Page: React.FC<pageProps> = ({}) => {
   const productStore = useSnapshot(AdminProductsStore);
   const cartStore = useSnapshot(adminCartStore);
-  const categoryStore = useSnapshot(AdminCategoryStore);
 
   useEffect(() => {
     const extractParamsAndSaveAsCookies = () => {
@@ -109,7 +107,7 @@ const Page: React.FC<pageProps> = ({}) => {
                   <div className="font-semibold text-lg mt-2">
                     {product.title}
                   </div>
-                  <div className="flex justify-between mt-3">
+                  <div className="flex justify-between">
                     <div className="text-gray-500">{product.category}</div>
                     <div className="mt-1">{product.price}€</div>
                   </div>

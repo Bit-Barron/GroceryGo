@@ -40,7 +40,7 @@ const Layout: React.FC<layoutProps> = ({ children }) => {
           <div>
             <CiShoppingBasket
               className="scale-150"
-              onClick={() => router.push("/home/order")}
+              onClick={() => router.push("/home/cart")}
             />
           </div>
         </div>
