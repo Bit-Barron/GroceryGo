@@ -9,16 +9,18 @@ import React from "react";
 import { CiSearch } from "react-icons/ci";
 import { useSnapshot } from "valtio";
 import { AdminProductsStore } from "@/store/admin/ProductStore";
-import { ProductsProps } from "@/types/interface";
+import { CategoriesProps, ProductsProps } from "@/types/interface";
 import { Card, CardContent } from "@/components/ui/elements/Card";
 import { TiPlus } from "react-icons/ti";
 import { MdOutlineBookmarkBorder } from "react-icons/md";
+import { AdminCategoryStore } from "@/store/admin/CategoryStore";
 
 interface pageProps {}
 
 const Page: React.FC<pageProps> = ({}) => {
   const productStore = useSnapshot(AdminProductsStore);
   const cartStore = useSnapshot(adminCartStore);
+  const categoryStore = useSnapshot(AdminCategoryStore);
 
   useEffect(() => {
     const extractParamsAndSaveAsCookies = () => {
@@ -76,14 +78,21 @@ const Page: React.FC<pageProps> = ({}) => {
         </div>
       </form>
 
+      <div className="p-3">
+        <div className="bg-gradient-to-r from-indigo-700 p-2 rounded-xl">
+          <h1 className="font-bold text-2xl p-2 text-center">BIG DISCOUNT</h1>
+          <div className="text-center">Here to see our offers</div>
+        </div>
+      </div>
+
       <div className="!text-black grid grid-cols-2 gap-5">
         {productStore.product.map((product: ProductsProps) => {
           return (
             <div key={product.id} className="mt-6">
               <Card className="bg-white">
                 <div className="flex justify-between p-1">
-                  <MdOutlineBookmarkBorder className="text-2xl" />
-                  <LuStar className="text-2xl" />
+                  <MdOutlineBookmarkBorder className="text-xl" />
+                  <LuStar className="text-xl" />
                 </div>
                 <CardContent className="">
                   {product.imageId && (
@@ -100,14 +109,13 @@ const Page: React.FC<pageProps> = ({}) => {
                   <div className="font-semibold text-lg mt-2">
                     {product.title}
                   </div>
-                  <div className="text-gray-500">{product.category}</div>
-                  <div className="flex justify-between">
+                  <div className="flex justify-between mt-3">
+                    <div className="text-gray-500">{product.category}</div>
                     <div className="mt-1">{product.price}€</div>
-                    <button
-                      onClick={() => cartStore.addToCart(product)}
-                      className="bg-blue-700 rounded-full p-2"
-                    >
-                      <TiPlus className="text-white" />
+                  </div>
+                  <div className="mt-3">
+                    <button className="bg-blue-700 p-1 text-white rounded-xl w-full" onClick={() => cartStore.addToCart(product)}>
+                      Add
                     </button>
                   </div>
                 </CardContent>
