@@ -76,13 +76,6 @@ const Page: React.FC<pageProps> = ({}) => {
         </div>
       </form>
 
-      <div className="p-3">
-        <div className="bg-gradient-to-r from-indigo-700 p-2 rounded-xl">
-          <h1 className="font-bold text-2xl p-2 text-center">BIG DISCOUNT</h1>
-          <div className="text-center">Here to see our offers</div>
-        </div>
-      </div>
-
       <div className="!text-black grid grid-cols-2 gap-5">
         {productStore.product.map((product: ProductsProps) => {
           return (
@@ -112,7 +105,10 @@ const Page: React.FC<pageProps> = ({}) => {
                     <div className="mt-1">{product.price}€</div>
                   </div>
                   <div className="mt-3">
-                    <button className="bg-blue-700 p-1 text-white rounded-xl w-full" onClick={() => cartStore.addToCart(product)}>
+                    <button
+                      className="bg-blue-700 p-1 text-white rounded-xl w-full"
+                      onClick={() => cartStore.addToCart(product)}
+                    >
                       Add
                     </button>
                   </div>
